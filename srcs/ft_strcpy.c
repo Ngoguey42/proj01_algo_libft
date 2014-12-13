@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:37:14 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/12 14:48:54 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *s1, const char *s2)
-{
-	size_t	cur;
+/*
+** 'ft_strcpy' copies a 'C-string' into another one.
+*/
 
-	cur = 0;
-	while (s2[cur])
-	{
-		s1[cur] = s2[cur];
-		cur++;
-	}
-	s1[cur] = '\0';
-	return (s1);
+char	*ft_strcpy(char *dst, const char *src)
+{
+	char	*dst_save;
+
+	dst_save = dst;
+	while (1)
+		if ((*dst++ = *src++) == '\0')
+			return (dst_save);
 }

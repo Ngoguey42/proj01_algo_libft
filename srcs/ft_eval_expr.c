@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_eval_expr.h"
-#define PUSH	g_self = g_self->next
 
 t_evlxpr_cell	*g_self;
 
-int		evlxpr_deep(void)
+static int	evlxpr_deep(void)
 {
 	int total;
 
@@ -23,60 +22,56 @@ int		evlxpr_deep(void)
 	if (!g_self->oper)
 	{
 		total = g_self->value;
-		PUSH;
+		g_self = g_self->next;
 	}
 	else if (g_self->oper == 3)
 	{
-		PUSH;
+		g_self = g_self->next;
 		total = evlxpr_shallow();
-		PUSH;
+		g_self = g_self->next;
 	}
 	return (total);
 }
 
-int		evlxpr_medium(void)
+static int	evlxpr_medium(void)
 {
 	int total;
-	int ref;
 
 	total = evlxpr_deep();
 	if (g_self == NULL)
 		return (total);
 	while (g_self->oper == 2)
 	{
-		ref = g_self->ref;
-		PUSH;
+		g_self = g_self->next;
 		if (g_self == NULL)
 			return (total);
-		total = evlxpr_calculate(total, evlxpr_deep(), ref);
+		total = evlxpr_calculate(total, evlxpr_deep(), g_self->ref);
 		if (g_self == NULL)
 			return (total);
 	}
 	return (total);
 }
 
-int		evlxpr_shallow(void)
+int			evlxpr_shallow(void)
 {
 	int	total;
-	int	ref;
 
 	total = evlxpr_medium();
 	if (g_self == NULL)
 		return (total);
 	while (g_self->oper == 1)
 	{
-		ref = g_self->ref;
-		PUSH;
+		g_self = g_self->next;
 		if (g_self == NULL)
 			return (total);
-		total = evlxpr_calculate(total, evlxpr_medium(), ref);
+		total = evlxpr_calculate(total, evlxpr_medium(), g_self->ref);
 		if (g_self == NULL)
 			return (total);
 	}
 	return (total);
 }
 
-int		ft_eval_expr(char *str)
+int			ft_eval_expr(char *str)
 {
 	t_evlxpr_cell	**beggining;
 

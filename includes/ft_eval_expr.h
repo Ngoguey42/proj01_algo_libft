@@ -24,8 +24,8 @@ typedef struct				s_evlxpr_cell
 }							t_evlxpr_cell;
 
 t_evlxpr_cell				**evlxpr_convert_chain(char *str);
-t_evlxpr_cell				*evlxpr_llast(t_evlxpr_cell **beggining);
 int							evlxpr_shallow();
+t_evlxpr_cell				*evlxpr_llast(t_evlxpr_cell **beggining);
 int							evlxpr_calculate(int n1, int n2, char ref);
 void						evlxpr_lpback(t_evlxpr_cell **beggining, int value,
 							char oper, char ref);

@@ -1,12 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:08:08 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/08 14:16:24 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_strequ(const char *s1, const char *s2)
+/*
+** 'ft_strequ' compares two 'C-strings'.
+*/
+
+int	ft_strequ(char const *s1, char const *s2)
 {
-	if (s1 == s2)
-		return (1);
-	else if (s1 == NULL || s2 == NULL)
-		return (0);
-	return (ft_strcmp(s1, s2) ? 0 : 1);
+	return (!ft_strcmp(s1, s2));
 }

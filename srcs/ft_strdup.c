@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 18:56:28 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/08 11:32:27 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *src)
+/*
+** 'ft_strdup' allocates a copy of a string.
+*/
+
+char	*ft_strdup(const char *s1)
 {
-	size_t	len;
-	char	*trg;
+	char	*new;
 
-	len = ft_strlen(src) + 1;
-	trg = malloc((unsigned int)len);
-	if (!trg)
+	if (!(new = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
 		return (NULL);
-	ft_memcpy((void*)trg, (const void*)src, len);
-	return (trg);
+	return (ft_strcpy(new, s1));
 }

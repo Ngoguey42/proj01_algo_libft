@@ -1,16 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/04 11:20:38 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/07 12:15:34 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+/*
+** 'ft_strchr' parses a 'string' looking for a specific value.
+** 'c' is treated as a 'char'.
+*/
+
+char	*ft_strchr(const char *s, int c)
 {
 	char	tofind;
 
 	tofind = (char)c;
-	while (*str != tofind)
+	while (*s != tofind)
 	{
-		if (*str == '\0')
+		if (*s == '\0')
 			return (NULL);
-		str++;
+		s++;
 	}
-	return ((char*)str);
+	return ((char*)s);
 }

@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/07/19 12:14:06 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/07/19 16:05:29 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/11/03 18:57:55 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ t_evlxpr_cell	**evlxpr_convert_chain(char *str)
 			evlxpr_lpback(beginning, 0, 4, -1);
 		else if (evlxpr_operator() == 2)
 			evlxpr_lpback(beginning, 0, 2, evlxpr_operation());
-		else if (!evlxpr_operator() || !evlxpr_llast(beginning) || evlxpr_llast(beginning)->ref >= 0)
+		else if (!evlxpr_operator() || !evlxpr_llast(beginning) ||
+					evlxpr_llast(beginning)->ref >= 0)
 			evlxpr_lpback(beginning, evlxpr_get_val(), 0, -1);
 		else
 			evlxpr_lpback(beginning, 0, 1, evlxpr_operation());

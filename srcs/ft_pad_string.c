@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pad_string.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:00:37 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/03 19:05:55 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "ft_math.h"
 #include <stdlib.h>
 
-// #define ABS(x) (x < 0 ? -x : x)
+#define NOBI(NAME) char	*NAME
+#define NORMBITCH(N1, N2, N3) NOBI(N1); NOBI(N2); NOBI(N3)
 
 /*
 ** (n < 0) pad right
@@ -12,17 +25,10 @@
 
 char	*ft_pad_string(char *str, char c, int n, int freestr)
 {
-	char	*ret;
-	char	*rets;
-	char	*strs;
-
-	ret = (char*)malloc(ABS(n) + 1);	//malloc
-	// if (!(ret = rets = (char*)malloc(ABS(n) + 1)))
-	if (!ret)
-		exit(0); //exit
+	NORMBITCH(ret, rets, strs);
+	if (!(ret = (char*)malloc(ABS(n) + 1)))
+		return (NULL);
 	n += n < 0 ? ft_strlen(str) : -ft_strlen(str);
-	// if (n == 0)
-		// return (str); //malloc ce return ?
 	rets = ret;
 	if (n > 0)
 	{

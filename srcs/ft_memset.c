@@ -1,34 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:47:14 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/09 14:07:40 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef	int word;
+#include "libft.h"
 
-#define wsize	sizeof(word)
-#include <stdlib.h>
-#include <limits.h>
+#define ISIZE sizeof(int)
+#define IMASK (ISIZE - 1)
 
-void	*ft_memset(void *ptr, int c0, size_t nb)
+/*
+** 'ft_memset' sets every 'bytes' of a memory zone to 'c'.
+** The first loop sets ISIZE bytes at a time.
+** The second loop deals with trailing bytes.
+** 'ft_memcset' returns the following pointer.
+*/
+
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			t;
-	unsigned int	c;
+	unsigned int	ci;
+	unsigned char	cc;
+	unsigned int	*b_ip;
+	unsigned char	*b_cp;
 
-	if ((c = (unsigned char)c0) != 0)
+	cc = (unsigned char)c;
+	if ((ci = (unsigned int)cc) != 0)
 	{
-		c = (c << 8) | c;
-#if UINT_MAX > 0xffff
-		c = (c << 16) | c;
-#endif
-#if UINT_MAX > 0xffffffff
-		c = (c << 32) | c;
-#endif
+		ci = (ci << 8) | ci;
+		ci = (ci << 16) | ci;
 	}
-	t = nb / wsize;
-	while (t)
+	b_ip = (unsigned int*)b;
+	t = len / ISIZE;
+	while (t--)
+		*b_ip++ = ci;
+	b_cp = (unsigned char*)b_ip;
+	t = len % ISIZE;
+	while (t--)
+		*b_cp++ = cc;
+	return (b);
+}
+
+void	*ft_memcset(void *b, int c, size_t len)
+{
+	size_t			t;
+	unsigned int	ci;
+	unsigned char	cc;
+	unsigned int	*b_ip;
+	unsigned char	*b_cp;
+
+	cc = (unsigned char)c;
+	if ((ci = (unsigned int)cc) != 0)
 	{
-		*(word*)ptr = c;
-		ptr += wsize;
-		t--;
+		ci = (ci << 8) | ci;
+		ci = (ci << 16) | ci;
 	}
-	t = nb % wsize + 1;
-	while (--t)
-		*(char*)ptr++ = (unsigned char)c0;
-	return (ptr - nb);
+	b_ip = (unsigned int*)b;
+	t = len / ISIZE;
+	while (t--)
+		*b_ip++ = ci;
+	b_cp = (unsigned char*)b_ip;
+	t = len % ISIZE;
+	while (t--)
+		*b_cp++ = cc;
+	return (b + len);
 }

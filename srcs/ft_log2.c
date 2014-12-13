@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_log2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:22:36 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/03 19:23:32 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "ft_math.h"
-
 
 /*
 **	+0		/	-inf
@@ -24,10 +35,7 @@
 **	qnan	10 nan
 */
 
-// #include <stdio.h>
-// #include <math.h>
-
-static int	denorm_retexp(uint64_t nbr)
+static int		denorm_retexp(t_ui64 nbr)
 {
 	int				i;
 	unsigned char	*ptr;
@@ -44,7 +52,7 @@ static int	denorm_retexp(uint64_t nbr)
 	return (-1074);
 }
 
-static double get_mant(double nb)
+static double	get_mant(double nb)
 {
 	double			mant;
 	int				i;
@@ -53,7 +61,7 @@ static double get_mant(double nb)
 	mant = 0.5;
 	i = 51;
 	k = 0;
-	while ((nb *= nb) > 1 && (51-k+i+1) >= 0)
+	while ((nb *= nb) > 1 && (51 - k + i + 1) >= 0)
 	{
 		if (nb >= 2)
 		{
@@ -61,7 +69,8 @@ static double get_mant(double nb)
 			if (!k)
 				k = i;
 			else
-				((char*)&mant)[(51-k+i+1)/8] |= (1 << ((51-k+i+1) % 8));
+				((char*)&mant)[(51 - k + i + 1) / 8] |=
+					(1 << ((51 - k + i + 1) % 8));
 		}
 		if (!k)
 			mant /= 2;
@@ -70,12 +79,13 @@ static double get_mant(double nb)
 	return (mant);
 }
 
-double ft_log2(double nb)
+double			ft_log2(double nb)
 {
 	int				type;
 	double			retexp;
 	t_dbl_extract	ex;
 
+	ex.s.exp = 0;
 	if ((type = ft_dbltype(nb)) >= 5 && type <= 7)
 		return ((type == 7) ? M_INFINITY : M_MINFINITY);
 	else if (type >= 4 || type == 2)
@@ -85,8 +95,8 @@ double ft_log2(double nb)
 		retexp = (double)ex.s.exp - 1023;
 	else
 	{
-		retexp = (double)denorm_retexp((uint64_t)ex.s.manl +
-		(uint64_t)ex.s.manh * 0x100000000);
+		retexp = (double)denorm_retexp((t_ui64)ex.s.manl +
+		(t_ui64)ex.s.manh * 0x100000000);
 		ex.d *= 0x04000000;
 		ex.d *= 0x04000000;
 	}
@@ -94,4 +104,3 @@ double ft_log2(double nb)
 	nb = ex.d;
 	return (nb > 1 ? get_mant(nb) + retexp : retexp);
 }
-

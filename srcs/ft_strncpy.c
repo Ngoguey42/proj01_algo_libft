@@ -1,19 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:26:04 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/08 11:48:03 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *s1, const char *s2, size_t num)
-{
-	char *s = s1;
+/*
+** 'ft_strncpy' copies a 'C-string' into another one, until 'num' chars are
+** copied.
+** The second loop fills 'dst's trailing 'chars' to '\0'.
+*/
 
-	while (num > 0 && *s2)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	char *s;
+
+	s = dst;
+	while (n > 0 && *src)
 	{
-		*s++ = *s2++;
-		num--;
+		*s++ = *src++;
+		n--;
 	}
-	while (num > 0)
-	{
+	while (n-- > 0)
 		*s++ = '\0';
-		num--;
-	}
-	return (s1);
+	return (dst);
 }

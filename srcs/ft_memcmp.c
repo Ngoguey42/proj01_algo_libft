@@ -1,18 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:42:41 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/07 11:25:53 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
-{
-	const char	*s1 = (char*)ptr1;
-	const char	*s2 = (char*)ptr2;
+/*
+** 'ft_memcmp' looks for differences between two memory zones.
+*/
 
-	while(num > 0)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const t_byte	*s1b = (t_byte*)s1;
+	const t_byte	*s2b = (t_byte*)s2;
+
+	while (n > 0)
 	{
-		if (*s1 != *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-		num--;
+		if (*s1b != *s2b)
+			return (*s1b - *s2b);
+		s1b++;
+		s2b++;
+		n--;
 	}
 	return (0);
 }

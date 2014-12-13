@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_floor.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:57:35 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/03 19:58:51 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "ft_math.h"
 
-// #define ABS(x) (x < 0 ? -x : x)
-
+#define TWOFORTYTWO 0x1.0p+52
+#define TWOSIXTYTWO 0x1.0p+64L
 
 /*
 **	+norm	1 	( >2^51 : x)( <1 : +0.1)(round)
@@ -17,20 +29,14 @@
 **	qnan	10 	x
 */
 
-#define TWOFORTYTWO 0x1.0p+52
-#define TWOSIXTYTWO 0x1.0p+64L
-
 static double	round_mantissa(long double nb, int type)
 {
 	long double	nbround;
-	
+
 	if (type == 1)
 	{
 		nbround = (nb + TWOSIXTYTWO) - TWOSIXTYTWO;
 		nbround = (nb - TWOSIXTYTWO) + TWOSIXTYTWO;
-		// if (nbround < nb)
-			// return ((double)(nbround + 1));
-		// return ((double)nbround);
 	}
 	else
 	{
@@ -42,8 +48,7 @@ static double	round_mantissa(long double nb, int type)
 	return ((double)nbround);
 }
 
-
-double	ft_floor(double nb)
+double			ft_floor(double nb)
 {
 	int		type;
 
@@ -57,5 +62,3 @@ double	ft_floor(double nb)
 		return (nb - 1);
 	return (nb);
 }
-
-

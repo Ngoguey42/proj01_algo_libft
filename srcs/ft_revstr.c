@@ -1,11 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_revstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/03 19:34:10 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/11/08 13:41:56 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_revstr(char *str)
-{
-	int		i;
-	char	c;
+/*
+** 'ft_revstr' reverses a 'C-string'.
+*/
 
-	i = (int)ft_strlen(str);
+char	*ft_revstr(char *str)
+{
+	size_t	i;
+	char	c;
+	char	*save;
+
+	save = str;
+	i = ft_strlen(str);
 	while (i >= 2)
 	{
 		c = *str;
@@ -14,4 +32,5 @@ void	ft_revstr(char *str)
 		str++;
 		i -= 2;
 	}
+	return (save);
 }
