@@ -1,7 +1,7 @@
 # Project #1 LIBFT, Nov 2014
 >>>>> #####Personal C Library
 
-#####Grade ``(106/100)`` ``(106/117)*``
+#####Grade ``(102/100)`` ``(102/108)*``
 --------  -----------------------
 <br>
 As very few libC's and functions are allowed in school's projects,
@@ -41,6 +41,6 @@ All my C files strictly observes school's norm, it may often lead to odd or illo
 ```
 *
 - A grade of 85 was required to validate the project.
-- A maximum grade of 117 was reachable.
+- A maximum grade of 108 was reachable.
 - Second sessions are organised for failed projects.
 ```
