@@ -5,7 +5,7 @@
 --------  -----------------------
 <br>
 As very few libC's and functions are allowed in school's projects,
-this library regroups all kind <BR>of useful functions `prefixed by ft_`
+this library regroups all kinds <BR>of useful functions `prefixed by ft_`
 that i will be reuse in my C (2014-2015) then C++ (2016) projects.
 <br>
 
