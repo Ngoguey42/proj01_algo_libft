@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfind.c                                       :+:      :+:    :+:   */
+/*   ft_roundup_b10.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 19:54:52 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/03 20:26:03 by ngoguey          ###   ########.fr       */
+/*   Created: 2014/12/17 07:54:37 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/22 09:31:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-t_list	*ft_lstfind(t_list *alst,
-			t_list *lst_ref, int (*cmp)(t_list *lst, t_list *lst_ref))
+char	*ft_roundup_b10(char *str)
 {
-	if (!alst || !lst_ref || !cmp)
-		return (NULL);
-	while (alst)
+	int	i;
+
+	i = ft_strspn(str, "0123456789.");
+	while (i--)
 	{
-		if (cmp(alst, lst_ref))
-			return (alst);
-		alst = alst->next;
+		if (str[i] == '9')
+			str[i] = '0';
+		else if (str[i] == '.')
+			continue ;
+		else
+		{
+			str[i]++;
+			break ;
+		}
 	}
-	return (NULL);
+	return (str);
 }
