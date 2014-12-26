@@ -113,6 +113,7 @@ char	*ft_strjoinfree(char *s1, char *s2, int frees1, int frees2);
 char	*ft_strsub(char const *s, t_ui32 start, size_t len);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
+int		ft_strsplit_s(const char *s, char *delims, char ***ret);
 
 /*
 ** ctype.h

@@ -54,8 +54,8 @@ ft_atoi_base.c ft_itoa_c.c ft_itoa.c ft_lutoa_a.c\
 ft_maxintlen.c  ft_revstr.c    evlxpr_calculate.c     evlxpr_list.c    ft_convsz.c\
 ft_pad_string.c ft_eval_expr.c evlxpr_convert_chain.c                  ft_roundup_b10.c\
 ft_memalloc.c   ft_strnew.c    ft_strdup.c            ft_strjoin.c     ft_strtrim.c\
-ft_memdel.c     ft_strdel.c    ft_strsub.c            ft_strjoinfree.c \
-ft_realloc.c    ft_crealloc.c  ft_memdup.c            \
+ft_memdel.c     ft_strdel.c    ft_strsub.c            ft_strjoinfree.c ft_strsplit.c\
+ft_realloc.c    ft_crealloc.c  ft_memdup.c                             ft_strsplit_s.c\
 \
 ft_isalnum.c ft_iscntrl.c      ft_islower.c ft_isspace.c  ft_tolower.c\
 ft_isalpha.c ft_isdigit.c      ft_ispair.c  ft_isupper.c  ft_toupper.c\
