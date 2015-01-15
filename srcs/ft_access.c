@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 13:41:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/31 08:33:04 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/15 13:20:26 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,19 @@
 
 static int	analyse_fullpath(const char *path, int mode)
 {
+	struct stat		s;
+
 	if (access(path, mode) == 0)
 		return (0);
 	if (access(path, 0) == 0)
 		return (EACCES);
+	if (mode & X_OK)
+	{
+		if (lstat(path, &s) < 0)
+			return (EIO);
+		if (!S_ISREG(s.st_mode))
+			return (S_ISDIR(s.st_mode) ? EACCES : EACCES);
+	}
 	return (ENOENT);
 }
 
