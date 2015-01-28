@@ -6,12 +6,12 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:29:36 by ngoguey           #+#    #+#              #
-#    Updated: 2015/01/28 08:52:48 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/01/28 09:23:00 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NNAME = ft
-NAME = lib$(NNAME).a
+NAME = lib$(NNAME)printf.a
 
 INCLUDE = ./includes
 SRCPATH = srcs
@@ -107,7 +107,8 @@ PTFSRCSFILES = \
 	debug.c             build_nonprintable_string_deps.c\
 	                    build_uppercases2.c         buffer_flush_lscols.c\
 	                    build_dec_float.c           buffer_lscols_getdatas.c\
-	                    build_dec_float_nbr.c
+	                    build_dec_float_nbr.c       \
+                        build_wchars_and_wstrings.c
 
 #SOURCES/OBJECTS TARGETS
 SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))

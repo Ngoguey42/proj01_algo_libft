@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 10:44:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/20 11:27:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/28 11:31:09 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			ft_envdel(char **env, const char *key)
 		envlen++;
 	while (*env != line)
 		envlen--;
-		env++;
+	env++;
 	ft_memmove(env, env + 1, envlen * sizeof(char*));
 	return (0);
 }

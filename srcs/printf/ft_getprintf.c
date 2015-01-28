@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:17:15 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/22 09:39:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/01/28 09:22:20 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	(*g_specifiers[NUM_SPECIFIERS])(t_printf_part *part, va_list *args) = {
 	build_nbr_0, build_nbr_13, build_nbr_14, build_nbr_15,
 	build_nbr_16, build_nbr_17, build_nbr_0, build_nbr_19,
 	build_nbr_20, build_nbr_21, build_nbr_22, build_nbr_23,
-	build_nbr_24, NULL
+	build_nbr_24, build_nbr_25, build_nbr_26, NULL
 };
 
 int			build_nbr_0(t_printf_part *part, va_list *args)
