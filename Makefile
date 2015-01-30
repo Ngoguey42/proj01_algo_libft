@@ -6,12 +6,12 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:29:36 by ngoguey           #+#    #+#              #
-#    Updated: 2015/01/28 09:23:00 by ngoguey          ###   ########.fr        #
+#    Updated: 2015/01/30 07:20:53 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NNAME = ft
-NAME = lib$(NNAME)printf.a
+NAME = lib$(NNAME).a
 
 INCLUDE = ./includes
 SRCPATH = srcs
