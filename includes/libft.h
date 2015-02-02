@@ -265,6 +265,8 @@ int		ft_lstpushfront(t_list **alst, t_list *new);
 int		ft_lstpushback(t_list **alst, t_list *new);
 int		ft_lstpushprev(t_list **alst, t_list *lst, t_list *new);
 int		ft_lstpushnext(t_list **alst, t_list *lst, t_list *new);
+int		ft_lstpushsort(t_list **alst, t_list *new,
+			int (*f)(const void*, const void*));
 t_list	*ft_lstnewfront(t_list **alst,
 			void const *content, size_t content_size);
 t_list	*ft_lstnewback(t_list **alst,
@@ -273,6 +275,10 @@ t_list	*ft_lstnewprev(t_list **alst, t_list *lst,
 			void const *content, size_t content_size);
 t_list	*ft_lstnewnext(t_list **alst, t_list *lst,
 			void const *content, size_t content_size);
+t_list	*ft_lstnewsort(t_list **alst,
+			void const *content, size_t content_size,
+			int (*f)(const void*, const void*));
+
 /*
 ** Delete functions
 */
