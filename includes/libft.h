@@ -182,6 +182,17 @@ int		ft_match(char *s1, char *s2);
 int		ft_voidstrcmp(const void *s1, const void *s2);
 int		ft_voiduintcmp(const void *s1, const void *s2);
 int		ft_voidintcmp(const void *s1, const void *s2);
+int		ft_cmpi_e(const void *a, const void *b);
+int		ft_cmpi_l(const void *a, const void *b);
+int		ft_cmpi_le(const void *a, const void *b);
+int		ft_cmpi_g(const void *a, const void *b);
+int		ft_cmpi_ge(const void *a, const void *b);
+
+int		ft_cmpui_e(const void *a, const void *b);
+int		ft_cmpui_l(const void *a, const void *b);
+int		ft_cmpui_le(const void *a, const void *b);
+int		ft_cmpui_g(const void *a, const void *b);
+int		ft_cmpui_ge(const void *a, const void *b);
 /*
 ** Searching:
 */
