@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 06:46:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/02/03 07:00:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/02/03 07:54:13 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,24 @@
 #include <errno.h>
 #include "ft_math.h"
 #include "libft.h"
+
+int			ft_dstor_new(t_dstor **dstor, size_t size)
+{
+	*dstor = (t_dstor*)malloc(sizeof(t_dstor));
+	if (*dstor == NULL)
+		return (ENOMEM);
+	(*dstor)->buf_rear = (DSTOR_T*)ft_memalloc(size * sizeof(DSTOR_T));
+	if ((*dstor)->buf_rear == NULL)
+	{
+		free(*dstor);
+		*dstor = NULL;
+		return (ENOMEM);
+	}
+	(*dstor)->buf_size = size;
+	(*dstor)->zone_front = NULL;
+	(*dstor)->zone_size = 0;
+	return (0);
+}
 
 int			ft_dstor_realloc(t_dstor *dstor, size_t new_size)
 {
@@ -30,8 +48,9 @@ int			ft_dstor_realloc(t_dstor *dstor, size_t new_size)
 	if (dstor->zone_size == 0)
 		dstor->zone_front = NULL;
 	else
+	{
 		dstor->zone_front = dstor->buf_rear + dstor->zone_size - 1;
-	if (dstor->zone_front)
-		(void)ft_bzero(dstor->zone_front + 1, );
+		(void)ft_bzero(dstor->zone_front + 1, new_size - dstor->zone_size);
+	}
 	return (0);
 }
