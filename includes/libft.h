@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/28 08:53:09 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/02/03 13:37:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,12 @@ char	**ft_envnewkv_m(char ***env, char *k, char *v);
 int		ft_envdel(char **env, const char *key);
 int		ft_expand_tilde(const char *src, char *ref[3], char **ptr);
 int		ft_expand_tilde_env(const char *src, const char **env, char **ptr);
+
+int		ft_dstor_init(t_dstor *dstor, size_t size);
+int		ft_dstor_realloc(t_dstor *dstor, size_t new_size);
+int		ft_dbuff_init(t_dbuff *dbuff, size_t size, size_t rear_pad);
+int		ft_dbuff_recenter(t_dbuff *dbuff);
+void	ft_dbuff_initzone(t_dbuff *dbuff, size_t rear_pad, DBUFF_T v);
 
 /*
 ** -

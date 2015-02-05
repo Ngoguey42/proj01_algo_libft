@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 06:46:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/02/03 07:54:13 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/02/03 10:43:40 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,14 @@
 #include "ft_math.h"
 #include "libft.h"
 
-int			ft_dstor_new(t_dstor **dstor, size_t size)
+int			ft_dstor_init(t_dstor *dstor, size_t size)
 {
-	*dstor = (t_dstor*)malloc(sizeof(t_dstor));
-	if (*dstor == NULL)
+	dstor->buf_rear = (DSTOR_T*)ft_memalloc(size * sizeof(DSTOR_T));
+	if (dstor->buf_rear == NULL)
 		return (ENOMEM);
-	(*dstor)->buf_rear = (DSTOR_T*)ft_memalloc(size * sizeof(DSTOR_T));
-	if ((*dstor)->buf_rear == NULL)
-	{
-		free(*dstor);
-		*dstor = NULL;
-		return (ENOMEM);
-	}
-	(*dstor)->buf_size = size;
-	(*dstor)->zone_front = NULL;
-	(*dstor)->zone_size = 0;
+	dstor->buf_size = size;
+	dstor->zone_front = NULL;
+	dstor->zone_size = 0;
 	return (0);
 }
 
