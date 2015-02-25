@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 08:24:19 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/02/18 07:18:00 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/02/25 07:07:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ int			ft_expand_tilde_envl(const char *src, const char **env,
 		ref[2] += 7;
 	return (ft_expand_tilde(src, ref, ptr));
 }
-
