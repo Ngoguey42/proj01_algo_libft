@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isescape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:23:13 by ngoguey          ###   ########.fr       */
+/*   Created: 2014/11/24 11:20:26 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/06/03 16:11:50 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdarg.h>
-# include "ft_typedefs.h"
-# include "ft_macroes.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_ctype.h"
-# include "ft_string.h"
-
-#endif
+int	ft_isescape(int c)
+{
+	return (((c >= '\a' && c <= '\r') || c == '\033'));
+}

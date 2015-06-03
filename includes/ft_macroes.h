@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_macroes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:23:13 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/06/03 16:21:10 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/06/03 16:23:59 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_MACROES_H
+# define FT_MACROES_H
 
-# include <stddef.h>
-# include <stdarg.h>
-# include "ft_typedefs.h"
-# include "ft_macroes.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_ctype.h"
-# include "ft_string.h"
+# define ABS(x) ((x) < 0 ? -(x) : (x))
+# define MAX(V1, V2) ((V1) > (V2) ? V1 : V2)
+# define MIN(V1, V2) ((V1) < (V2) ? V1 : V2)
+# define BASE_NBRS "0123456789abcdefghijklmnopqrstuvwxyz"
 
 #endif
