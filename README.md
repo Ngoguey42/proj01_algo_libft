@@ -6,7 +6,7 @@
 <br>
 As very few libC's and functions are allowed in school's projects,
 this library regroups all kinds <BR>of useful functions `prefixed by ft_`
-that i will be reuse in my C (2014-2015) then C++ (2016) projects.
+that i will be reuse in my C projects.
 <br>
 
 ~50 specific functions were required for the project itelf, but i frequently update it with new functions (~200 now).
@@ -14,14 +14,8 @@ that i will be reuse in my C (2014-2015) then C++ (2016) projects.
 
 ### Content:
 * Most `<string.h>` fuctions.
-* A **'linked list'** set of functions. `ft_lst`
-* A **'void* table'** handling set of functions. `ft_tab`
-* A **'meta-table'** set of functions. `ft_meta`
-* A **'clock'** set of functions. `ft_clock`
-* My `ft_printf` functions, with cool new flags and features. [See More](https://github.com/Ngoguey42/proj05_algo_printf)
-* My `next_line` file-descriptor reading function. [See More](https://github.com/Ngoguey42/proj02_algo_getnextline)
-* Tons of macro/structures for coordinates and colors handling.
-* Some math functions.
+* std::vector functions.
+* Linus' double linked list functions.
 <br><br><br><br><br><br><br><br>
 
 
