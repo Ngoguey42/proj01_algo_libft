@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 18:12:37 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/03 18:29:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_ftvector		*ftv_init_alloc(size_t chunk_size);
 ** *
 */
 void			ftv_release(t_ftvector *v, void (*del)(void*));
-int				ftv_pop_back(t_ftvector *v, void (*del)(void*));
+void			ftv_pop_back(t_ftvector *v, void (*del)(void*));
 void			ftv_clear(t_ftvector *v, void (*del)(void*));
 
 /*
