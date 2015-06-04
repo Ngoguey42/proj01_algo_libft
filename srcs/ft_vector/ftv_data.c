@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 11:31:39 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 11:58:35 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 12:08:17 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 #include "ft_stdlib.h"
 #include "ft_string.h"
 
-
-t_bool          ftv_empty(t_ftvector const *v)
+t_bool		ftv_empty(t_ftvector const *v)
 {
 	return (v->size == 0);
 }
 
-int             ftv_push_back(t_ftvector *v, void const *ptr)
+int			ftv_push_back(t_ftvector *v, void const *ptr)
 {
 	if (v->size >= v->capacity)
 	{
@@ -37,7 +36,7 @@ int             ftv_push_back(t_ftvector *v, void const *ptr)
 	return (0);
 }
 
-void            ftv_assign(t_ftvector *v, void const *ref)
+void		ftv_assign(t_ftvector *v, void const *ref)
 {
 	size_t		i;
 
@@ -45,11 +44,12 @@ void            ftv_assign(t_ftvector *v, void const *ref)
 	while (i < v->size)
 	{
 		ft_memcpy(v->data + i * v->chunk_size,
-				  ref, v->chunk_size);
+					ref, v->chunk_size);
 		i++;
 	}
 }
-int             ftv_insert(t_ftvector *v, void const *ref, size_t count)
+
+int			ftv_insert(t_ftvector *v, void const *ref, size_t count)
 {
 	size_t		i;
 
@@ -59,13 +59,13 @@ int             ftv_insert(t_ftvector *v, void const *ref, size_t count)
 			v->capacity *= 2;
 		v->data = ft_realloc(v->data, v->size, v->capacity);
 		if (v->data == NULL)
-			return (ENOMEM);		
+			return (ENOMEM);
 	}
 	i = 0;
 	while (i < v->size)
 	{
 		ft_memcpy(v->data + v->size * v->chunk_size + i * v->chunk_size,
-				  ref, v->chunk_size);
+					ref, v->chunk_size);
 		i++;
 	}
 	v->size += count;

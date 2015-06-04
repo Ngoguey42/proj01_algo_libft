@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 11:57:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 12:09:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int				ftv_shrink_to_fit(t_ftvector *v);
 ** 'ftv_insert'			Copies #(count) times the #(chunk_size) first bytes
 ** 							pointed by ptr at the back of data, may reallocate
 ** 							data.
-** ''				
-** ''				
 */
 t_bool			ftv_empty(t_ftvector const *v);
 int				ftv_push_back(t_ftvector *v, void const *ptr);

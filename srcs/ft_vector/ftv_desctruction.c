@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:28:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 11:56:13 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 12:08:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
-void            ftv_clear(t_ftvector *v, void (*del)(void*))
+void			ftv_clear(t_ftvector *v, void (*del)(void*))
 {
 	size_t		i;
 
@@ -28,7 +28,7 @@ void            ftv_clear(t_ftvector *v, void (*del)(void*))
 	return ;
 }
 
-void            ftv_release(t_ftvector *v, void (*del)(void*))
+void			ftv_release(t_ftvector *v, void (*del)(void*))
 {
 	ftv_clear(v, del);
 	free(v->data);
