@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 06:28:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 15:30:40 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 16:05:45 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,25 @@ char const					*g_debug_colors[] = {
 	"\033[41;36m"
 };
 
-static void	print_line(int gid)
+t_debugdatas		*dbg_instance(void)
+{
+	return (&g_debug_datas);
+}
+
+void                dbg_printline(size_t gid)
 {
 	t_debugline const	*l = ((t_debugline*)g_debug_datas.lines.data) + gid;
 
-	lprintf("%s%d %3d(%-3d) %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
-			l->logcount, l->count, l->line, l->func);
+	if (l->logcount != l->count)
+		lprintf("%s%u %3d(%-3d) %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
+				l->logcount, l->count, l->line, l->func);
+	else
+		lprintf("%s%u %3d %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
+				l->logcount, l->line, l->func);
 	return ;
 }
 
-static void	new_line(const char *file, const char *func, int line)
+static void		new_line(const char *file, const char *func, int line)
 {
 	t_debugline		tmp;
 
@@ -49,7 +58,7 @@ static void	new_line(const char *file, const char *func, int line)
 	return ;
 }
 
-void		ft_printt(const char *file, const char *func, int line)
+void			dbg_printt(const char *file, const char *func, int line)
 {
 	size_t			i;
 	t_debugline		*l;
@@ -74,6 +83,6 @@ void		ft_printt(const char *file, const char *func, int line)
 	if (i == g_debug_datas.lines.size)
 		new_line(file, func, line);
 	if (g_debug_datas.print)
-		print_line(i);
+		dbg_printline(i);
 	return ;
 }

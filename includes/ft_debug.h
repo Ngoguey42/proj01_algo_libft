@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 12:00:09 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 15:26:56 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 16:05:26 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,21 @@ typedef struct		s_debugdatas
 	t_bool			print;
 }					t_debugdatas;
 
-void				ft_printt(const char *file, const char *func, int line);
+# define T dbg_printt(__FILE__, __FUNCTION__, __LINE__)
 
-# define T ft_printt(__FILE__, __FUNCTION__, __LINE__)
+/*
+** Privates
+*/
+void				dbg_printt(const char *file, const char *func, int line);
+t_debugdatas		*dbg_instance(void);
+void				dbg_printline(size_t gid);
+/*
+** Publics
+*/
+void				dbg_recap(void);
+void				dbg_resetlog(void);
+void				dbg_noprint(void);
+void				dbg_noprint(void);
 
 int					qprintf(const char *format, ...);
 int					lprintf(const char *format, ...);

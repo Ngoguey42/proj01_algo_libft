@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 11:31:39 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 15:17:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 15:52:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_bool		ftv_empty(t_ftvector const *v)
 	return (v->size == 0);
 }
 
-/* #include "ft_debug.h" */
 int			ftv_push_back(t_ftvector *v, void const *ptr)
 {
 	if (v->size >= v->capacity)
