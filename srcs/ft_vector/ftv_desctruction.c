@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:28:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 18:37:06 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 11:56:13 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void            ftv_clear(t_ftvector *v, void (*del)(void*))
 {
-	int		i;
+	size_t		i;
 
 	if (del != NULL)
 	{
