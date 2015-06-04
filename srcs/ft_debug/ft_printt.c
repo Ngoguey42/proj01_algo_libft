@@ -6,51 +6,74 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 06:28:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:12:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 15:30:40 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_debug.h"
 
-static int	find_index(char tab[100][2][50], const char *f, int line)
-{
-	int		i;
-	char	l[50];
+static t_debugdatas			g_debug_datas = {
+	{NULL, 0, 0, 0}, false, true
+};
 
-	ft_itoa_c(line, l, 10);
-	i = 0;
-	while (*tab[i][0] != '\0' && i < 100)
-	{
-		if (ft_strnequ(f, tab[i][0], 49) && ft_strnequ(l, tab[i][1], 49))
-			return (i);
-		i++;
-	}
-	if (i >= 100)
-		return (-1);
-	ft_strlcpy(tab[i][0], f, 50);
-	ft_strlcpy(tab[i][1], l, 50);
-	return (i);
+char const					*g_debug_colors[] = {
+	"\033[45;34m",
+	"\033[46;35m",
+	"\033[44;37m",
+	"\033[42;30m",
+	"\033[43;31m",
+	"\033[41;36m"
+};
+
+static void	print_line(int gid)
+{
+	t_debugline const	*l = ((t_debugline*)g_debug_datas.lines.data) + gid;
+
+	lprintf("%s%d %3d(%-3d) %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
+			l->logcount, l->count, l->line, l->func);
+	return ;
 }
 
-void		ft_printt(const char *fi, const char *fu, int l)
+static void	new_line(const char *file, const char *func, int line)
 {
-	static char	saves[100][2][50];
-	static int	counter[100];
-	static int	init = 0;
-	int			i;
+	t_debugline		tmp;
 
-	if (!init)
+	tmp.gid = g_debug_datas.lines.size;
+	tmp.count = 0;
+	tmp.logcount = 0;
+	tmp.line = line;
+	ft_strlcpy(tmp.func, func, 64);
+	ft_strlcpy(tmp.file, file, 64);
+	ftv_push_back(&g_debug_datas.lines, (void*)&tmp);
+	return ;
+}
+
+void		ft_printt(const char *file, const char *func, int line)
+{
+	size_t			i;
+	t_debugline		*l;
+
+	if (!g_debug_datas.init)
 	{
-		ft_bzero(saves, sizeof(saves));
-		ft_bzero(counter, sizeof(saves));
-		init = 1;
+		ftv_init_instance(&g_debug_datas.lines, sizeof(t_debugline));
+		g_debug_datas.init = true;
 	}
-	i = find_index(saves, fi, l);
-	if (i < 0)
-		return ;
-	counter[i]++;
-	qprintf("#%-2d \033[%dm(%d)%s\033[0m\n",
-		counter[i], 31 + (i + 0) % 6, l, fu);
+	i = 0;
+	while (i < g_debug_datas.lines.size)
+	{
+		l = ((t_debugline*)g_debug_datas.lines.data) + i;
+		if (ft_strnequ(file, l->file, 63) && line == l->line)
+		{
+			l->count++;
+			l->logcount++;
+			break ;
+		}
+		i++;
+	}
+	if (i == g_debug_datas.lines.size)
+		new_line(file, func, line);
+	if (g_debug_datas.print)
+		print_line(i);
 	return ;
 }
