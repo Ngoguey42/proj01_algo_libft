@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 15:55:51 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 16:06:36 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 16:35:25 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ void                dbg_doprint(void)
 	dbg_instance()->print = true;	
 	return ;
 }
-

@@ -6,12 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 12:00:09 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 16:05:26 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 16:13:26 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DEBUG_H
 # define FT_DEBUG_H
+
+/*
+** Privates
+*/
 
 # include "ft_typedefs.h"
 # include "ft_vector.h"
@@ -47,7 +51,7 @@ void				dbg_printline(size_t gid);
 void				dbg_recap(void);
 void				dbg_resetlog(void);
 void				dbg_noprint(void);
-void				dbg_noprint(void);
+void				dbg_doprint(void);
 
 int					qprintf(const char *format, ...);
 int					lprintf(const char *format, ...);

@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 06:28:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 16:05:45 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/06/04 16:12:23 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ void                dbg_printline(size_t gid)
 {
 	t_debugline const	*l = ((t_debugline*)g_debug_datas.lines.data) + gid;
 
+	ft_putstr_fd(g_debug_colors[gid % 6], 2);
 	if (l->logcount != l->count)
-		lprintf("%s%u %3d(%-3d) %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
-				l->logcount, l->count, l->line, l->func);
+		lprintf("%u %3d(%-3d) %3d:%s", gid, l->logcount, l->count,
+				l->line, l->func);
 	else
-		lprintf("%s%u %3d %3d:%s\033[0m", g_debug_colors[gid % 6], gid,
-				l->logcount, l->line, l->func);
+		lprintf("%u %3d %3d:%s", gid, l->logcount, l->line, l->func);
+	ft_putstr_fd("\033[0m", 2);
 	return ;
 }
 
@@ -49,8 +50,8 @@ static void		new_line(const char *file, const char *func, int line)
 	t_debugline		tmp;
 
 	tmp.gid = g_debug_datas.lines.size;
-	tmp.count = 0;
-	tmp.logcount = 0;
+	tmp.count = 1;
+	tmp.logcount = 1;
 	tmp.line = line;
 	ft_strlcpy(tmp.func, func, 64);
 	ft_strlcpy(tmp.file, file, 64);
