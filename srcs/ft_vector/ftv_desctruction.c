@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:28:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 12:08:44 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/02 13:19:08 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			ftv_clear(t_ftvector *v, void (*del)(void*))
 	{
 		i = 0;
 		while (i < v->size)
-			del((char*)v->data + i * v->chunk_size);
+			del((char*)v->data + i++ * v->chunk_size);
 	}
 	v->size = 0;
 	return ;
