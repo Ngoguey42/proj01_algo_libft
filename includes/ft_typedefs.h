@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:39:33 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:22:28 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/13 10:24:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 typedef enum					e_bool
 {
 	false,
-	true
+	true,
+	undefined
 }								t_bool;
 
 # endif
