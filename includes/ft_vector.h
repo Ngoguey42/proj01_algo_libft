@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/17 13:09:32 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/20 14:48:48 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_ftvector
 */
 int				ftv_init_instance(t_ftvector *v, size_t chunk_size);
 t_ftvector		*ftv_init_alloc(size_t chunk_size);
+t_ftvector		ftv_uninitialized(void);
 
 /*
 ** * Destruction functions **

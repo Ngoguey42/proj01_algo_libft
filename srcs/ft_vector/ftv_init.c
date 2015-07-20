@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:25:20 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 11:57:32 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/20 14:48:34 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ t_ftvector			*ftv_init_alloc(size_t chunk_size)
 		return (NULL);
 	}
 	return (ret);
+}
+
+t_ftvector			ftv_uninitialized(void)
+{
+	return ((t_ftvector){NULL, 0, 0, 0});
 }
