@@ -21,7 +21,7 @@ O_DIR := obj
 LIBS := 
 
 # Number of threads
-THREADS := 4
+THREADS := 8
 
 # C compiler
 C_CC := clang
@@ -125,6 +125,8 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_vector/ftv_capacity.o \
 	obj/srcs/ft_vector/ftv_data.o \
 	obj/srcs/ft_vector/ftv_desctruction.o \
+	obj/srcs/ft_vector/ftv_find.o \
+	obj/srcs/ft_vector/ftv_foreach.o \
 	obj/srcs/ft_vector/ftv_init.o
 
 MSG_0 := printf '\033[0;32m%-37.37s\033[0;0m\r'
@@ -469,6 +471,14 @@ obj/srcs/ft_vector/ftv_data.o: srcs/ft_vector/ftv_data.c includes/ft_ctype.h inc
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_vector/ftv_desctruction.o: srcs/ft_vector/ftv_desctruction.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
+	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_vector/ftv_find.o: srcs/ft_vector/ftv_find.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
+	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_vector/ftv_foreach.o: srcs/ft_vector/ftv_foreach.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
 	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 

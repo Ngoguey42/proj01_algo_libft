@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/20 14:48:48 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/23 10:07:21 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,15 @@ int				ftv_push_back(t_ftvector *v, void const *ptr);
 int				ftv_push_backn(t_ftvector *v, void const *ptr, size_t count);
 void			ftv_assign(t_ftvector *v, void const *ref);
 int				ftv_insert(t_ftvector *v, void const *ref, size_t count);
+
+/*
+** * Read functions **
+*/
+size_t			ftv_find_index(t_ftvector const *v, void const *ref);
+void			*ftv_find_ptr(t_ftvector const *v, void const *ref);
+t_bool			ftv_find(t_ftvector const *v, void const *ref);
+
+void			ftv_foreach(t_ftvector const *v, void (*fun)(), void *ext);
+void			ftv_foreachi(t_ftvector const *v, void (*fun)(), void *ext);
 
 #endif
