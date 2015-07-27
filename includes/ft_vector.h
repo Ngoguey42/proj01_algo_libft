@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:17:53 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:32:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,23 @@ int				ftv_shrink_to_fit(t_ftvector *v);
 ** 'ftv_empty'			Returns boolean whether #(size) > 0 or not.
 ** 'ftv_push_back'		Copies the #(chunk_size) first bytes pointed by ptr
 **							at the back of data, may reallocate data.
+** 'ftv_push_back_unsafe'Copies the #(chunk_size) first bytes pointed by ptr
+**							at the back of data.
 ** 'ftv_assign'			Assigns #(chunk_size) bytes pointed by ptr
 ** 							to all #(size) chunks.
-** 'ftv_insert'			Copies #(count) times the #(chunk_size) first bytes
+** 'ftv_insert_count'	Copies #(count) times the #(chunk_size) first bytes
+** 							pointed by ptr at the back of data, may reallocate
+** 							data.
+** 'ftv_insert_range'	Copies the #(chunk_size * count) first bytes
 ** 							pointed by ptr at the back of data, may reallocate
 ** 							data.
 */
 t_bool			ftv_empty(t_ftvector const *v);
 int				ftv_push_back(t_ftvector *v, void const *ptr);
-int				ftv_push_backn(t_ftvector *v, void const *ptr, size_t count);
+int				ftv_push_back_unsafe(t_ftvector *v, void const *ptr);
 void			ftv_assign(t_ftvector *v, void const *ref);
-int				ftv_insert(t_ftvector *v, void const *ref, size_t count);
+int				ftv_insert_count(t_ftvector *v, void const *ref, size_t count);
+int				ftv_insert_range(t_ftvector *v, void const *ref, size_t count);
 
 /*
 ** * Read functions **
