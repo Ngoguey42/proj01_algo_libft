@@ -6,15 +6,17 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/23 09:59:21 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/23 10:04:26 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:16:42 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 
 #include "ft_vector.h"
-#include "ft_stdlib.h"
-#include "ft_string.h"
+
+#ifdef LIBFT_INTERNAL_USE_STD
+# include <string.h>
+#endif
 
 size_t		ftv_find_index(t_ftvector const *v, void const *ref)
 {
@@ -23,7 +25,7 @@ size_t		ftv_find_index(t_ftvector const *v, void const *ref)
 	i = 0;
 	while (i < v->size)
 	{
-		if (ft_memcmp(v->data + v->chunk_size * i, ref, v->chunk_size) == 0)
+		if (LIBFT_MEMCMP(v->data + v->chunk_size * i, ref, v->chunk_size) == 0)
 			return (i);
 		i++;
 	}
@@ -39,7 +41,7 @@ void		*ftv_find_ptr(t_ftvector const *v, void const *ref)
 	ptrend = v->data + v->chunk_size * v->size;
 	while (ptr < ptrend)
 	{
-		if (ft_memcmp(ptr, ref, v->chunk_size) == 0)
+		if (LIBFT_MEMCMP(ptr, ref, v->chunk_size) == 0)
 			return (ptr);
 		ptr += v->chunk_size;
 	}

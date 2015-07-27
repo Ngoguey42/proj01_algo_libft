@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/23 10:07:21 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:17:53 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define FT_VECTOR_DEFAULT_CAPACITY		4
 
-# include "ft_typedefs.h"
+# include "libft.h"
 
 typedef struct	s_ftvector
 {

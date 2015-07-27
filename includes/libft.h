@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/05 15:43:11 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:18:22 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,26 @@
 # define LIBFT_H
 
 # include <stddef.h>
-# include <stdarg.h>
+
+/*
+**# define LIBFT_INTERNAL_USE_STD
+*/
+# define LIBFT_INTERNAL_USE_STD
+
+# ifdef LIBFT_INTERNAL_USE_STD
+
+#  define LIBFT_REALLOC(ptr, olds, news)	realloc((ptr), (news))
+#  define LIBFT_MEMCPY						memcpy
+#  define LIBFT_MEMCMP						memcmp
+
+# else
+
+#  define LIBFT_REALLOC(ptr, olds, news)	ft_realloc((ptr), (olds), (news))
+#  define LIBFT_MEMCPY						ft_memcpy
+#  define LIBFT_MEMCMP						ft_memcmp
+
+# endif
+
 # include "ft_typedefs.h"
 # include "ft_macroes.h"
 # include "ft_stdio.h"
