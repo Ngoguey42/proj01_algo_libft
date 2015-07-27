@@ -73,7 +73,7 @@ int			ftv_insert_count(t_ftvector *v, void const *ref, size_t count)
 			return (ENOMEM);
 	}
 	i = 0;
-	dptr = v->data + v->size * v->chunk_size;
+	dptr = v->data;
 	while (i < v->size)
 	{
 		LIBFT_MEMCPY(dptr, ref, v->chunk_size);
