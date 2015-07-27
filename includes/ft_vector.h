@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:32:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:50:04 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int				ftv_shrink_to_fit(t_ftvector *v);
 */
 t_bool			ftv_empty(t_ftvector const *v);
 int				ftv_push_back(t_ftvector *v, void const *ptr);
-int				ftv_push_back_unsafe(t_ftvector *v, void const *ptr);
+void			ftv_push_back_unsafe(t_ftvector *v, void const *ptr);
 void			ftv_assign(t_ftvector *v, void const *ref);
 int				ftv_insert_count(t_ftvector *v, void const *ref, size_t count);
 int				ftv_insert_range(t_ftvector *v, void const *ref, size_t count);

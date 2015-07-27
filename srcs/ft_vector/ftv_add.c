@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 09:25:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:32:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 09:50:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int			ftv_push_back(t_ftvector *v, void const *ptr)
 	return (0);
 }
 
-void			ftv_push_back_unsafe(t_ftvector *v, void const *ptr)
+void		ftv_push_back_unsafe(t_ftvector *v, void const *ptr)
 {
 	LIBFT_MEMCPY(v->data + v->size * v->chunk_size, ptr, v->chunk_size);
 	v->size++;
-	return (0);
+	return ;
 }
 
 int			ftv_insert_range(t_ftvector *v, void const *ptr, size_t count)
