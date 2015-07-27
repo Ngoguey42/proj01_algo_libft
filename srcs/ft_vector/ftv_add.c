@@ -77,7 +77,7 @@ int			ftv_insert_count(t_ftvector *v, void const *ref, size_t count)
 	while (i < v->size)
 	{
 		LIBFT_MEMCPY(dptr, ref, v->chunk_size);
-		dptr++;
+		dptr += v->chunk_size;
 		i++;
 	}
 	v->size += count;
