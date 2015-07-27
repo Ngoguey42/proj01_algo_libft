@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/23 10:06:00 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:17:24 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/27 12:08:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,23 @@ void		ftv_foreach(t_ftvector const *v, void (*fun)(), void *ext)
 	while (ptr < ptrend)
 	{
 		fun(ext, ptr);
+		ptr += v->chunk_size;
+	}
+	return ;
+}
+
+void		ftv_foreach_if(t_ftvector const *v, void (*fun)(), void *ext,
+							t_bool (*cond)())
+{
+	void		*ptr;
+	void const	*ptrend;
+
+	ptr = v->data;
+	ptrend = v->data + v->chunk_size * v->size;
+	while (ptr < ptrend)
+	{
+		if (cond(ext, ptr))
+			fun(ext, ptr);
 		ptr += v->chunk_size;
 	}
 	return ;
