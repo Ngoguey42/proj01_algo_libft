@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 12:09:15 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/07/28 11:33:50 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,11 @@ void			ftv_foreach(t_ftvector const *v, void (*fun)(), void *ext);
 void			ftv_foreach_if(t_ftvector const *v, void (*fun)(), void *ext,
 								t_bool (*cond)());
 void			ftv_foreachi(t_ftvector const *v, void (*fun)(), void *ext);
+
+/*
+** * Iteration functions **
+*/
+void const		*ftv_end(t_ftvector const *v);
+
 
 #endif

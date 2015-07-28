@@ -125,10 +125,11 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_vector/ftv_add.o \
 	obj/srcs/ft_vector/ftv_capacity.o \
 	obj/srcs/ft_vector/ftv_data.o \
-	obj/srcs/ft_vector/ftv_desctruction.o \
+	obj/srcs/ft_vector/ftv_destruction.o \
 	obj/srcs/ft_vector/ftv_find.o \
 	obj/srcs/ft_vector/ftv_foreach.o \
-	obj/srcs/ft_vector/ftv_init.o
+	obj/srcs/ft_vector/ftv_init.o \
+	obj/srcs/ft_vector/ftv_iteration.o
 
 MSG_0 := printf '\033[0;32m%-37.37s\033[0;0m\r'
 MSG_1 := printf '\033[0;31m%-37.37s\033[0;0m\n'
@@ -475,7 +476,7 @@ obj/srcs/ft_vector/ftv_data.o: srcs/ft_vector/ftv_data.c includes/ft_ctype.h inc
 	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_desctruction.o: srcs/ft_vector/ftv_desctruction.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
+obj/srcs/ft_vector/ftv_destruction.o: srcs/ft_vector/ftv_destruction.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
 	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
@@ -488,6 +489,10 @@ obj/srcs/ft_vector/ftv_foreach.o: srcs/ft_vector/ftv_foreach.c includes/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_vector/ftv_init.o: srcs/ft_vector/ftv_init.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
+	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_vector/ftv_iteration.o: srcs/ft_vector/ftv_iteration.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/get_next_line.h includes/libft.h
 	@mkdir -p obj/srcs/ft_vector 2> /dev/null || true
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
