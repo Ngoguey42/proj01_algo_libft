@@ -17,11 +17,6 @@
 #endif
 #include <errno.h>
 
-t_bool		ftv_empty(t_ftvector const *v)
-{
-	return (v->size == 0);
-}
-
 void		ftv_assign(t_ftvector *v, void const *ref)
 {
 	size_t		i;

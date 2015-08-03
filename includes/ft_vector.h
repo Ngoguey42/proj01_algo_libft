@@ -60,7 +60,6 @@ int				ftv_shrink_to_fit(t_ftvector *v);
 /*
 ** * Data functions **
 ** *
-** 'ftv_empty'			Returns boolean whether #(size) > 0 or not.
 ** 'ftv_push_back'		Copies the #(chunk_size) first bytes pointed by ptr
 **							at the back of data, may reallocate data.
 ** 'ftv_push_back_unsafe'Copies the #(chunk_size) first bytes pointed by ptr
@@ -74,7 +73,6 @@ int				ftv_shrink_to_fit(t_ftvector *v);
 ** 							pointed by ptr at the back of data, may reallocate
 ** 							data.
 */
-t_bool			ftv_empty(t_ftvector const *v);
 int				ftv_push_back(t_ftvector *v, void const *ptr);
 void			ftv_push_back_unsafe(t_ftvector *v, void const *ptr);
 void			ftv_assign(t_ftvector *v, void const *ref);
@@ -82,7 +80,7 @@ int				ftv_insert_count(t_ftvector *v, void const *ref, size_t count);
 int				ftv_insert_range(t_ftvector *v, void const *ref, size_t count);
 
 /*
-** * Read functions **
+** * Browsing functions **
 */
 size_t			ftv_find_index(t_ftvector const *v, void const *ref);
 void			*ftv_find_ptr(t_ftvector const *v, void const *ref);
@@ -98,5 +96,11 @@ void			ftv_foreachi(t_ftvector const *v, void (*fun)(), void *ext);
 */
 void const		*ftv_end(t_ftvector const *v);
 
+/*
+** * Debug functions **
+*/
+void			ftv_summarize(t_ftvector const *v);
+void			ftv_print(t_ftvector const *v, char const fmt[]);
+void			ftv_printn(t_ftvector const *v, char const fmt[], size_t n);
 
 #endif

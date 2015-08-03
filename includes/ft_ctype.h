@@ -40,4 +40,7 @@ int		ft_isascii(int c);
 int		ft_isescape(int c);
 int		ft_isdigit_base(int c, int base);
 
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+
 #endif
