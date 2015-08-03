@@ -14,6 +14,7 @@
 **					c(char)		C(skip char)
 **					u(uint)		U(skip uint)
 **					d(double)	D(skip double)
+**					t(short)	T(skip short)
 */
 
 #define PT(P,OF,FMT,T) (qprintf(FMT, *(T*)(P + *OF)), 0)
@@ -53,6 +54,8 @@ static void		exec_format(void const *p, size_t *of, char tk)
 		EXEC(p, of, tk, l, "(%u)", unsigned int);
 	else if (l == 'd')
 		EXEC(p, of, tk, l, "%5 .2f", double);
+	else if (l == 't')
+		EXEC(p, of, tk, l, "%hd", short);
 	return ;
 }
 
