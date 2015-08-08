@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 15:34:22 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 15:34:59 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/08 16:30:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_eval_expr(char *str);
 ** Allocation:
 */
 void	*ft_memalloc(size_t size);
-void	*ft_memdup(void *p, size_t size);
+void	*ft_memdup(void const *p, size_t size);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 void	*ft_crealloc(void *ptr, size_t old_size, size_t new_size);
 void	ft_memdel(void **ap);
