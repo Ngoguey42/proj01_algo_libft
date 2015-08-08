@@ -8,8 +8,8 @@ void			ftv_summarize(t_ftvector const *v)
 {
 	char	buf[8];
 
-	snprintf(buf, sizeof(buf), "(%u)", v->chunk_size);
-	qprintf("Vec%-4s: chunks->% 4u/% -4u bytes->% 6u/% -6u\n"
+	snprintf(buf, sizeof(buf), "(%zu)", v->chunk_size);
+	qprintf("Vec%-4s: chunks->% 4zu/% -4zu bytes->% 6zu/% -6zu\n"
 				, buf
 				, v->size, v->capacity
 				, v->size * v->chunk_size, v->capacity * v->chunk_size);
