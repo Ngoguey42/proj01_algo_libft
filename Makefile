@@ -73,6 +73,8 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_debug/ft_printvar.o \
 	obj/srcs/ft_debug/lprintf.o \
 	obj/srcs/ft_debug/qprintf.o \
+	obj/srcs/ft_list/ftl_destruction.o \
+	obj/srcs/ft_list/ftl_init.o \
 	obj/srcs/ft_list/ftl_insertions.o \
 	obj/srcs/ft_stdio/ft_putchar.o \
 	obj/srcs/ft_stdio/ft_putendl.o \
@@ -235,6 +237,12 @@ obj/srcs/ft_debug/lprintf.o: srcs/ft_debug/lprintf.c includes/ft_ctype.h include
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_debug/qprintf.o: srcs/ft_debug/qprintf.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_debug
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_list/ftl_destruction.o: srcs/ft_list/ftl_destruction.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_list/ftl_init.o: srcs/ft_list/ftl_init.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_list/ftl_insertions.o: srcs/ft_list/ftl_insertions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
