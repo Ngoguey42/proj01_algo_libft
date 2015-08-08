@@ -76,6 +76,8 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_list/ftl_destruction.o \
 	obj/srcs/ft_list/ftl_init.o \
 	obj/srcs/ft_list/ftl_insertions.o \
+	obj/srcs/ft_list/srcs/ft_list/ftl_conversions.o \
+	obj/srcs/ft_list/srcs/ft_list/ftl_foreach.o \
 	obj/srcs/ft_stdio/ft_putchar.o \
 	obj/srcs/ft_stdio/ft_putendl.o \
 	obj/srcs/ft_stdio/ft_putnbr.o \
@@ -140,10 +142,10 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_vector/ftv_init.o \
 	obj/srcs/ft_vector/ftv_iteration.o
 
-O_DIRS := obj/srcs/ft_vector obj/srcs/ft_string obj/srcs/ft_stdlib obj/srcs/ft_stdio obj/srcs/ft_list obj/srcs/ft_debug obj/srcs/ft_ctype obj/srcs
+O_DIRS := obj/srcs/ft_vector obj/srcs/ft_string obj/srcs/ft_stdlib obj/srcs/ft_stdio obj/srcs/ft_list/srcs/ft_list obj/srcs/ft_list obj/srcs/ft_debug obj/srcs/ft_ctype obj/srcs
 
-MSG_0 := printf '\033[0;32m%-37.37s\033[0;0m\r'
-MSG_1 := printf '\033[0;31m%-37.37s\033[0;0m\n'
+MSG_0 := printf '\033[0;32m%-47.47s\033[0;0m\r'
+MSG_1 := printf '\033[0;31m%-47.47s\033[0;0m\n'
 MSG_END := printf '\n'
 
 .SILENT:
@@ -246,6 +248,12 @@ obj/srcs/ft_list/ftl_init.o: srcs/ft_list/ftl_init.c includes/ft_ctype.h include
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_list/ftl_insertions.o: srcs/ft_list/ftl_insertions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_list/srcs/ft_list/ftl_conversions.o: srcs/ft_list/srcs/ft_list/ftl_conversions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list/srcs/ft_list
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_list/srcs/ft_list/ftl_foreach.o: srcs/ft_list/srcs/ft_list/ftl_foreach.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_stdio/ft_putchar.o: srcs/ft_stdio/ft_putchar.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio

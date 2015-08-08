@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 15:33:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/08 18:50:20 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/08 19:06:52 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # define LISTNODEC struct s_ftlist_node const
 
 /*
-** t_ftlist_node must be in the beginning of the storage struct.
-** next and prev must have the same order in t_ftlist_node and t_ftlist
+** t_ftlist_node must be at the beginning of the storage struct.
+** i could implement offset easily.
+** Although next/prev must have the same order in 't_ftlist_node' / 't_ftlist'.
 */
 
 typedef struct		s_ftlist_node
 {
 	LISTNODE		*next;
-	LISTNODE		*prev;	
+	LISTNODE		*prev;
 }					t_ftlist_node;
 
 typedef struct		s_ftlist
@@ -48,14 +49,14 @@ void				ftl_init_instance(t_ftlist *l, size_t chunk_size);
 t_ftlist			ftl_uninitialized(void);
 
 /*
-** Adding modifications **
+** Adding **
 */
 int					ftl_push_back(t_ftlist *l, LISTNODEC *node);
 int					ftl_push_front(t_ftlist *l, LISTNODEC *node);
 int					ftl_insert_pos(t_ftlist *l, LISTNODE *pos, LISTNODEC *node);
 
 /*
-** Removing modifications **
+** Removing **
 ** *
 ** 'ftl_release'	For each links: pops it out, calls dea if not null, frees it
 ** *
@@ -75,12 +76,23 @@ void				ftl_pop_front(t_ftlist *l, void (*dea)());
 void				ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*dea)());
 
 /*
+** Browsing **
+*/
+void				ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext);
+
+/*
 ** Conversions **
 */
-# define FTL_CONVNODE(P) ((t_ftlist_node*)(P))
-# define FTL_CONVNODEC(P) ((t_ftlist_node const*)(P))
-# define FTL_CEND(P) FTL_CONVNODEC((P))
-# define FTL_END(P) FTL_CONVNODE((P))
+LISTNODE			*ftl_end(t_ftlist *l);
+LISTNODEC			*ftl_cend(t_ftlist const *l);
+
+# define FTL_END(L) ftl_end((L))
+# define FTL_CEND(L) ftl_cend((L))
+
+/*
+** # define FTL_END(P) ((t_ftlist_node*)(P))
+** # define FTL_CEND(P) ((t_ftlist_node const*)(P))
+*/
 
 # undef LISTNODE
 # undef LISTNODEC
