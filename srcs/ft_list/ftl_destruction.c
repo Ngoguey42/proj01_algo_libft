@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 17:37:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/08 18:37:19 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/08 18:51:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void	del(LISTNODE *prev, LISTNODE *next)
 	return ;
 }
 
-void		ftl_release(t_ftlist *l, void (*deallocator)())
+void		ftl_release(t_ftlist *l, void (*deallocator)()) //is safe
 {
 	LISTNODE	*node;
 	LISTNODE	*next;
 
 	node = l->next;
-	while (node != FTL_END(l))
+	while (node != FTL_CEND(l))
 	{
 		next = node->next;
 		del(node->prev, next);
@@ -42,34 +42,38 @@ void		ftl_release(t_ftlist *l, void (*deallocator)())
 	return ;
 }
 
-void		ftl_pop_back(t_ftlist *l, void (*deallocator)())
+void		ftl_pop_back(t_ftlist *l, void (*deallocator)()) //is unsafe
 {
 	LISTNODE	*node;
 
 	node = l->prev;
-	if (node != FTL_END(l))
-	{
-		del(node->prev, FTL_CONVNODE(l));
-		if (deallocator != NULL)
-			deallocator(node);
-		free(node);
-		l->size--;
-	}
+	del(node->prev, FTL_END(l));
+	if (deallocator != NULL)
+		deallocator(node);
+	free(node);
+	l->size--;
 	return ;
 }
 
-void		ftl_pop_front(t_ftlist *l, void (*deallocator)())
+void		ftl_pop_front(t_ftlist *l, void (*deallocator)()) //is unsafe
 {
 	LISTNODE	*node;
 
 	node = l->next;
-	if (node != FTL_END(l))
-	{
-		del(FTL_CONVNODE(l), node->next);
-		if (deallocator != NULL)
-			deallocator(node);
-		free(node);
-		l->size--;
-	}
+	del(FTL_END(l), node->next);
+	if (deallocator != NULL)
+		deallocator(node);
+	free(node);
+	l->size--;
+	return ;
+}
+
+void		ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*deallocator)()) // is unsafe
+{
+	del(pos->prev, pos->next);
+	if (deallocator != NULL)
+		deallocator(pos);
+	free(pos);
+	l->size--;
 	return ;
 }
