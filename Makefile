@@ -49,6 +49,7 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_skipntype.o \
 	obj/srcs/ft_skiptype.o \
 	obj/srcs/ft_strlentype.o \
+	obj/srcs/ft_timeval.o \
 	obj/srcs/get_next_line.o \
 	obj/srcs/ft_ctype/case_change.o \
 	obj/srcs/ft_ctype/ft_isalnum.o \
@@ -167,6 +168,9 @@ obj/srcs/ft_skiptype.o: srcs/ft_skiptype.c | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_strlentype.o: srcs/ft_strlentype.c | obj/srcs
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_timeval.o: srcs/ft_timeval.c includes/ft_timeval.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/get_next_line.o: srcs/get_next_line.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/get_next_line.h includes/libft.h | obj/srcs
