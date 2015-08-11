@@ -48,7 +48,7 @@ static t_ftset_node	*gen_node(t_ftset *s
 	anode = ft_memdup(new, s->chunk_size);
 	if (anode == NULL)
 		return (NULL);
-	anode->height = 0;
+	anode->height = 1;
 	anode->l = NULL;
 	anode->r = NULL;
 	qprintf("building %02d when set->height=%zu\n", *(int*)(new+1), s->height);
@@ -62,10 +62,12 @@ static t_ftset_node	*gen_node(t_ftset *s
 	return (anode);
 }
 
-
-
 static SETNODE		*rebalance_node(t_ftset_node *const cur)
 {
+	// int const	diff
+	// t_ftset_node	*l;
+
+	// l = cur->l;
 	//tmp
 	return (cur);
 }
@@ -132,6 +134,6 @@ int					fts_insert(t_ftset *s, t_ftset_node const *node
 	if (head == NULL)
 		return (ENOMEM);
 	s->head = head;
-	s->height = head->height + 1;
+	s->height = head->height;
 	return (0);
 }

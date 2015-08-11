@@ -20,7 +20,7 @@ int			cmpint(t_setint const *max, t_setint const *min)
 #define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)})
 // #define NODE(V) ((t_setint[1]){fts_uninitialized(), (V)})
 
-// #define qprintf(...)
+#define qprintf(...)
 
 t_ui64		g_count = 0;
 
@@ -55,7 +55,7 @@ int		check_heights(t_ftset *s)
 {
 	t_ftset_node 			*node;
 	
-	if (s->size > 0 && s->head->height + 1 != s->height)
+	if (s->size > 0 && s->head->height != s->height)
 	{
 		lprintf("SET HEIGHT BAD");
 		return (1);
@@ -70,7 +70,7 @@ int		check_heights(t_ftset *s)
 		int const		maxh_sons = MAX(lh, rh);
 		
 		qprintf("%02zu->", node->height);
-		if ((maxh_sons == -1 && node->height != 0)
+		if ((maxh_sons == -1 && node->height != 1)
 			|| (maxh_sons != -1 && node->height != maxh_sons + 1))
 		{
 			lprintf("FAILED with node(%02i)[h=%d]{%p}  l(%02i)[h=%d]{%p}  r(%02i)[h=%d]{%p}"
@@ -110,7 +110,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 3
+#define MAXLVL 9
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
