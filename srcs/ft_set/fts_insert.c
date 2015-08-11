@@ -9,6 +9,7 @@
 
 #define qprintf(...)
 
+
 static int			insert_first(t_ftset *s, t_ftset_node const *node
 									, t_ftset_insertion *status)
 {
@@ -34,6 +35,35 @@ static int			insert_first(t_ftset *s, t_ftset_node const *node
 	return (0);
 }
 
+static void			increment_parents_heights(t_ftset_node const *son
+												, t_ftset_node *parent)
+{
+	t_ftset_node const	*brother;
+
+	while (parent != NULL)
+	{
+		if (parent->l == son)
+			brother = parent->r;
+		else if (parent->r == son)
+			brother = parent->l;
+		else
+		{
+			lprintf("HUGE ERROR....");
+			return ;
+		}
+		// lprintf("test: parent%zu bro%zu  son%zu"
+		// , parent->height
+		// , brother == NULL ? 42u : brother->height, son->height);
+		qprintf("parent{%p} son{%p} brother{%p}", parent, son, brother);
+		if (brother != NULL && brother->height >= son->height)
+			return ;
+		parent->height = son->height + 1;
+		son = parent;
+		parent = parent->parent;
+	}
+	return ;
+}
+
 static t_ftset_node	*gen_node(t_ftset *s
 								, t_ftset_node *parent
 								, t_ftset_node const *new
@@ -47,6 +77,7 @@ static t_ftset_node	*gen_node(t_ftset *s
 	anode->height = 0;
 	anode->l = NULL;
 	anode->r = NULL;
+	qprintf("building %02d when set->height=%zu\n", *(int*)(new+1), s->height);
 	anode->parent = parent;
 	s->size++;
 	if (status != NULL)
@@ -88,6 +119,8 @@ static SETNODE		*build_cur(t_ftset *const s
 	{
 		qprintf("buildcase <add\n");
 		newson = gen_node(s, cur, new, status);
+		cur->l = newson;
+		increment_parents_heights(newson, cur);
 		if (newson == NULL)
 			return (NULL);
 		return (rebalance_cur(cur, newson, cur->r));
@@ -104,6 +137,8 @@ static SETNODE		*build_cur(t_ftset *const s
 	{
 		qprintf("buildcase >add\n");
 		newson = gen_node(s, cur, new, status);
+		cur->r = newson;
+		increment_parents_heights(newson, cur);
 		if (newson == NULL)
 			return (NULL);
 		return (rebalance_cur(cur, cur->l, newson));
@@ -126,5 +161,6 @@ int					fts_insert(t_ftset *s, t_ftset_node const *node
 	if (head == NULL)
 		return (ENOMEM);
 	s->head = head;
+	s->height = head->height + 1;
 	return (0);
 }
