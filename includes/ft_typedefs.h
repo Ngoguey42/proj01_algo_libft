@@ -18,13 +18,22 @@
 # ifndef T_BOOL
 #  define T_BOOL
 
+#  ifdef __cplusplus
+
+typedef bool					t_bool;
+enum							e_bool
+{
+	undefined = 2
+};
+#  else
+	
 typedef enum					e_bool
 {
 	false,
 	true,
 	undefined
 }								t_bool;
-
+#  endif
 # endif
 
 typedef unsigned char			t_byte;
