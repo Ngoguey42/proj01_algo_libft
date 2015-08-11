@@ -110,7 +110,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 9
+#define MAXLVL 8
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {

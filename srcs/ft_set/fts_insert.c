@@ -62,13 +62,76 @@ static t_ftset_node	*gen_node(t_ftset *s
 	return (anode);
 }
 
-static SETNODE		*rebalance_node(t_ftset_node *const cur)
+static SETNODE		*bal_ll(t_ftset_node *cur
+								, t_ftset_node *l1
+								, t_ftset_node *r1)
 {
-	// int const	diff
-	// t_ftset_node	*l;
+	(void)l1;
+	(void)r1;
+	return (cur);
+}
 
-	// l = cur->l;
-	//tmp
+static SETNODE		*bal_lr(t_ftset_node *cur
+								, t_ftset_node *l1
+								, t_ftset_node *r1
+								, t_ftset_node *l2
+								, t_ftset_node *r2)
+{
+	(void)l1;
+	(void)r1;
+	(void)l2;
+	(void)r2;
+	return (cur);
+}
+
+static SETNODE		*bal_rr(t_ftset_node *cur
+								, t_ftset_node *l1
+								, t_ftset_node *r1)
+{
+	(void)l1;
+	(void)r1;
+	return (cur);
+}
+
+static SETNODE		*bal_rl(t_ftset_node *cur
+								, t_ftset_node *l1
+								, t_ftset_node *r1
+								, t_ftset_node *l2
+								, t_ftset_node *r2)
+{
+	(void)l1;
+	(void)r1;
+	(void)l2;
+	(void)r2;
+	return (cur);
+}
+
+
+static SETNODE		*rebalance_node(t_ftset_node *cur)
+{
+	t_ftset_node	*l1;
+	t_ftset_node	*r1;
+	t_ftset_node	*l2;
+	t_ftset_node	*r2;
+	int				diff;
+
+	l1 = cur->l;
+	r1 = cur->r;
+	diff = (l1 == NULL ? 0 : l1->height) - (r1 == NULL ? 0 : r1->height);
+	if (diff > 1)
+	{
+		l2 = l1->l;
+		r2 = l1->r;
+		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
+		return (diff >= 0 ? bal_ll(cur, l1, r1) : bal_lr(cur, l1, r1, l2, r2));
+	}
+	else if (diff < 1)
+	{
+		l2 = r1->l;
+		r2 = r1->r;
+		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
+		return (diff >= 0 ? bal_rr(cur, l1, r1) : bal_rl(cur, l1, r1, l2, r2));
+	}
 	return (cur);
 }
 
