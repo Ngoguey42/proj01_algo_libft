@@ -38,6 +38,7 @@ static void			increment_parents_heights(t_ftset_node const *son
 	return ;
 }
 
+
 static t_ftset_node	*gen_node(t_ftset *s
 								, t_ftset_node *parent
 								, t_ftset_node const *new
@@ -62,13 +63,65 @@ static t_ftset_node	*gen_node(t_ftset *s
 	return (anode);
 }
 
+void			repair_sons_link(SETNODE *son, SETNODE *parent)
+{
+	if (son != NULL)
+		son->parent = parent;
+	return ;
+}
+
+void			repair_node_height(SETNODE *node)
+{
+	SETNODE		*l = node->l;
+	SETNODE		*r = node->r;
+	int const	rh = r == NULL ? 0 : r->height;
+	int const	lh = l == NULL ? 0 : l->height;
+
+	node->height = MAX(rh, lh) + 1;
+	return ;
+}
+
+void			repair_parents_link(SETNODE *son, SETNODE *parent
+										,SETNODE const *oldson)
+{
+	if (parent != NULL)
+	{
+		if (parent->l == oldson)
+			parent->l = son;
+		else if (parent->r == oldson)
+			parent->r = son;
+		else
+			lprintf("HUGE ERROR repair_parents_link");
+	}
+	return ;
+}
+
+static void			repair_parents_heights(t_ftset_node *node)
+{
+	while (node != NULL)
+	{
+		repair_node_height(node);
+		node = node->parent;
+	}
+	return ;
+}
+
 static SETNODE		*bal_ll(t_ftset_node *cur
 								, t_ftset_node *l1
-								, t_ftset_node *r1)
+								, t_ftset_node *r1
+								, t_ftset_node *l2
+								, t_ftset_node *r2)
 {
-	(void)l1;
-	(void)r1;
-	return (cur);
+	SETNODE const	tmp = (SETNODE){l1, r2, r1, 0};
+
+	*l1 = (SETNODE){cur->parent, l2, cur, 0};
+	*cur = tmp;
+	repair_sons_link(r2, cur);
+	repair_parents_link(l1, l1->parent, cur);
+	repair_node_height(cur);
+	repair_node_height(l1);
+	repair_parents_heights(l1->parent);
+	return (l1);
 }
 
 static SETNODE		*bal_lr(t_ftset_node *cur
@@ -86,10 +139,14 @@ static SETNODE		*bal_lr(t_ftset_node *cur
 
 static SETNODE		*bal_rr(t_ftset_node *cur
 								, t_ftset_node *l1
-								, t_ftset_node *r1)
+								, t_ftset_node *r1
+								, t_ftset_node *l2
+								, t_ftset_node *r2)
 {
 	(void)l1;
 	(void)r1;
+	(void)l2;
+	(void)r2;
 	return (cur);
 }
 
@@ -123,14 +180,14 @@ static SETNODE		*rebalance_node(t_ftset_node *cur)
 		l2 = l1->l;
 		r2 = l1->r;
 		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
-		return (diff >= 0 ? bal_ll(cur, l1, r1) : bal_lr(cur, l1, r1, l2, r2));
+		return (diff >= 0 ? bal_ll(cur, l1, r1, l2, r2) : bal_lr(cur, l1, r1, l2, r2));
 	}
 	else if (diff < 1)
 	{
 		l2 = r1->l;
 		r2 = r1->r;
 		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
-		return (diff >= 0 ? bal_rr(cur, l1, r1) : bal_rl(cur, l1, r1, l2, r2));
+		return (diff >= 0 ? bal_rr(cur, l1, r1, l2, r2) : bal_rl(cur, l1, r1, l2, r2));
 	}
 	return (cur);
 }

@@ -110,7 +110,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 8
+#define MAXLVL 10
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
@@ -143,6 +143,7 @@ void build_set(t_ftset set[1], int used[MAXLVL], int const level)
 		}
 	}
 	print_set(set);
+	return ;
 }
 
 void test_all_comb(int used[MAXLVL], int const level)
