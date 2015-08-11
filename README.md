@@ -9,13 +9,14 @@ this library regroups all kinds <BR>of useful functions `prefixed by ft_`
 that i will be reuse in my C projects.
 <br>
 
-~50 specific functions were required for the project itelf, but i frequently update it with new functions (~200 now).
+~50 specific functions were required for the project itelf, but i frequently update it with new functions (~125 now).
 <br>
 
 ### Content:
+* Most `<ctype.h>` fuctions.
 * Most `<string.h>` fuctions.
-* std::vector functions.
-* Linus' double linked list functions.
+* `std::vector like` functions.
+* `std::list like` functions.
 <br><br><br><br><br><br><br><br>
 
 
