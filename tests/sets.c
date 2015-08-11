@@ -24,15 +24,17 @@ int			cmpint(t_setint const *max, t_setint const *min)
 
 t_ui64		g_count = 0;
 
-int		check_order(t_ftset  *s)
+int		check_order_and_size(t_ftset  *s)
 {
 	t_ftset_node 			*node;
 	t_setint 				*cur;
 	int						prev = -1;
-	
+	int						tot = 0;
+
 	node = fts_begin(s);
 	while (node != NULL)
 	{
+		tot++;
 		cur = (t_setint*)node;
 		if (prev >= cur->i)
 		{
@@ -40,6 +42,11 @@ int		check_order(t_ftset  *s)
 			return (1);
 		}
 		node = fts_next(node);
+	}
+	if (tot != s->size)
+	{
+		lprintf("SET SIZE IS BAD");
+		return (1);
 	}
 	return (0);
 }
@@ -60,6 +67,11 @@ int		check_heights(t_ftset *s)
 	t_ftset_node 			*node;
 	// t_setint 				*cur;
 	
+	if (s->size > 0 && s->head->height + 1 != s->height)
+	{
+		lprintf("SET HEIGHT BAD");
+		return (1);
+	}
 	node = fts_begin(s);
 	qprintf("HEIGHTS: ");
 	while (node != NULL)
@@ -111,7 +123,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 10
+#define MAXLVL 8
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
@@ -157,7 +169,7 @@ void test_all_comb(int used[MAXLVL], int const level)
 		if (!is_taken(used, level, used[level]))
 		{
 			build_set(set, used, level);
-			if (check_order(set))
+			if (check_order_and_size(set))
 			{
 				lprintf("ORDER BROKEN\n");
 				exit(1);
