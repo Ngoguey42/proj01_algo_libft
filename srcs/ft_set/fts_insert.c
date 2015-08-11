@@ -9,32 +9,6 @@
 
 #define qprintf(...)
 
-
-static int			insert_first(t_ftset *s, t_ftset_node const *node
-									, t_ftset_insertion *status)
-{
-	SETNODE		*anode;
-
-	qprintf("buildcase first\n");
-	anode = ft_memdup(node, s->chunk_size);
-	if (anode == NULL)
-		return (ENOMEM);
-	anode->height = 0;
-	anode->l = NULL;
-	anode->r = NULL;
-	anode->parent = NULL;
-	s->head = anode;
-	s->size = 1;
-	s->height = 1;
-	if (status != NULL)
-	{
-		status->ptr = anode;
-		status->inserted = true;
-	}
-	// qprintf("set_head: %p\n", s->head);
-	return (0);
-}
-
 static void			increment_parents_heights(t_ftset_node const *son
 												, t_ftset_node *parent)
 {
@@ -90,13 +64,9 @@ static t_ftset_node	*gen_node(t_ftset *s
 
 
 
-static SETNODE		*rebalance_cur(t_ftset_node *const cur
-							, t_ftset_node *const left
-							, t_ftset_node *const right)
+static SETNODE		*rebalance_node(t_ftset_node *const cur)
 {
 	//tmp
-	cur->l = left;
-	cur->r = right;
 	return (cur);
 }
 
@@ -123,7 +93,7 @@ static SETNODE		*build_cur(t_ftset *const s
 		increment_parents_heights(newson, cur);
 		if (newson == NULL)
 			return (NULL);
-		return (rebalance_cur(cur, newson, cur->r));
+		return (rebalance_node(cur));
 	}
 	else if (cmp < 0)
 	{
@@ -131,7 +101,7 @@ static SETNODE		*build_cur(t_ftset *const s
 		newson = build_cur(s, new, status, cur->l);
 		if (newson == NULL)
 			return (NULL);
-		return (rebalance_cur(cur, newson, cur->r));
+		return (rebalance_node(cur));
 	}
 	else if (cmp > 0 && cur->r == NULL)
 	{
@@ -141,13 +111,13 @@ static SETNODE		*build_cur(t_ftset *const s
 		increment_parents_heights(newson, cur);
 		if (newson == NULL)
 			return (NULL);
-		return (rebalance_cur(cur, cur->l, newson));
+		return (rebalance_node(cur));
 	}
 	qprintf("buildcase >\n");
 	newson = build_cur(s, new, status, cur->r);
 	if (newson == NULL)
 		return (NULL);
-	return (rebalance_cur(cur, cur->l, newson));
+	return (rebalance_node(cur));
 }
 
 int					fts_insert(t_ftset *s, t_ftset_node const *node
@@ -156,8 +126,9 @@ int					fts_insert(t_ftset *s, t_ftset_node const *node
 	SETNODE		*head;
 
 	if (s->size == 0)
-		return (insert_first(s, node, status));
-	head = build_cur(s, node, status, s->head);
+		head = gen_node(s, NULL, node, status);
+	else
+		head = build_cur(s, node, status, s->head);
 	if (head == NULL)
 		return (ENOMEM);
 	s->head = head;

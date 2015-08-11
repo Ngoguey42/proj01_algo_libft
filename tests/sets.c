@@ -20,7 +20,7 @@ int			cmpint(t_setint const *max, t_setint const *min)
 #define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)})
 // #define NODE(V) ((t_setint[1]){fts_uninitialized(), (V)})
 
-#define qprintf(...)
+// #define qprintf(...)
 
 t_ui64		g_count = 0;
 
@@ -51,21 +51,9 @@ int		check_order_and_size(t_ftset  *s)
 	return (0);
 }
 
-// static t_ftset_node		*closest_right_brother(t_ftset_node *cur)
-// {
-	// while (cur != NULL)
-	// {
-		// if (cur->r != NULL)
-			// return (cur->r);
-		// cur = cur->parent;
-	// }
-	// return (NULL);
-// }
-
 int		check_heights(t_ftset *s)
 {
 	t_ftset_node 			*node;
-	// t_setint 				*cur;
 	
 	if (s->size > 0 && s->head->height + 1 != s->height)
 	{
@@ -85,7 +73,6 @@ int		check_heights(t_ftset *s)
 		if ((maxh_sons == -1 && node->height != 0)
 			|| (maxh_sons != -1 && node->height != maxh_sons + 1))
 		{
-			// cur = (t_setint*)node;
 			lprintf("FAILED with node(%02i)[h=%d]{%p}  l(%02i)[h=%d]{%p}  r(%02i)[h=%d]{%p}"
 			, GETINT(node)
 			, (int)node->height
@@ -123,7 +110,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 8
+#define MAXLVL 3
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
@@ -179,6 +166,7 @@ void test_all_comb(int used[MAXLVL], int const level)
 				lprintf("HEIGHTS BROKEN\n");
 				exit(1);
 			}
+			fts_release(set, NULL);
 			if (level < MAXLVL - 1)
 				test_all_comb(used, level + 1);
 		}

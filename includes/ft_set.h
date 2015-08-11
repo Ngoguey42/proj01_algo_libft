@@ -29,9 +29,12 @@ typedef struct		s_ftset_insertion
 	t_bool			inserted;
 }					t_ftset_insertion;
 
+
 void				fts_init_instance(t_ftset *s, size_t chunk_size
 										, int (*cmp)());
 t_ftset				fts_uninitialized(void);
+
+void				fts_release(t_ftset *s, void (*dea)());
 
 int					fts_insert(t_ftset *s, t_ftset_node const *node
 								, t_ftset_insertion *status);
