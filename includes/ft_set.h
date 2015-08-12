@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:33:58 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 13:58:17 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 15:06:33 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int					fts_insert(t_ftset *s, SETNODEC *node, RESULT *status);
 /*
 ** * Iteration functions **
 */
+void				fts_foreach(t_ftset const *s, void (*fun)(), void *ext);
+void				fts_foreachi(t_ftset const *s, void (*fun)(), void *ext);
 SETNODE				*fts_next(SETNODE *node);
 SETNODE				*fts_begin(t_ftset *set);
 

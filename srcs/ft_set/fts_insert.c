@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:30 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 13:51:15 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 14:08:53 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ SETNODE			*fts_build_cur(t_ftset *const s
 								, t_ftset_insertion *const status
 								, t_ftset_node *const cur)
 {
-	int const		cmp = NORM_AT_42_IS_WTF(cur, new);
+	int const		cmp = NORM_AT_42_IS_WTF(cur, new, s);
 
 	if (cmp < 0)
 		return (build_left(s, new, status, cur));
