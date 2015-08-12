@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 10:54:43 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 11:09:51 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,21 @@ int			cmpint(t_setint const *max, t_setint const *min)
 #define GETINT(N) ((N) == NULL ? 42 : ((t_setint*)(N))->i)
 #define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_setint){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)}})
 
-/* #define qprintf(...) */
+#define qprintf(...)
 
 t_ui64		g_count = 0;
+#define MAXLVL 10
 
-int		check_order_and_size(t_ftset  *s)
+#define H(N) ((N) == NULL ? 0 : (N)->height)
+
+int		check_order_and_size_and_balance(t_ftset  *s, int curlevel)
 {
 	t_ftset_node 			*node;
 	t_setint 				*cur;
 	int						prev = -1;
 	int						tot = 0;
-
+	int						bal;
+	
 	node = fts_begin(s);
 	while (node != NULL)
 	{
@@ -51,9 +55,17 @@ int		check_order_and_size(t_ftset  *s)
 			lprintf("BAD ORDER (%02dvs%02d)\n", prev, cur->i);
 			return (1);
 		}
+		bal = H(node->r) - H(node->l);
+		/* qprintf("(%d)", bal); */
+		
+		if (ABS(bal) > 1)
+		{
+			lprintf("TREE NOT BALANCED FFS\n");
+			return (1);
+		}
 		node = fts_next(node);
 	}
-	if (tot != (int)s->size)
+	if (tot != (int)s->size || tot != curlevel + 1)
 	{
 		lprintf("SET SIZE IS BAD");
 		return (1);
@@ -65,7 +77,7 @@ int		check_heights(t_ftset *s)
 {
 	t_ftset_node 			*node;
 	
-	if (s->size > 0 && s->head->height != s->height)
+	if ((s->size > 0 && s->head->height != s->height))
 	{
 		lprintf("SET HEIGHT BAD");
 		return (1);
@@ -120,7 +132,6 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 4
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
@@ -167,7 +178,7 @@ void test_all_comb(int used[MAXLVL], int const level)
 		if (!is_taken(used, level, used[level]))
 		{
 			build_set(set, used, level);
-			if (check_order_and_size(set))
+			if (check_order_and_size_and_balance(set, level))
 			{
 				lprintf("ORDER BROKEN\n");
 				exit(1);

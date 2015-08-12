@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:30 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 10:50:46 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 11:09:39 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void			increment_parents_heights(t_ftset_node const *son
 		// lprintf("test: parent%zu bro%zu  son%zu"
 		// , parent->height
 		// , brother == NULL ? 42u : brother->height, son->height);
-		qprintf("parent{%p} son{%p} brother{%p}", parent, son, brother);
+		/* qprintf("parent{%p} son{%p} brother{%p}", parent, son, brother); */
 		if (brother != NULL && brother->height >= son->height)
 			return ;
 		parent->height = son->height + 1;
@@ -63,7 +63,7 @@ static t_ftset_node	*gen_node(t_ftset *s
 	anode->height = 1;
 	anode->l = NULL;
 	anode->r = NULL;
-	qprintf("building %02d when set->height=%zu\n", *(int*)(new+1), s->height);
+	/* qprintf("building %02d when set->height=%zu\n", *(int*)(new+1), s->height); */
 	anode->parent = parent;
 	s->size++;
 	if (status != NULL)
@@ -123,6 +123,7 @@ static SETNODE		*bal_ll(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
+	qprintf("bal ll\n");
 	*l1 = (SETNODE){cur->parent, l2, cur, 0};
 	*cur = (SETNODE){l1, r2, r1, 0};
 	repair_sons_link(r2, cur);
@@ -139,6 +140,7 @@ static SETNODE		*bal_lr(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
+	qprintf("bal lr\n");
 	t_ftset_node	*l3;
 	t_ftset_node	*r3;
 
@@ -163,7 +165,8 @@ static SETNODE		*bal_rr(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	/* lprintf("salut"); */
+	qprintf("bal rr\n");
+	/* lprintf("salut\n"); */
 	*r1 = (SETNODE){cur->parent, cur, r2, 0};
 	*cur = (SETNODE){r1, l1, l2, 0};
 	repair_sons_link(l2, cur);
@@ -180,6 +183,7 @@ static SETNODE		*bal_rl(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
+	qprintf("bal rl\n");
 	t_ftset_node	*l3;
 	t_ftset_node	*r3;
 
@@ -217,7 +221,7 @@ static SETNODE		*rebalance_node(t_ftset_node *cur)
 		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
 		return (diff >= 0 ? bal_ll(cur, l1, r1, l2, r2) : bal_lr(cur, l1, r1, l2, r2));
 	}
-	else if (diff < 1)
+	else if (diff < -1)
 	{
 		l2 = r1->l;
 		r2 = r1->r;
@@ -283,7 +287,10 @@ int					fts_insert(t_ftset *s, t_ftset_node const *node
 	SETNODE		*head;
 
 	if (s->size == 0)
+	{
+		qprintf("buildcase first\n");
 		head = gen_node(s, NULL, node, status);
+	}
 	else
 		head = build_cur(s, node, status, s->head);
 	if (head == NULL)
