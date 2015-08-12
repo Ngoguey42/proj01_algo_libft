@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 11:09:51 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 11:27:18 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_debug.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <string.h>
 #include "ft_set.h"
 
 typedef struct		s_setint
@@ -22,13 +23,36 @@ typedef struct		s_setint
 	int				i;
 }					t_setint;
 
+typedef struct		s_setfloats
+{
+	t_ftset_node	node;
+	int				index;
+	float			f[8];
+}					t_setfloats;
+
 int			cmpint(t_setint const *max, t_setint const *min)
 {
 	return (min->i - max->i);
 }
 
+
+int			cmpfloats(t_setfloats const *max, t_setfloats const *min)
+{
+	return (memcmp(min->f, max->f, sizeof(float) * 8));
+}
+
 #define GETINT(N) ((N) == NULL ? 42 : ((t_setint*)(N))->i)
-#define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_setint){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)}})
+#define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_setint)\
+			  {(t_ftset_node){NULL, NULL, NULL, 0u}, (V)}})
+
+
+#define NODEF(...) \
+	((t_ftset_node*)(t_setfloats[1]){(t_setfloats)		 \
+									 {(t_ftset_node){NULL, NULL, NULL, 0u} \
+									  , 0								\
+									  , {__VA_ARGS__}					\
+									 }})
+
 
 #define qprintf(...)
 
@@ -147,7 +171,7 @@ void build_set(t_ftset set[1], int used[MAXLVL], int const level)
 {
 	qprintf("\n");
 	t_ftset_insertion	results[1];
-
+	
 	g_count++;
 	fts_init_instance(set, sizeof(t_setint), &cmpint);
 	int j;
@@ -197,30 +221,35 @@ void test_all_comb(int used[MAXLVL], int const level)
 	}
 	return ;
 }
+		
 
 int			main(void)
 {
-	t_ftset				set[1];
-
 	qprintf("hello world\n");
-	// std::cout << "hello world\n";
-	fts_init_instance(set, sizeof(t_setint), &cmpint);
-	
-	// ret = fts_insert(set, NODE(50), results);
-	// qprintf("ret: %d ", ret);
-	// print_set(set);
-	// ret = fts_insert(set, NODE(40), results);
-	// qprintf("ret: %d ", ret);
-	// print_set(set);
-	// ret = fts_insert(set, NODE(45), results);
-	// qprintf("ret: %d ", ret);
-	// print_set(set);
-	// ret = fts_insert(set, NODE(42), results);
-	// qprintf("ret: %d ", ret);
-	// print_set(set);
-	int					used[MAXLVL] = {0};
+	if (0) //error tests
+	{
+		int					used[MAXLVL] = {0};
 
-	test_all_comb(used, 0);
-	lprintf("tests %llu combo", g_count);
+		test_all_comb(used, 0);
+		lprintf("tests %llu combo", g_count);
+	}
+	if (1) // insert speed test
+	{
+		t_ftset				set[1];
+	t_ftset_insertion	results[1];
+		
+		fts_init_instance(set, sizeof(t_setfloats), &cmpfloats);
+
+		int const num_same = 5;
+		int j;
+		for (j = 0; j < num_same; j++)
+		{
+			fts_insert(set, NODEF((float)rand(), (float)rand(),
+								  (float)rand(), (float)rand(),
+								  (float)rand(), (float)rand(),
+								  (float)rand(), (float)rand()), results);
+		}
+		
+	}
 	return (0);
 }
