@@ -45,7 +45,8 @@ C_HEADS := -I includes
 # Internal
 #
 
-O_FILES := obj/srcs/ft_parseuinteger.o \
+O_FILES := obj/srcs/ft_containers_conversions.o \
+	obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_skipntype.o \
 	obj/srcs/ft_skiptype.o \
 	obj/srcs/ft_strlentype.o \
@@ -166,6 +167,9 @@ all: $(addsuffix /.git,$(MODULES)) $(LIBS)
 
 $(NAME): $(O_FILES)
 	@$(MSG_0) $@ ; $(LD_CC) $(LD_FLAGS) $@ $(O_FILES) && $(MSG_END) || $(MSG_1) $@
+
+obj/srcs/ft_containers_conversions.o: srcs/ft_containers_conversions.c includes/ft_containers.h includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_parseuinteger.o: srcs/ft_parseuinteger.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
