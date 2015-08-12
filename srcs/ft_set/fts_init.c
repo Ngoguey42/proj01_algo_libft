@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 10:34:36 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 12:53:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void				fts_init_instance(t_ftset *s, size_t chunk_size
 										, int (*cmp)())
 {
-	// *s = (t_ftset){(t_ftset_node*)s, 0, 0, chunk_size};
 	*s = (t_ftset){NULL, 0, 0, chunk_size, cmp};
 	return ;
 }

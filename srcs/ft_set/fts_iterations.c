@@ -6,12 +6,11 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:41 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 10:34:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 12:54:03 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_set.h"
-#include "ft_debug.h" //debug
 
 static t_ftset_node	*leftmost(t_ftset_node *node)
 {

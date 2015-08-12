@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 12:19:31 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 12:53:03 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			cmpfloats(t_setfloats const *max, t_setfloats const *min)
 #define qprintf(...)
 
 t_ui64		g_count = 0;
-#define MAXLVL 20
+#define MAXLVL 9
 
 #define H(N) ((N) == NULL ? 0 : (N)->height)
 
@@ -231,14 +231,14 @@ int			main(void)
 {
 	srand(time(NULL));
 	qprintf("hello world\n");
-	if (0) //error tests
+	if (1) //error tests
 	{
 		int					used[MAXLVL] = {0};
 
 		test_all_comb(used, 0);
 		lprintf("tests %llu combo", g_count);
 	}
-	if (1) // insert speed test
+	if (0) // insert speed test
 	{
 		qprintf("hello\n");
 		
