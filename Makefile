@@ -80,9 +80,12 @@ O_FILES := obj/srcs/ft_parseuinteger.o \
 	obj/srcs/ft_list/ftl_foreach.o \
 	obj/srcs/ft_list/ftl_init.o \
 	obj/srcs/ft_list/ftl_insertions.o \
+	obj/srcs/ft_set/fts_balance.o \
+	obj/srcs/ft_set/fts_balance_tools.o \
 	obj/srcs/ft_set/fts_destruction.o \
 	obj/srcs/ft_set/fts_init.o \
 	obj/srcs/ft_set/fts_insert.o \
+	obj/srcs/ft_set/fts_insert_tools.o \
 	obj/srcs/ft_set/fts_iterations.o \
 	obj/srcs/ft_stdio/ft_putchar.o \
 	obj/srcs/ft_stdio/ft_putendl.o \
@@ -268,6 +271,12 @@ obj/srcs/ft_list/ftl_init.o: srcs/ft_list/ftl_init.c includes/ft_ctype.h include
 obj/srcs/ft_list/ftl_insertions.o: srcs/ft_list/ftl_insertions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
+obj/srcs/ft_set/fts_balance.o: srcs/ft_set/fts_balance.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_set/fts_balance_tools.o: srcs/ft_set/fts_balance_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
 obj/srcs/ft_set/fts_destruction.o: srcs/ft_set/fts_destruction.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
@@ -275,6 +284,9 @@ obj/srcs/ft_set/fts_init.o: srcs/ft_set/fts_init.c includes/ft_ctype.h includes/
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_set/fts_insert.o: srcs/ft_set/fts_insert.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_set/fts_insert_tools.o: srcs/ft_set/fts_insert_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_set/fts_iterations.o: srcs/ft_set/fts_iterations.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set

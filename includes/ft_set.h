@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:33:58 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 10:33:59 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 13:58:17 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "libft.h"
 
 # define SETNODE struct s_ftset_node
+# define SETNODEC struct s_ftset_node const
+# define RESULT t_ftset_insertion
 
 typedef struct		s_ftset_node
 {
@@ -40,20 +42,47 @@ typedef struct		s_ftset_insertion
 	t_bool			inserted;
 }					t_ftset_insertion;
 
-
+/*
+** * Initialization functions **
+*/
 void				fts_init_instance(t_ftset *s, size_t chunk_size
 										, int (*cmp)());
 t_ftset				fts_uninitialized(void);
 
+/*
+** * Destruction functions **
+*/
 void				fts_release(t_ftset *s, void (*dea)());
 
-int					fts_insert(t_ftset *s, t_ftset_node const *node
-								, t_ftset_insertion *status);
+/*
+** * Insertion functions **
+*/
+int					fts_insert(t_ftset *s, SETNODEC *node, RESULT *status);
 
-// t_ftset_node const	*ftv_cnext(t_ftset_node const *node);
-t_ftset_node		*fts_next(t_ftset_node *node);
-t_ftset_node		*fts_begin(t_ftset *set);
+/*
+** * Iteration functions **
+*/
+SETNODE				*fts_next(SETNODE *node);
+SETNODE				*fts_begin(t_ftset *set);
+
+/*
+** * Internal functions **
+*/
+SETNODE				*fts_build_cur(t_ftset *const s, SETNODEC *const new
+								, RESULT *const status, SETNODE *const cur);
+void				fts_increment_parents_heights(SETNODEC *son
+													, SETNODE *parent);
+SETNODE				*fts_gen_node(t_ftset *s, SETNODE *parent, SETNODEC *new
+							, RESULT *status);
+void				fts_repair_sons_link(SETNODE *son, SETNODE *parent);
+void				fts_repair_node_height(SETNODE *node);
+void				fts_repair_parents_link(SETNODE *son, SETNODE *parent
+										, SETNODE const *oldson);
+void				fts_repair_parents_heights(SETNODE *node);
+SETNODE				*fts_rebalance_node(SETNODE *cur);
 
 # undef SETNODE
+# undef SETNODEC
+# undef RESULT
 
 #endif
