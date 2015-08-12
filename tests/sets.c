@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 11:27:18 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 12:19:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			cmpint(t_setint const *max, t_setint const *min)
 
 int			cmpfloats(t_setfloats const *max, t_setfloats const *min)
 {
+	/* return (memcmp(min->f, max->f, sizeof(float) * 1)); */
 	return (memcmp(min->f, max->f, sizeof(float) * 8));
 }
 
@@ -57,7 +58,7 @@ int			cmpfloats(t_setfloats const *max, t_setfloats const *min)
 #define qprintf(...)
 
 t_ui64		g_count = 0;
-#define MAXLVL 10
+#define MAXLVL 20
 
 #define H(N) ((N) == NULL ? 0 : (N)->height)
 
@@ -68,7 +69,7 @@ int		check_order_and_size_and_balance(t_ftset  *s, int curlevel)
 	int						prev = -1;
 	int						tot = 0;
 	int						bal;
-	
+
 	node = fts_begin(s);
 	while (node != NULL)
 	{
@@ -198,21 +199,23 @@ void test_all_comb(int used[MAXLVL], int const level)
 	used[level] = 0;
 	while (used[level] < MAXLVL)
 	{
-		// qprintf("lvl%d test%d\n", level, used[level]);
 		if (!is_taken(used, level, used[level]))
 		{
-			build_set(set, used, level);
-			if (check_order_and_size_and_balance(set, level))
+			if (level == MAXLVL - 1 || 0) //change here to test intermediate
 			{
-				lprintf("ORDER BROKEN\n");
-				exit(1);
+				build_set(set, used, level);
+				if (check_order_and_size_and_balance(set, level))
+				{
+					lprintf("ORDER BROKEN\n");
+					exit(1);
+				}
+				if (check_heights(set))
+				{
+					lprintf("HEIGHTS BROKEN\n");
+					exit(1);
+				}
+				fts_release(set, NULL);
 			}
-			if (check_heights(set))
-			{
-				lprintf("HEIGHTS BROKEN\n");
-				exit(1);
-			}
-			fts_release(set, NULL);
 			if (level < MAXLVL - 1)
 				test_all_comb(used, level + 1);
 		}
@@ -221,10 +224,12 @@ void test_all_comb(int used[MAXLVL], int const level)
 	}
 	return ;
 }
-		
+
+#include <time.h>
 
 int			main(void)
 {
+	srand(time(NULL));
 	qprintf("hello world\n");
 	if (0) //error tests
 	{
@@ -235,20 +240,38 @@ int			main(void)
 	}
 	if (1) // insert speed test
 	{
+		qprintf("hello\n");
+		
 		t_ftset				set[1];
 	t_ftset_insertion	results[1];
 		
 		fts_init_instance(set, sizeof(t_setfloats), &cmpfloats);
 
-		int const num_same = 5;
-		int j;
-		for (j = 0; j < num_same; j++)
+
+		int i;
+		int const num_vertex = 1000 * 1000 * 10;
+		for (i = 0 ; i < num_vertex; i++)
 		{
-			fts_insert(set, NODEF((float)rand(), (float)rand(),
-								  (float)rand(), (float)rand(),
-								  (float)rand(), (float)rand(),
-								  (float)rand(), (float)rand()), results);
+			float			f[8] = {
+				(float)rand(), (float)rand(), (float)rand(), (float)rand(),
+				(float)rand(), (float)rand(), (float)rand(), (float)rand(),
+			};
+			int const num_same = 1;
+			int j;
+			for (j = 0; j < num_same; j++)
+			{
+				fts_insert(set, NODEF(f[0],f[1],f[2],f[3],
+									  f[4],f[5],f[6],f[7]), results);
+				/* qprintf("ins(%d)", results->inserted); */
+			
+			}
 		}
+		lprintf("done size:%zu  height:%zu", set->size, set->height);
+		/* lprintf("height: %d", check_heights(set)); */
+		/* lprintf("check_order_and_size_and_balance: %d", */
+				/* check_order_and_size_and_balance(set, set->size - 1)); */
+		
+		
 		
 	}
 	return (0);
