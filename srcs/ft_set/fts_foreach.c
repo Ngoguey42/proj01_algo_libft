@@ -6,17 +6,17 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 15:03:38 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 15:11:25 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:29:22 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_set.h"
 
-void				fts_foreach(t_ftset const *s, void (*fun)(), void *ext)
+void				fts_foreach(t_ftset *s, void (*fun)(), void *ext)
 {
-	t_ftset_node            *node;
+	t_ftset_node		*node;
 
-	node = fts_begin((t_ftset*)s); //dirtycast
+	node = fts_begin(s);
 	while (node != NULL)
 	{
 		fun(ext, node);
@@ -25,13 +25,13 @@ void				fts_foreach(t_ftset const *s, void (*fun)(), void *ext)
 	return ;
 }
 
-void				fts_foreachi(t_ftset const *s, void (*fun)(), void *ext)
+void				fts_foreachi(t_ftset *s, void (*fun)(), void *ext)
 {
-	t_ftset_node            *node;
-	int						i;
+	t_ftset_node		*node;
+	int					i;
 
 	i = 0;
-	node = fts_begin((t_ftset*)s); //dirtycast
+	node = fts_begin(s);
 	while (node != NULL)
 	{
 		fun(ext, node, i++);

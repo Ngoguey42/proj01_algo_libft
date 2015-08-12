@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 13:42:28 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 13:47:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:28:41 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include <errno.h>
 
 #define SETNODE struct s_ftset_node
-
-#include "ft_debug.h" //debug
-/* #define QPRINTF qprintf */
-#define QPRINTF(...)
 
 void			fts_repair_sons_link(SETNODE *son, SETNODE *parent)
 {

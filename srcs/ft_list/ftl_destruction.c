@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 17:37:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/08 18:51:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:20:52 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "ft_list.h"
 
-# define LISTNODE struct s_ftlist_node
+#define LISTNODE struct s_ftlist_node
 
 static void	del(LISTNODE *prev, LISTNODE *next)
 {

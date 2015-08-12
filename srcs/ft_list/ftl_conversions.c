@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 18:53:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/08 18:56:49 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:19:16 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #define LISTNODE struct s_ftlist_node
 #define LISTNODEC struct s_ftlist_node const
 
-inline LISTNODE     *ftl_end(t_ftlist *l)
+inline LISTNODE		*ftl_end(t_ftlist *l)
 {
 	return ((LISTNODE*)l);
 }
 
-inline LISTNODEC    *ftl_cend(t_ftlist const *l)
+inline LISTNODEC	*ftl_cend(t_ftlist const *l)
 {
 	return ((LISTNODEC*)l);
 }

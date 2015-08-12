@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_containers_conversions.c                        :+:      :+:    :+:   */
+/*   t_bool_for_cpp_fu_42_norm_ffs.h                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 15:43:20 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:37:59 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/08/12 17:51:58 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 17:59:18 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_containers.h"
-#include <errno.h>
+#ifndef T_BOOL_FOR_CPP_FU_42_NORM_FFS_H
+# define T_BOOL_FOR_CPP_FU_42_NORM_FFS_H
 
-int			ft_set_to_vector(t_ftset const *s, t_ftvector *v
-								, void (*cpy)(), void *ext)
+# ifdef __cplusplus && !T_BOOL
+#  define T_BOOL
+
+typedef bool					t_bool;
+enum							e_bool
 {
-	t_ftset_node const	*node;
-	t_byte				buf[v->chunk_size];
+	undefined = 2
+};
+# endif
 
-	if (ftv_reserve(v, s->size))
-		return (ENOMEM);
-	node = fts_cbegin(s);
-	while (node)
-	{
-		cpy((void*)buf, node, ext);
-		ftv_push_back_unsafe(v, buf);
-		node = fts_cnext(node);
-	}
-	return (0);
-}
+#endif

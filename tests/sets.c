@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 12:53:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:30:21 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void test_all_comb(int used[MAXLVL], int const level)
 	{
 		if (!is_taken(used, level, used[level]))
 		{
-			if (level == MAXLVL - 1 || 0) //change here to test intermediate
+			if (level == MAXLVL - 1 || 1) //change here to test intermediate
 			{
 				build_set(set, used, level);
 				if (check_order_and_size_and_balance(set, level))

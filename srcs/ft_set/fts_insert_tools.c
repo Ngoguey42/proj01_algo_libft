@@ -6,17 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 13:42:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 13:51:27 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:24:20 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_set.h"
 #include <errno.h>
 
-# define SETNODE struct s_ftset_node
-/* #define QPRINTF qprintf */
-#define QPRINTF(...)
-#include "ft_debug.h" //debug
+#define SETNODE struct s_ftset_node
 
 void			fts_increment_parents_heights(t_ftset_node const *son
 												, t_ftset_node *parent)

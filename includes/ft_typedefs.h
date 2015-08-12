@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:39:33 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/13 10:24:44 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/12 17:58:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@
 # include <stddef.h>
 
 # ifndef T_BOOL
-#  define T_BOOL
-
 #  ifdef __cplusplus
-
-typedef bool					t_bool;
-enum							e_bool
-{
-	undefined = 2
-};
+#   include "t_bool_for_cpp_fu_42_norm_ffs.h"
 #  else
-	
-typedef enum					e_bool
+#   define T_BOOL
+
+enum							e_bool
 {
 	false,
 	true,
 	undefined
-}								t_bool;
+};
+typedef enum e_bool				t_bool;
 #  endif
 # endif
 
