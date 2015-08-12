@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sets.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/08/12 10:34:29 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 10:54:43 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 // #include <iostream>
 #include "ft_debug.h"
@@ -17,10 +28,9 @@ int			cmpint(t_setint const *max, t_setint const *min)
 }
 
 #define GETINT(N) ((N) == NULL ? 42 : ((t_setint*)(N))->i)
-#define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)})
-// #define NODE(V) ((t_setint[1]){fts_uninitialized(), (V)})
+#define NODE(V) ((t_ftset_node*)(t_setint[1]){(t_setint){(t_ftset_node){NULL, NULL, NULL, 0u}, (V)}})
 
-#define qprintf(...)
+/* #define qprintf(...) */
 
 t_ui64		g_count = 0;
 
@@ -43,7 +53,7 @@ int		check_order_and_size(t_ftset  *s)
 		}
 		node = fts_next(node);
 	}
-	if (tot != s->size)
+	if (tot != (int)s->size)
 	{
 		lprintf("SET SIZE IS BAD");
 		return (1);
@@ -71,7 +81,7 @@ int		check_heights(t_ftset *s)
 		
 		qprintf("%02zu->", node->height);
 		if ((maxh_sons == -1 && node->height != 1)
-			|| (maxh_sons != -1 && node->height != maxh_sons + 1))
+			|| (maxh_sons != -1 && (int)node->height != maxh_sons + 1))
 		{
 			lprintf("FAILED with node(%02i)[h=%d]{%p}  l(%02i)[h=%d]{%p}  r(%02i)[h=%d]{%p}"
 			, GETINT(node)
@@ -110,7 +120,7 @@ void		print_set(t_ftset  *s)
 	qprintf("\n");
 }
 
-#define MAXLVL 9
+#define MAXLVL 4
 
 int		is_taken(int used[MAXLVL], int level, int const i)
 {
@@ -179,9 +189,7 @@ void test_all_comb(int used[MAXLVL], int const level)
 
 int			main(void)
 {
-	t_ftset_insertion	results[1];
 	t_ftset				set[1];
-	int					ret;
 
 	qprintf("hello world\n");
 	// std::cout << "hello world\n";

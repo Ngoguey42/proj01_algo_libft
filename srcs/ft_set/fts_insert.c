@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fts_insert.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/08/12 10:34:30 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 10:50:46 by ngoguey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_set.h"
 #include "ft_debug.h" //debug
@@ -112,8 +123,6 @@ static SETNODE		*bal_ll(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	// SETNODE const	tmp = 
-
 	*l1 = (SETNODE){cur->parent, l2, cur, 0};
 	*cur = (SETNODE){l1, r2, r1, 0};
 	repair_sons_link(r2, cur);
@@ -130,11 +139,22 @@ static SETNODE		*bal_lr(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	(void)l1;
-	(void)r1;
-	(void)l2;
-	(void)r2;
-	return (cur);
+	t_ftset_node	*l3;
+	t_ftset_node	*r3;
+
+	l3 = r2->l;
+	r3 = r2->r;
+	*r2 = (SETNODE){cur->parent, l1, cur, 0};
+	*l1 = (SETNODE){r2, l2, l3, 0};
+	*cur = (SETNODE){r2, r3, r1, 0};
+	repair_sons_link(l3, l1);
+	repair_sons_link(r3, cur);
+	repair_parents_link(r2, r2->parent, cur);
+	repair_node_height(l1);
+	repair_node_height(cur);
+	repair_node_height(r2);
+	repair_parents_heights(r2->parent);
+	return (r2);
 }
 
 static SETNODE		*bal_rr(t_ftset_node *cur
@@ -143,11 +163,15 @@ static SETNODE		*bal_rr(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	(void)l1;
-	(void)r1;
-	(void)l2;
-	(void)r2;
-	return (cur);
+	/* lprintf("salut"); */
+	*r1 = (SETNODE){cur->parent, cur, r2, 0};
+	*cur = (SETNODE){r1, l1, l2, 0};
+	repair_sons_link(l2, cur);
+	repair_parents_link(r1, r1->parent, cur);
+	repair_node_height(cur);
+	repair_node_height(r1);
+	repair_parents_heights(r1->parent);
+	return (r1); //return cur avait l'air de fonctioner, wtf
 }
 
 static SETNODE		*bal_rl(t_ftset_node *cur
@@ -156,11 +180,22 @@ static SETNODE		*bal_rl(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	(void)l1;
-	(void)r1;
-	(void)l2;
-	(void)r2;
-	return (cur);
+	t_ftset_node	*l3;
+	t_ftset_node	*r3;
+
+	l3 = l2->l;
+	r3 = l2->r;
+	*l2 = (SETNODE){cur->parent, cur, r1, 0};
+	*cur = (SETNODE){l2, l1, l3, 0};
+	*r1 = (SETNODE){l2, r3, r2, 0};
+	repair_sons_link(l3, cur);
+	repair_sons_link(r3, r1);
+	repair_parents_link(l2, l2->parent, cur);
+	repair_node_height(r1);
+	repair_node_height(cur);
+	repair_node_height(l2);
+	repair_parents_heights(l2->parent);
+	return (l2);
 }
 
 
@@ -187,7 +222,7 @@ static SETNODE		*rebalance_node(t_ftset_node *cur)
 		l2 = r1->l;
 		r2 = r1->r;
 		diff = (l2 == NULL ? 0 : l2->height) - (r2 == NULL ? 0 : r2->height);
-		return (diff >= 0 ? bal_rr(cur, l1, r1, l2, r2) : bal_rl(cur, l1, r1, l2, r2));
+		return (diff <= 0 ? bal_rr(cur, l1, r1, l2, r2) : bal_rl(cur, l1, r1, l2, r2));
 	}
 	return (cur);
 }
