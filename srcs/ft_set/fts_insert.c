@@ -112,10 +112,10 @@ static SETNODE		*bal_ll(t_ftset_node *cur
 								, t_ftset_node *l2
 								, t_ftset_node *r2)
 {
-	SETNODE const	tmp = (SETNODE){l1, r2, r1, 0};
+	// SETNODE const	tmp = 
 
 	*l1 = (SETNODE){cur->parent, l2, cur, 0};
-	*cur = tmp;
+	*cur = (SETNODE){l1, r2, r1, 0};
 	repair_sons_link(r2, cur);
 	repair_parents_link(l1, l1->parent, cur);
 	repair_node_height(cur);
