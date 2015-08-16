@@ -81,6 +81,7 @@ O_FILES := obj/srcs/ft_containers_conversions.o \
 	obj/srcs/ft_list/ftl_foreach.o \
 	obj/srcs/ft_list/ftl_init.o \
 	obj/srcs/ft_list/ftl_insertions.o \
+	obj/srcs/ft_list/ftl_splice.o \
 	obj/srcs/ft_set/fts_balance.o \
 	obj/srcs/ft_set/fts_balance_tools.o \
 	obj/srcs/ft_set/fts_citerations.o \
@@ -169,10 +170,10 @@ all: $(addsuffix /.git,$(MODULES)) $(LIBS)
 $(NAME): $(O_FILES)
 	@$(MSG_0) $@ ; $(LD_CC) $(LD_FLAGS) $@ $(O_FILES) && $(MSG_END) || $(MSG_1) $@
 
-obj/srcs/ft_containers_conversions.o: srcs/ft_containers_conversions.c includes/ft_containers.h includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs
+obj/srcs/ft_containers_conversions.o: srcs/ft_containers_conversions.c includes/ft_containers.h includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_parseuinteger.o: srcs/ft_parseuinteger.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs
+obj/srcs/ft_parseuinteger.o: srcs/ft_parseuinteger.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_skipntype.o: srcs/ft_skipntype.c | obj/srcs
@@ -187,310 +188,313 @@ obj/srcs/ft_strlentype.o: srcs/ft_strlentype.c | obj/srcs
 obj/srcs/ft_timeval.o: srcs/ft_timeval.c includes/ft_timeval.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/fterror.o: srcs/fterror.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/fterror.h includes/libft.h | obj/srcs
+obj/srcs/fterror.o: srcs/fterror.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/fterror.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/get_next_line.o: srcs/get_next_line.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/get_next_line.h includes/libft.h | obj/srcs
+obj/srcs/get_next_line.o: srcs/get_next_line.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/get_next_line.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 obj/srcs/ft_ctype/case_change.o: srcs/ft_ctype/case_change.c | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isalnum.o: srcs/ft_ctype/ft_isalnum.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isalnum.o: srcs/ft_ctype/ft_isalnum.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isalpha.o: srcs/ft_ctype/ft_isalpha.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isalpha.o: srcs/ft_ctype/ft_isalpha.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isascii.o: srcs/ft_ctype/ft_isascii.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isascii.o: srcs/ft_ctype/ft_isascii.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isblank.o: srcs/ft_ctype/ft_isblank.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isblank.o: srcs/ft_ctype/ft_isblank.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_iscntrl.o: srcs/ft_ctype/ft_iscntrl.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_iscntrl.o: srcs/ft_ctype/ft_iscntrl.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isdigit.o: srcs/ft_ctype/ft_isdigit.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isdigit.o: srcs/ft_ctype/ft_isdigit.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isdigit_base.o: srcs/ft_ctype/ft_isdigit_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isdigit_base.o: srcs/ft_ctype/ft_isdigit_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isescape.o: srcs/ft_ctype/ft_isescape.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isescape.o: srcs/ft_ctype/ft_isescape.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isgraph.o: srcs/ft_ctype/ft_isgraph.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isgraph.o: srcs/ft_ctype/ft_isgraph.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_islower.o: srcs/ft_ctype/ft_islower.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_islower.o: srcs/ft_ctype/ft_islower.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isprint.o: srcs/ft_ctype/ft_isprint.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isprint.o: srcs/ft_ctype/ft_isprint.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_ispunct.o: srcs/ft_ctype/ft_ispunct.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_ispunct.o: srcs/ft_ctype/ft_ispunct.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isspace.o: srcs/ft_ctype/ft_isspace.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isspace.o: srcs/ft_ctype/ft_isspace.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isunixspace.o: srcs/ft_ctype/ft_isunixspace.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isunixspace.o: srcs/ft_ctype/ft_isunixspace.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isupper.o: srcs/ft_ctype/ft_isupper.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isupper.o: srcs/ft_ctype/ft_isupper.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_ctype/ft_isxdigit.o: srcs/ft_ctype/ft_isxdigit.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_ctype
+obj/srcs/ft_ctype/ft_isxdigit.o: srcs/ft_ctype/ft_isxdigit.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_ctype
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/ft_leaks.o: srcs/ft_debug/ft_leaks.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/ft_leaks.o: srcs/ft_debug/ft_leaks.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/ft_printt.o: srcs/ft_debug/ft_printt.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/ft_printt.o: srcs/ft_debug/ft_printt.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/ft_printt_utility.o: srcs/ft_debug/ft_printt_utility.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/ft_printt_utility.o: srcs/ft_debug/ft_printt_utility.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/ft_printvar.o: srcs/ft_debug/ft_printvar.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/ft_printvar.o: srcs/ft_debug/ft_printvar.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/lprintf.o: srcs/ft_debug/lprintf.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/lprintf.o: srcs/ft_debug/lprintf.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_debug/qprintf.o: srcs/ft_debug/qprintf.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_debug
+obj/srcs/ft_debug/qprintf.o: srcs/ft_debug/qprintf.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_debug
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_list/ftl_conversions.o: srcs/ft_list/ftl_conversions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+obj/srcs/ft_list/ftl_conversions.o: srcs/ft_list/ftl_conversions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_list/ftl_destruction.o: srcs/ft_list/ftl_destruction.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+obj/srcs/ft_list/ftl_destruction.o: srcs/ft_list/ftl_destruction.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_list/ftl_foreach.o: srcs/ft_list/ftl_foreach.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+obj/srcs/ft_list/ftl_foreach.o: srcs/ft_list/ftl_foreach.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_list/ftl_init.o: srcs/ft_list/ftl_init.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+obj/srcs/ft_list/ftl_init.o: srcs/ft_list/ftl_init.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_list/ftl_insertions.o: srcs/ft_list/ftl_insertions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_list
+obj/srcs/ft_list/ftl_insertions.o: srcs/ft_list/ftl_insertions.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_balance.o: srcs/ft_set/fts_balance.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_list/ftl_splice.o: srcs/ft_list/ftl_splice.c includes/ft_ctype.h includes/ft_list.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_list
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_balance_tools.o: srcs/ft_set/fts_balance_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_balance.o: srcs/ft_set/fts_balance.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_citerations.o: srcs/ft_set/fts_citerations.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_balance_tools.o: srcs/ft_set/fts_balance_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_destruction.o: srcs/ft_set/fts_destruction.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_citerations.o: srcs/ft_set/fts_citerations.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_foreach.o: srcs/ft_set/fts_foreach.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_destruction.o: srcs/ft_set/fts_destruction.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_init.o: srcs/ft_set/fts_init.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_foreach.o: srcs/ft_set/fts_foreach.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_insert.o: srcs/ft_set/fts_insert.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_init.o: srcs/ft_set/fts_init.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_insert_tools.o: srcs/ft_set/fts_insert_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_insert.o: srcs/ft_set/fts_insert.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_set/fts_iterations.o: srcs/ft_set/fts_iterations.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_set
+obj/srcs/ft_set/fts_insert_tools.o: srcs/ft_set/fts_insert_tools.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putchar.o: srcs/ft_stdio/ft_putchar.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_set/fts_iterations.o: srcs/ft_set/fts_iterations.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_set.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_set
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putendl.o: srcs/ft_stdio/ft_putendl.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_stdio/ft_putchar.o: srcs/ft_stdio/ft_putchar.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putnbr.o: srcs/ft_stdio/ft_putnbr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_stdio/ft_putendl.o: srcs/ft_stdio/ft_putendl.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putnbr_base.o: srcs/ft_stdio/ft_putnbr_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_stdio/ft_putnbr.o: srcs/ft_stdio/ft_putnbr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putnchar.o: srcs/ft_stdio/ft_putnchar.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_stdio/ft_putnbr_base.o: srcs/ft_stdio/ft_putnbr_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdio/ft_putstr.o: srcs/ft_stdio/ft_putstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdio
+obj/srcs/ft_stdio/ft_putnchar.o: srcs/ft_stdio/ft_putnchar.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_atoi.o: srcs/ft_stdlib/ft_atoi.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdio/ft_putstr.o: srcs/ft_stdio/ft_putstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdio
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_atoi_base.o: srcs/ft_stdlib/ft_atoi_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_atoi.o: srcs/ft_stdlib/ft_atoi.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_crealloc.o: srcs/ft_stdlib/ft_crealloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_atoi_base.o: srcs/ft_stdlib/ft_atoi_base.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_itoa.o: srcs/ft_stdlib/ft_itoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_crealloc.o: srcs/ft_stdlib/ft_crealloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_itoa_a.o: srcs/ft_stdlib/ft_itoa_a.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_itoa.o: srcs/ft_stdlib/ft_itoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_itoa_c.o: srcs/ft_stdlib/ft_itoa_c.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_itoa_a.o: srcs/ft_stdlib/ft_itoa_a.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_lutoa.o: srcs/ft_stdlib/ft_lutoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_itoa_c.o: srcs/ft_stdlib/ft_itoa_c.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_lutoa_a.o: srcs/ft_stdlib/ft_lutoa_a.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_lutoa.o: srcs/ft_stdlib/ft_lutoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_maxintlen.o: srcs/ft_stdlib/ft_maxintlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_lutoa_a.o: srcs/ft_stdlib/ft_lutoa_a.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_realloc.o: srcs/ft_stdlib/ft_realloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_maxintlen.o: srcs/ft_stdlib/ft_maxintlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_revstr.o: srcs/ft_stdlib/ft_revstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_realloc.o: srcs/ft_stdlib/ft_realloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_stdlib/ft_utoa.o: srcs/ft_stdlib/ft_utoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_stdlib
+obj/srcs/ft_stdlib/ft_revstr.o: srcs/ft_stdlib/ft_revstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_bzero.o: srcs/ft_string/ft_bzero.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_stdlib/ft_utoa.o: srcs/ft_stdlib/ft_utoa.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_stdlib
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memalloc.o: srcs/ft_string/ft_memalloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_bzero.o: srcs/ft_string/ft_bzero.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memccpy.o: srcs/ft_string/ft_memccpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memalloc.o: srcs/ft_string/ft_memalloc.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memchr.o: srcs/ft_string/ft_memchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memccpy.o: srcs/ft_string/ft_memccpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memcmp.o: srcs/ft_string/ft_memcmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memchr.o: srcs/ft_string/ft_memchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memcpy.o: srcs/ft_string/ft_memcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memcmp.o: srcs/ft_string/ft_memcmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memdel.o: srcs/ft_string/ft_memdel.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memcpy.o: srcs/ft_string/ft_memcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memdup.o: srcs/ft_string/ft_memdup.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memdel.o: srcs/ft_string/ft_memdel.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memmove.o: srcs/ft_string/ft_memmove.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memdup.o: srcs/ft_string/ft_memdup.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_memset.o: srcs/ft_string/ft_memset.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memmove.o: srcs/ft_string/ft_memmove.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strcat.o: srcs/ft_string/ft_strcat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_memset.o: srcs/ft_string/ft_memset.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strccpy.o: srcs/ft_string/ft_strccpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strcat.o: srcs/ft_string/ft_strcat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strcharlen.o: srcs/ft_string/ft_strcharlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strccpy.o: srcs/ft_string/ft_strccpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strchr.o: srcs/ft_string/ft_strchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strcharlen.o: srcs/ft_string/ft_strcharlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strclr.o: srcs/ft_string/ft_strclr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strchr.o: srcs/ft_string/ft_strchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strcmp.o: srcs/ft_string/ft_strcmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strclr.o: srcs/ft_string/ft_strclr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strcpy.o: srcs/ft_string/ft_strcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strcmp.o: srcs/ft_string/ft_strcmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strcspn.o: srcs/ft_string/ft_strcspn.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strcpy.o: srcs/ft_string/ft_strcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strdel.o: srcs/ft_string/ft_strdel.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strcspn.o: srcs/ft_string/ft_strcspn.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strdup.o: srcs/ft_string/ft_strdup.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strdel.o: srcs/ft_string/ft_strdel.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strequ.o: srcs/ft_string/ft_strequ.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strdup.o: srcs/ft_string/ft_strdup.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strjoin.o: srcs/ft_string/ft_strjoin.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strequ.o: srcs/ft_string/ft_strequ.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strjoinfree.o: srcs/ft_string/ft_strjoinfree.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strjoin.o: srcs/ft_string/ft_strjoin.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strlcat.o: srcs/ft_string/ft_strlcat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strjoinfree.o: srcs/ft_string/ft_strjoinfree.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strlcpy.o: srcs/ft_string/ft_strlcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strlcat.o: srcs/ft_string/ft_strlcat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strlen.o: srcs/ft_string/ft_strlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strlcpy.o: srcs/ft_string/ft_strlcpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strncat.o: srcs/ft_string/ft_strncat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strlen.o: srcs/ft_string/ft_strlen.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strncmp.o: srcs/ft_string/ft_strncmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strncat.o: srcs/ft_string/ft_strncat.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strncpy.o: srcs/ft_string/ft_strncpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strncmp.o: srcs/ft_string/ft_strncmp.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strnequ.o: srcs/ft_string/ft_strnequ.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strncpy.o: srcs/ft_string/ft_strncpy.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strnew.o: srcs/ft_string/ft_strnew.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strnequ.o: srcs/ft_string/ft_strnequ.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strnstr.o: srcs/ft_string/ft_strnstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strnew.o: srcs/ft_string/ft_strnew.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strrchr.o: srcs/ft_string/ft_strrchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strnstr.o: srcs/ft_string/ft_strnstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strspn.o: srcs/ft_string/ft_strspn.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strrchr.o: srcs/ft_string/ft_strrchr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_string/ft_strstr.o: srcs/ft_string/ft_strstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h | obj/srcs/ft_string
+obj/srcs/ft_string/ft_strspn.o: srcs/ft_string/ft_strspn.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_add.o: srcs/ft_vector/ftv_add.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_string/ft_strstr.o: srcs/ft_string/ft_strstr.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_string
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_capacity.o: srcs/ft_vector/ftv_capacity.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_add.o: srcs/ft_vector/ftv_add.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_data.o: srcs/ft_vector/ftv_data.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_capacity.o: srcs/ft_vector/ftv_capacity.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_debug.o: srcs/ft_vector/ftv_debug.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_data.o: srcs/ft_vector/ftv_data.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_debug_print.o: srcs/ft_vector/ftv_debug_print.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_debug.o: srcs/ft_vector/ftv_debug.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_destruction.o: srcs/ft_vector/ftv_destruction.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_debug_print.o: srcs/ft_vector/ftv_debug_print.c includes/ft_ctype.h includes/ft_debug.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_find.o: srcs/ft_vector/ftv_find.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_destruction.o: srcs/ft_vector/ftv_destruction.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_foreach.o: srcs/ft_vector/ftv_foreach.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_find.o: srcs/ft_vector/ftv_find.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_init.o: srcs/ft_vector/ftv_init.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_foreach.o: srcs/ft_vector/ftv_foreach.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
-obj/srcs/ft_vector/ftv_iteration.o: srcs/ft_vector/ftv_iteration.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h | obj/srcs/ft_vector
+obj/srcs/ft_vector/ftv_init.o: srcs/ft_vector/ftv_init.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
+	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
+
+obj/srcs/ft_vector/ftv_iteration.o: srcs/ft_vector/ftv_iteration.c includes/ft_ctype.h includes/ft_macroes.h includes/ft_stdio.h includes/ft_stdlib.h includes/ft_string.h includes/ft_typedefs.h includes/ft_vector.h includes/libft.h includes/t_bool_for_cpp_fu_42_norm_ffs.h | obj/srcs/ft_vector
 	@$(MSG_0) $< ; clang $(C_FLAGS) $(C_HEADS) -c -o $@ $< || ($(MSG_1) $< && false)
 
 $(LIBS):

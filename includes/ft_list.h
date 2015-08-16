@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 15:33:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/08 19:12:39 by ngoguey          ###   ########.fr       */
+/*   Updated: 2015/08/16 12:43:43 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,12 @@ t_ftlist			ftl_uninitialized(void);
 /*
 ** Adding **
 */
+int					ftl_emplace_back(t_ftlist *l, LISTNODEC *node);
 int					ftl_push_back(t_ftlist *l, LISTNODEC *node);
 int					ftl_push_front(t_ftlist *l, LISTNODEC *node);
 int					ftl_insert_pos(t_ftlist *l, LISTNODE *pos, LISTNODEC *node);
+void				ftl_splice_one_back(t_ftlist *dst, t_ftlist *src
+										, LISTNODE *node);
 
 /*
 ** Removing **
