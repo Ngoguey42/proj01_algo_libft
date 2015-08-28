@@ -28,7 +28,7 @@
 #  define PRINTSIZEOF(T) qprintf("sizeof(%s) = %uBytes\n", #T, sizeof(T))
 # else
 #  define PRINTSIZEOF(T) qprintf("sizeof(%s) = %zuBytes\n", #T, sizeof(T))
-#endif
+# endif
 
 # define CONCAT(NAME) sp_loadconf_ ## NAME
 # define NARG_2(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,Z,...) Z
