@@ -46,4 +46,14 @@ void			ft_skipntype(char **pptr, int (*typefun)(int c));
 size_t			ft_parseuinteger(char *str, size_t *uiptr);
 size_t			ft_strlentype(char const *str, int (*typefun)(int c));
 
+int				ft_max(int a, int b);
+int				ft_min(int a, int b);
+int				ft_abs(int x);
+float			ft_fmax(float a, float b);
+float			ft_fmin(float a, float b);
+float			ft_fabs(float x);
+
+float			ft_randf01(void);
+float			ft_randf0(void);
+
 #endif
