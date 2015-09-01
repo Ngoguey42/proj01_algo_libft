@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_timeval.h"
+#include <stddef.h>
 
 struct timeval			ft_timeval_diff(struct timeval x, struct timeval y)
 {

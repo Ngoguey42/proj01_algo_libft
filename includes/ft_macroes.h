@@ -30,7 +30,6 @@
 #  define PRINTSIZEOF(T) qprintf("sizeof(%s) = %zuBytes\n", #T, sizeof(T))
 # endif
 
-# define CONCAT(NAME) sp_loadconf_ ## NAME
 # define NARG_2(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,Z,...) Z
 # define NARG_(...) NARG_2(__VA_ARGS__,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
 # define NARG(...) NARG_(42, ##__VA_ARGS__)
