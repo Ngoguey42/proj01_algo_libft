@@ -17,6 +17,7 @@ that i will be reuse in my C projects.
 * Most `<string.h>` fuctions.
 * `std::vector like` functions.
 * `std::list like` functions.
+* `std::set like` functions (implemented as an AVL). Also works as an `std::map`.
 <br><br><br><br><br><br><br><br>
 
 
