@@ -42,6 +42,21 @@ void		ftv_foreach(t_ftvector const *v, void (*fun)(), void *ext)
 	return ;
 }
 
+void		ftv_foreach2(t_ftvector const *v, void (*fun)(), void *e1, void *e2)
+{
+	void		*ptr;
+	void const	*ptrend;
+
+	ptr = v->data;
+	ptrend = v->data + v->chunk_size * v->size;
+	while (ptr < ptrend)
+	{
+		fun(e1, e2, ptr);
+		ptr += v->chunk_size;
+	}
+	return ;
+}
+
 void		ftv_foreach_if(t_ftvector const *v, void (*fun)(), void *ext,
 							t_bool (*cond)())
 {
