@@ -86,6 +86,7 @@ size_t			ftv_find_index(t_ftvector const *v, void const *ref);
 void			*ftv_find_ptr(t_ftvector const *v, void const *ref);
 t_bool			ftv_find(t_ftvector const *v, void const *ref);
 
+void			ftv_foreach0(t_ftvector const *v, void (*fun)());
 void			ftv_foreach(t_ftvector const *v, void (*fun)(), void *ext);
 void			ftv_foreach2(t_ftvector const *v, void (*fun)(), void *e1
 								, void *e2);
