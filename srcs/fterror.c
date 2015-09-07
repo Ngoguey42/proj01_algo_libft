@@ -11,9 +11,14 @@
 /* ************************************************************************** */
 
 #include "fterror.h"
+#include "ft_debug.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <errno.h>
+#include <string.h>
 
-void				ft_enomem(void)
+void			ft_enomem(void)
 {
 	ft_putendl_fd("\033[31mError\033[0m: ENOMEM", 2);
 	exit(1);
@@ -23,10 +28,39 @@ void			fte_assert(t_bool pred, char const *strings[3], int line)
 {
 	if (!pred)
 	{
-		qprintf("\033[31mAssertion failed:\033[0m l%d \"%s\"\n"
-				, line, strings[2]);
+		qprintf("\033[31mAssertion failed[\033[0m%s:%d\033[31m]:\033[0m (%s)\n"
+				, strings[1] , line, strings[2]);
 		exit(1);
 		
 	}
+	return ;
+}
+
+void			fte_error(char const *strings[3], int line, ...)
+{
+	va_list		ap;
+
+	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m"
+			 , strings[1], line);
+	va_start(ap, line);
+	vfprintf(stderr, strings[2], ap);
+	va_end(ap);
+	fflush(stderr);
+	ft_putendl_fd("", 2);
+	return ;
+}
+
+void			fte_errorno(char const *strings[3], int line, ...)
+{
+	int const	err = errno;
+	va_list		ap;
+
+	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m"
+			 , strings[1], line);
+	va_start(ap, line);
+	vfprintf(stderr, strings[2], ap);
+	va_end(ap);
+	fflush(stderr);
+	fprintf(stderr, "\033[31m(\033[0m%s\033[31m)\033[0m\n", strerror(err));
 	return ;
 }
