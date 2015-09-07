@@ -34,6 +34,7 @@ typedef struct	s_ftvector
 int				ftv_init_instance(t_ftvector *v, size_t chunk_size);
 t_ftvector		*ftv_init_alloc(size_t chunk_size);
 t_ftvector		ftv_uninitialized(void);
+int				ftv_copy(t_ftvector *dst, t_ftvector const *src);
 
 /*
 ** * Destruction functions **

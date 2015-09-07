@@ -44,3 +44,14 @@ t_ftvector			ftv_uninitialized(void)
 {
 	return ((t_ftvector){NULL, 0, 0, 0});
 }
+
+int					ftv_copy(t_ftvector *dst, t_ftvector const *src)
+{
+	dst->data = ft_memdup(src->data, src->size * src->chunk_size);
+	if (dst->data == NULL)
+		return (ENOMEM);
+	dst->chunk_size = src->chunk_size;
+	dst->size = src->size;
+	dst->capacity = src->size;
+	return (0);
+}

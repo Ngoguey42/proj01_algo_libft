@@ -18,3 +18,15 @@ void				ft_enomem(void)
 	ft_putendl_fd("\033[31mError\033[0m: ENOMEM", 2);
 	exit(1);
 }
+
+void			fte_assert(t_bool pred, char const *strings[3], int line)
+{
+	if (!pred)
+	{
+		qprintf("\033[31mAssertion failed:\033[0m l%d \"%s\"\n"
+				, line, strings[2]);
+		exit(1);
+		
+	}
+	return ;
+}

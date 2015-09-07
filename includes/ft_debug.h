@@ -39,14 +39,13 @@ typedef struct		s_debugdatas
 	t_bool			print;
 }					t_debugdatas;
 
-# define T dbg_printt(__FILE__, __FUNCTION__, __LINE__)
-
 /*
 ** Privates
 */
 void				dbg_printt(const char *file, const char *func, int line);
 t_debugdatas		*dbg_instance(void);
 void				dbg_printline(size_t gid);
+
 /*
 ** Publics
 */
@@ -58,5 +57,7 @@ void				dbg_doprint(void);
 int					qprintf(const char *format, ...);
 int					lprintf(const char *format, ...);
 void				ft_leaks(void);
+
+# define T dbg_printt(__FILE__, __FUNCTION__, __LINE__)
 
 #endif
