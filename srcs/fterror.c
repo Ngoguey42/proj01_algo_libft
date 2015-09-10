@@ -36,7 +36,7 @@ void			fte_assert(t_bool pred, char const *strings[3], int line)
 	return ;
 }
 
-void			fte_error(char const *strings[3], int line, ...)
+int				fte_error(char const *strings[3], int line, ...)
 {
 	va_list		ap;
 
@@ -47,10 +47,10 @@ void			fte_error(char const *strings[3], int line, ...)
 	va_end(ap);
 	fflush(stderr);
 	ft_putendl_fd("", 2);
-	return ;
+	return (1);
 }
 
-void			fte_errorno(char const *strings[3], int line, ...)
+int				fte_errorno(char const *strings[3], int line, ...)
 {
 	int const	err = errno;
 	va_list		ap;
@@ -62,5 +62,5 @@ void			fte_errorno(char const *strings[3], int line, ...)
 	va_end(ap);
 	fflush(stderr);
 	fprintf(stderr, "\033[31m(\033[0m%s\033[31m)\033[0m\n", strerror(err));
-	return ;
+	return (1);
 }

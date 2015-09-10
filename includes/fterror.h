@@ -16,9 +16,9 @@
 # include "libft.h"
 
 void		ft_enomem(void);
-	
-void		fte_error(char const *strings[3], int line, ...);
-void		fte_errorno(char const *strings[3], int line, ...);
+
+int			fte_error(char const *strings[3], int line, ...);
+int			fte_errorno(char const *strings[3], int line, ...);
 # define ERR_STR(FORMAT) (char const*[3]){__FILE__, __FUNCTION__, FORMAT}
 
 # define ERRORF(FMT, ...) fte_error(ERR_STR(FMT), __LINE__, ##__VA_ARGS__)
