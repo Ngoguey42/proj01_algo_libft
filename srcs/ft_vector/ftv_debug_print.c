@@ -52,7 +52,7 @@ static void		exec_format(void const *p, size_t *of, char tk)
 	if (l == 'i')
 		EXEC(p, of, tk, l, "(%i)", int);
 	else if (l == 'f')
-		EXEC(p, of, tk, l, "%5 .2f", float);
+		EXEC(p, of, tk, l, "%5.2f", float);
 	else if (l == 'z')
 		EXEC(p, of, tk, l, "#%zu", size_t);
 	else if (l == 's')
@@ -64,7 +64,7 @@ static void		exec_format(void const *p, size_t *of, char tk)
 	else if (l == 'u')
 		EXEC(p, of, tk, l, "(%u)", unsigned int);
 	else if (l == 'd')
-		EXEC(p, of, tk, l, "%5 .2f", double);
+		EXEC(p, of, tk, l, "%5.2f", double);
 	else if (l == 't')
 		EXEC(p, of, tk, l, "%hd", short);
 	return ;
