@@ -22,7 +22,7 @@
 ** Conversions **
 ** 					functions do not handle initializations.
 ** 					functions do 	 handle reserve.
-**					fumctions do not handle memcpy (funptr does)
+**					functions do not handle memcpy (funptr does)
 */
 
 int		ft_set_to_vector(t_ftset const *s, t_ftvector *v
