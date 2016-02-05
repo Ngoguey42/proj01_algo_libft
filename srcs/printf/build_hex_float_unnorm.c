@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 13:50:01 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/12 13:51:29 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:10:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,16 @@ static void	ft_build_unnorm_strings(double nbr, char **mant, char **exp)
 		*mant = ft_pad_string(*mant, '0', i, 1);
 }
 
-char		*ft_build_unnormalized(double nbr, t_printf_part *part)
+char		*ft_build_unnormalized(double nbr, t_printf_part *part, int i)
 {
 	char	*ret;
 	char	*temp_str;
 	char	first_decimal;
-	int		i;
 
 	ft_build_unnorm_strings(nbr, &temp_str, &ret);
 	first_decimal = *temp_str;
 	while (PRE < 0 && temp_str[i = ((int)ft_strlen(temp_str) - 1)] == '0')
 		temp_str[i] = '\0';
-	i = 0;
 	if ((AND_I(PSTA_MASK) && PRE >= 0) && PRE < (int)ft_strlen(temp_str))
 		round_mantissa_b16(&temp_str, PRE, &i);
 	else if (PRE > 0 && PRE > (int)ft_strlen(temp_str))

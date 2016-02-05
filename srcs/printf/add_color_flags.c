@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 17:34:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/10 11:58:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:10:57 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** 'add_color_flag' adds color flags to %subsitutions strings.
 */
 
-char	g_color_flags[][11] = {
+char const	g_color_flags[][11] = {
 	":blu::MAG:", ":eob::eoc:",
 	":mag::CYA:", ":eob::eoc:",
 	":whi::BLU:", ":eob::eoc:",

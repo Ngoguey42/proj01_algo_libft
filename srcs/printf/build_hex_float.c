@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 12:39:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/09 14:40:31 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:10:17 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char		*build_hex_sci(double nbr, t_printf_part *part, int type)
 	else if (type >= 5)
 		str = build_zero(part, PRE);
 	else
-		str = ft_build_unnormalized(nbr, part);
+		str = ft_build_unnormalized(nbr, part, 0);
 	if (type <= 6 && AND_F(ZERO_MASK) && !AND_F(MINU_MASK) &&
 		WID > (int)(HEXFL_LEN_PLUS_PREFIX + 2))
 		str = ft_pad_string(str, '0', WID - (HEXFL_HAS_PREFIX ? 1 : 0) - 2, 1);

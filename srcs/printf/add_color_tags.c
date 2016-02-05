@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:36:23 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/12/22 09:43:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:14:17 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 ** Tags 8 to 13 cancel special effects
 */
 
-char		g_color_tags[][6] = {
+char const	g_color_tags[][6] = {
 	"eof", "\033[0m",
 	"lig", "\033[1m",
 	"dar", "\033[2m",

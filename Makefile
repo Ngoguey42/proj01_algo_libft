@@ -6,7 +6,7 @@
 #    By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:29:36 by ngoguey           #+#    #+#              #
-#    Updated: 2015/02/25 06:48:53 by ngoguey          ###   ########.fr        #
+#    Updated: 2016/02/05 14:02:33 by ngoguey          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -98,20 +98,7 @@ ft_clock_cc.c ft_clock_update.c\
 ft_dstor.c ft_dbuff.c
 
 #PRINTF_SOURCES
-PTFSRCSFILES = \
-	ft_printf.c         build_integers.c            freemem.c\
-	ft_getprintf.c      build_uppercases.c          build_dependencies.c\
-	calc_return_value.c build_chars_and_strings.c   get_varg.c\
-	parse_format.c      build_hex_float.c           buffer_printf.c\
-	store_opt_1to5.c    build_hex_float_norm.c      buffer_flushcols.c\
-	store_opt_6to8.c    build_hex_float_unnorm.c    buffer_flushcols_concat.c\
-	add_color_flags.c   build_bonuses.c             ft_vprintf.c\
-	add_color_tags.c    build_nonprintable_string.c buffer_table.c\
-	                    build_nonprintable_string_deps.c\
-	                    build_uppercases2.c         buffer_flush_lscols.c\
-	                    build_dec_float.c           buffer_lscols_getdatas.c\
-	                    build_dec_float_nbr.c       \
-                        build_wchars_and_wstrings.c
+PTFSRCSFILES =
 
 #SOURCES/OBJECTS TARGETS
 SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))

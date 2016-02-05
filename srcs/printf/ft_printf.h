@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:35:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/28 10:24:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:12:45 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 ** TODOLIST
 ** recheck les arguments size
 ** take care of memory leaks in add_color_flags.c
-*/
-
-/*
-** va_ lib to use, if forbidden in project.
 */
 
 # include <stdarg.h>
@@ -142,7 +138,7 @@ void	apply_width_integer_pad(t_printf_part *part, char **sp, int l, int w);
 /*
 ** %a %A dependencies.
 */
-char	*ft_build_unnormalized(double nbr, t_printf_part *part);
+char	*ft_build_unnormalized(double nbr, t_printf_part *part, int i);
 char	*ft_build_normalized(double nbr, t_printf_part *part);
 void	round_mantissa_b16(char **ptr, int pre, int *int_part_two);
 
@@ -153,21 +149,6 @@ char	*ptf_build_decnbr(double nbr, t_printf_part *part);
 */
 size_t	npnt_len(char *str, t_printf_part *part, int p);
 void	npnt_cat(char **ret, char src, char *input, int *color_status);
-
-/*
-** Buffer.
-*/
-int		ft_fbuffer(char **ret, const char *arg1, int arg2);
-char	*tabbuffer_settable(char *arg1);
-int		ptf_fflush_table_buffer(char **ret);
-int		ptf_buffer_infos(char *arg1, int arg2);
-int		ptf_cols_concat_string(char **ret, t_list *l, int *cols, int n);
-size_t	ptf_calc_real_content_size(t_list *lst);
-t_list	*ptf_buffer(char *arg1, int arg2, void *arg3);
-int		ptf_fflush_cols_buffer(char **ret, int width);
-int		ptf_fflush_lscols(char **ret, int width);
-void	ptf_lscols_getdatas(t_list *lst, int wid, int *datas);
-size_t	ptf_showed_len(char *str);
 
 /*
 ** debug
