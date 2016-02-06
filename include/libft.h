@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:25:11 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:48:50 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,39 @@
 # include <stdint.h>
 
 /*
+** Internal policy regaring wich printf to use
+**	any debug function may use qprintf || lprint || <stdio.h>'s printf
+**	qprint and lprint may use <stdio.h>'s printf
+**	any other generic function must use ft_printf || LFT_*PTF
+*/
+
+/*
 **# define LIBFT_INTERNAL_USE_STD
 */
-# define LIBFT_INTERNAL_USE_STD
 
 # ifdef LIBFT_INTERNAL_USE_STD
 
 #  define LIBFT_REALLOC(ptr, olds, news)	realloc((ptr), (news))
 #  define LIBFT_MEMCPY						memcpy
 #  define LIBFT_MEMCMP						memcmp
+#  define LFT_PTF							printf
+#  define LFT_DPTF							dprintf
+#  define LFT_VPTF							vprintf
+#  define LFT_VDPTF							vdprintf
+#  define LFT_FFLUSH(ARG)					fflush((ARG))
+#  define LFT_STRERROR						strerror
 
 # else
 
 #  define LIBFT_REALLOC(ptr, olds, news)	ft_realloc((ptr), (olds), (news))
 #  define LIBFT_MEMCPY						ft_memcpy
 #  define LIBFT_MEMCMP						ft_memcmp
+#  define LFT_PTF							ft_printf
+#  define LFT_DPTF							ft_dprintf
+#  define LFT_VPTF							ft_vprintf
+#  define LFT_VDPTF							ft_vdprintf
+#  define LFT_FFLUSH(ARG)
+#  define LFT_STRERROR						ft_strerror
 
 # endif
 
