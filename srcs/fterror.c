@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 14:03:59 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:53:21 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 14:06:48 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 void			ft_enomem(void)
 {
 	ft_putendl_fd("\033[31mError\033[0m: ENOMEM", 2);
-	exit(1);
+	LFT_EXIT(1);
 }
 
 void			fte_assert(bool pred, char const *strings[3], int line)
@@ -34,7 +34,7 @@ void			fte_assert(bool pred, char const *strings[3], int line)
 		LFT_DPTF(2, "\033[31mAssertion failed[\033[0m"
 				"%s:%d\033[31m]:\033[0m (%s)\n",
 				strings[1], line, strings[2]);
-		exit(1);
+		LFT_EXIT(1);
 	}
 	return ;
 }

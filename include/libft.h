@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:48:50 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 14:09:43 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 # include <stdint.h>
 
 /*
-** Internal policy regaring wich printf to use
-**	any debug function may use qprintf || lprint || <stdio.h>'s printf
-**	qprint and lprint may use <stdio.h>'s printf
-**	any other generic function must use ft_printf || LFT_*PTF
+** Internal policy regarding standard library
+**	any debug function may std libs (including qprintf)
+**	any other generic function must use (libft) || (LFT_*PTF macroes)
 */
 
 /*
@@ -39,6 +38,7 @@
 #  define LFT_VDPTF							vdprintf
 #  define LFT_FFLUSH(ARG)					fflush((ARG))
 #  define LFT_STRERROR						strerror
+#  define LFT_EXIT(ARG)						exit((ARG))
 
 # else
 
@@ -51,6 +51,7 @@
 #  define LFT_VDPTF							ft_vdprintf
 #  define LFT_FFLUSH(ARG)
 #  define LFT_STRERROR						ft_strerror
+#  define LFT_EXIT(ARG) 	ft_putendl_fd("Exit should not be used!", 2)
 
 # endif
 
