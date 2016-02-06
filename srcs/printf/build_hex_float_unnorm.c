@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 13:50:01 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/05 14:10:24 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 11:12:28 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ char		*ft_build_unnormalized(double nbr, t_printf_part *part, int i)
 		ret = ft_strjoinfree("2", ret, 0, 1);
 	else
 		ret = ft_strjoinfree("1", ret, 0, 1);
-	return (free(temp_str), ret);
+	free(temp_str);
+	return (ret);
 }

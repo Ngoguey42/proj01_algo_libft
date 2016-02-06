@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/24 09:08:43 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/24 11:33:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 11:11:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static char	*numeric(char c, t_printf_part *part, int prefix)
 {
 	char		s1[3];
 	t_readbit	u;
+	char		*tmp;
 
 	ft_strcpy(s1, "\\d");
 	if (!prefix)
@@ -86,8 +87,10 @@ static char	*numeric(char c, t_printf_part *part, int prefix)
 	else if (part->length != 6)
 		s1[1] = 'x';
 	if (part->length == 6 || c >= 0)
-		return (ft_strjoinfree(s1,
-		ft_itoa_a(c, part->length == 6 ? 10 : 16), 0, 1));
+	{
+		tmp = ft_itoa_a(c, part->length == 6 ? 10 : 16);
+		return (ft_strjoinfree(s1, tmp, 0, 1));
+	}
 	u.s = c;
 	return (ft_strjoinfree(s1, ft_itoa_a((int)u.u, 16), 0, 1));
 }

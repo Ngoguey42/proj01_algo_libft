@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:35:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/05 14:12:45 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 11:12:39 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@
 */
 # define CHARS_LENGTH		"jztLhl"
 # define NUM_DBL_CHAR_LEN	2
-# define CHARS_SPECIFIERS	"diuoxXfFeEgGaAcspn%brDUOCS"
-# define NUM_SPECIFIERS		27 + 1
+# define CHARS_SPECIFIERS	"diuoxXfFaAcsp%brDUOCS"
+# define NUM_SPECIFIERS		(sizeof(CHARS_SPECIFIERS) + 1)
 
 /*
 ** MACROS
