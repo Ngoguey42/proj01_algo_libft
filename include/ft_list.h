@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 15:33:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/16 12:43:43 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void				ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*dea)());
 void				ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext);
 void				ftl_foreachi(t_ftlist const *l, void (*fun)(), void *ext);
 void				ftl_foreach_if(t_ftlist const *l, void (*fun)(), void *ext
-									, t_bool (*pred)());
+									, bool (*pred)());
 void				ftl_foreachi_if(t_ftlist const *l, void (*fun)(), void *ext
-									, t_bool (*pred)());
+									, bool (*pred)());
 
 /*
 ** Conversions **

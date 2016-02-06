@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 19:02:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:21:02 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:19 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		ftl_foreachi(t_ftlist const *l, void (*fun)(), void *ext)
 }
 
 void		ftl_foreach_if(t_ftlist const *l, void (*fun)(), void *ext
-							, t_bool (*pred)())
+							, bool (*pred)())
 {
 	LISTNODE	*node;
 
@@ -61,7 +61,7 @@ void		ftl_foreach_if(t_ftlist const *l, void (*fun)(), void *ext
 }
 
 void		ftl_foreachi_if(t_ftlist const *l, void (*fun)(), void *ext
-							, t_bool (*pred)())
+							, bool (*pred)())
 {
 	LISTNODE	*node;
 	int			i;

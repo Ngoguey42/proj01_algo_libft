@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:33:58 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:36:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_ftset
 typedef struct		s_ftset_insertion
 {
 	SETNODE			*ptr;
-	t_bool			inserted;
+	bool			inserted;
 }					t_ftset_insertion;
 
 /*

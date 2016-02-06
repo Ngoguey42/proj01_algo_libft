@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/23 09:59:21 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:16:42 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:04 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		*ftv_find_ptr(t_ftvector const *v, void const *ref)
 	return (NULL);
 }
 
-t_bool		ftv_find(t_ftvector const *v, void const *ref)
+bool		ftv_find(t_ftvector const *v, void const *ref)
 {
 	return (ftv_find_ptr(v, ref) ? true : false);
 }

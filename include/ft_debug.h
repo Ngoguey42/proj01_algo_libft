@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 12:00:09 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/05 15:48:28 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:12 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct		s_debugline
 typedef struct		s_debugdatas
 {
 	t_ftvector		lines;
-	t_bool			init;
-	t_bool			print;
+	bool			init;
+	bool			print;
 }					t_debugdatas;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 14:03:59 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:09:27 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:24:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			ft_enomem(void)
 	exit(1);
 }
 
-void			fte_assert(t_bool pred, char const *strings[3], int line)
+void			fte_assert(bool pred, char const *strings[3], int line)
 {
 	if (!pred)
 	{

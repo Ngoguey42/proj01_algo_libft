@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:18:22 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:25:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 /*
 **# define LIBFT_INTERNAL_USE_STD
