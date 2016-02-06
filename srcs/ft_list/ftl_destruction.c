@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 17:37:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:20:52 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:10:25 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	del(LISTNODE *prev, LISTNODE *next)
 	return ;
 }
 
-void		ftl_release(t_ftlist *l, void (*deallocator)()) //is safe
+void		ftl_release(t_ftlist *l, void (*deallocator)())
 {
 	LISTNODE	*node;
 	LISTNODE	*next;
@@ -42,7 +42,7 @@ void		ftl_release(t_ftlist *l, void (*deallocator)()) //is safe
 	return ;
 }
 
-void		ftl_pop_back(t_ftlist *l, void (*deallocator)()) //is unsafe
+void		ftl_pop_back(t_ftlist *l, void (*deallocator)())
 {
 	LISTNODE	*node;
 
@@ -55,7 +55,7 @@ void		ftl_pop_back(t_ftlist *l, void (*deallocator)()) //is unsafe
 	return ;
 }
 
-void		ftl_pop_front(t_ftlist *l, void (*deallocator)()) //is unsafe
+void		ftl_pop_front(t_ftlist *l, void (*deallocator)())
 {
 	LISTNODE	*node;
 
@@ -68,7 +68,7 @@ void		ftl_pop_front(t_ftlist *l, void (*deallocator)()) //is unsafe
 	return ;
 }
 
-void		ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*deallocator)()) // is unsafe
+void		ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*deallocator)())
 {
 	del(pos->prev, pos->next);
 	if (deallocator != NULL)

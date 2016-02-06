@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 14:03:59 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/10 14:06:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:09:27 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void			fte_assert(t_bool pred, char const *strings[3], int line)
 {
 	if (!pred)
 	{
-		qprintf("\033[31mAssertion failed[\033[0m%s:%d\033[31m]:\033[0m (%s)\n"
-				, strings[1] , line, strings[2]);
+		qprintf("\033[31mAssertion failed[\033[0m%s:%d\033[31m]:\033[0m (%s)\n",
+				strings[1], line, strings[2]);
 		exit(1);
-		
 	}
 	return ;
 }
@@ -40,8 +39,8 @@ int				fte_error(char const *strings[3], int line, ...)
 {
 	va_list		ap;
 
-	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m"
-			 , strings[1], line);
+	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m",
+				strings[1], line);
 	va_start(ap, line);
 	vfprintf(stderr, strings[2], ap);
 	va_end(ap);
@@ -55,8 +54,8 @@ int				fte_errorno(char const *strings[3], int line, ...)
 	int const	err = errno;
 	va_list		ap;
 
-	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m"
-			 , strings[1], line);
+	fprintf(stderr, "\033[31mError[\033[0m%28s:%-3d\033[31m]: \033[0m",
+				strings[1], line);
 	va_start(ap, line);
 	vfprintf(stderr, strings[2], ap);
 	va_end(ap);

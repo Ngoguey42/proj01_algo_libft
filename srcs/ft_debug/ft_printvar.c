@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 12:45:55 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:12:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/06 12:11:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 static void	get_format_index(int index, char buf[5])
 {
 	const char	formats[][6] = {
+		"%hhd", "%hhu", "%hd", "%hu",
+		"%d", "%u", "%lld", "%llu",
+		"%p", "%s", "%.3f", "%.3f", "%.3Lf", "%u", "%hhu"};
 
-	"%hhd", "%hhu", "%hd", "%hu",
-	"%d", "%u", "%lld", "%llu",
-	"%p", "%s", "%.3f", "%.3f", "%.3Lf", "%u", "%hhu"};
 	ft_strlcpy(buf, formats[index], 6);
 	return ;
 }
@@ -50,11 +50,11 @@ static int	get_format(char *type, char buf[5])
 {
 	int			i;
 	const char	types[][24] = {
+		"char", "unsigned char", "short", "unsigned short",
+		"int", "unsigned int", "long long int", "unsigned long long int",
+		"void*", "char*", "float", "double", "long double", "size_t", "t_byte",
+		""};
 
-	"char", "unsigned char", "short", "unsigned short",
-	"int", "unsigned int", "long long int", "unsigned long long int",
-	"void*", "char*", "float", "double", "long double", "size_t", "t_byte",
-	""};
 	i = 0;
 	while (*types[i] != '\0' && !ft_strequ(types[i], type))
 		i++;

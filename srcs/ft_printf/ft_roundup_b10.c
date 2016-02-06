@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min.c                                           :+:      :+:    :+:   */
+/*   ft_roundup_b10.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/06 12:09:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:09:56 by ngoguey          ###   ########.fr       */
+/*   Created: 2014/12/17 07:54:37 by ngoguey           #+#    #+#             */
+/*   Updated: 2014/12/22 09:31:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_min(int a, int b)
-{
-	return (a < b ? a : b);
-}
+#include <libft.h>
 
-float			ft_fmin(float a, float b)
+char	*ft_roundup_b10(char *str)
 {
-	return (a < b ? a : b);
+	int	i;
+
+	i = ft_strspn(str, "0123456789.");
+	while (i--)
+	{
+		if (str[i] == '9')
+			str[i] = '0';
+		else if (str[i] == '.')
+			continue ;
+		else
+		{
+			str[i]++;
+			break ;
+		}
+	}
+	return (str);
 }
