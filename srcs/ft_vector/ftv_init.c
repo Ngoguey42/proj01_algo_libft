@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:25:20 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/20 14:48:34 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/07 19:27:43 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 #include <errno.h>
 #include <stdlib.h>
 
-int					ftv_init_instance(t_ftvector *v, size_t chunk_size)
+void				ftv_init_instance(t_ftvector *v, size_t chunk_size)
 {
-	v->data = malloc(chunk_size * FT_VECTOR_DEFAULT_CAPACITY);
-	if (v->data == NULL)
-		return (ENOMEM);
+	v->data = NULL;
 	v->size = 0;
 	v->chunk_size = chunk_size;
-	v->capacity = FT_VECTOR_DEFAULT_CAPACITY;
-	return (0);
+	v->capacity = 0;
+	return ;
 }
 
 t_ftvector			*ftv_init_alloc(size_t chunk_size)
@@ -32,26 +30,15 @@ t_ftvector			*ftv_init_alloc(size_t chunk_size)
 	ret = malloc(sizeof(t_ftvector));
 	if (ret == NULL)
 		return (NULL);
-	if (ftv_init_instance(ret, chunk_size))
-	{
-		free(ret);
-		return (NULL);
-	}
+	ftv_init_instance(ret, chunk_size);
 	return (ret);
-}
-
-t_ftvector			ftv_uninitialized(void)
-{
-	return ((t_ftvector){NULL, 0, 0, 0});
 }
 
 int					ftv_copy(t_ftvector *dst, t_ftvector const *src)
 {
-	dst->data = ft_memdup(src->data, src->size * src->chunk_size);
+	*dst = *src;
+	dst->data = ft_memdup(src->data, src->capacity * src->chunk_size);
 	if (dst->data == NULL)
 		return (ENOMEM);
-	dst->chunk_size = src->chunk_size;
-	dst->size = src->size;
-	dst->capacity = src->size;
 	return (0);
 }

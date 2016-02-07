@@ -6,14 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:24:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/07 19:27:18 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
-
-# define FT_VECTOR_DEFAULT_CAPACITY		4
 
 # include "libft.h"
 
@@ -31,7 +29,7 @@ typedef struct	s_ftvector
 ** 'ftv_init_instance'	Does the very first allocation of 'data' in v.
 ** 'ftv_init_alloc'		Does the very first allocation of 'data' and allocs v.
 */
-int				ftv_init_instance(t_ftvector *v, size_t chunk_size);
+void			ftv_init_instance(t_ftvector *v, size_t chunk_size);
 t_ftvector		*ftv_init_alloc(size_t chunk_size);
 t_ftvector		ftv_uninitialized(void);
 int				ftv_copy(t_ftvector *dst, t_ftvector const *src);
@@ -56,6 +54,7 @@ void			ftv_clear(t_ftvector *v, void (*del)(void*));
 ** 'ftv_shrink_to_fit'	Reallocates 'data' to 'size'.
 */
 int				ftv_reserve(t_ftvector *v, size_t newcapacity);
+int				ftv_double_capacity(t_ftvector *v);
 int				ftv_shrink_to_fit(t_ftvector *v);
 
 /*

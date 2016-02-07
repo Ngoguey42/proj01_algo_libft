@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 09:25:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:50:10 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/07 19:32:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int			ftv_push_back(t_ftvector *v, void const *ptr)
 {
 	if (v->size >= v->capacity)
 	{
-		v->capacity = v->size * 2;
-		v->data = LIBFT_REALLOC(v->data, v->size * v->chunk_size,
-								v->capacity * v->chunk_size);
-		if (v->data == NULL)
+		if (ftv_double_capacity(v))
 			return (ENOMEM);
 	}
 	LIBFT_MEMCPY(v->data + v->size * v->chunk_size, ptr, v->chunk_size);
@@ -46,11 +43,7 @@ int			ftv_insert_range(t_ftvector *v, void const *ptr, size_t count)
 
 	if (new_size > v->capacity)
 	{
-		while (v->capacity < new_size)
-			v->capacity *= 2;
-		v->data = LIBFT_REALLOC(v->data, v->size * v->chunk_size,
-								v->capacity * v->chunk_size);
-		if (v->data == NULL)
+		if (ftv_reserve(v, new_size))
 			return (ENOMEM);
 	}
 	LIBFT_MEMCPY(v->data + v->size * v->chunk_size, ptr, count * v->chunk_size);
@@ -65,11 +58,7 @@ int			ftv_insert_count(t_ftvector *v, void const *ref, size_t count)
 
 	if (v->size + count > v->capacity)
 	{
-		while (v->capacity < v->size + count)
-			v->capacity *= 2;
-		v->data = LIBFT_REALLOC(v->data, v->size * v->chunk_size,
-								v->capacity * v->chunk_size);
-		if (v->data == NULL)
+		if (ftv_reserve(v, v->size + count))
 			return (ENOMEM);
 	}
 	i = 0;

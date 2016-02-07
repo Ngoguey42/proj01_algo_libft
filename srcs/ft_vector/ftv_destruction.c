@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 11:31:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/28 11:31:10 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/07 19:33:41 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void			ftv_clear(t_ftvector *v, void (*del)(void*))
 void			ftv_release(t_ftvector *v, void (*del)(void*))
 {
 	ftv_clear(v, del);
-	free(v->data);
+	if (v->data != NULL)
+		free(v->data);
 	return ;
 }
 
