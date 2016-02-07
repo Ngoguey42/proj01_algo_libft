@@ -1,20 +1,21 @@
-O_FILES :=	o/srcs/ft_abs.o o/srcs/ft_containers_conversions.o \
-			o/srcs/ft_ctype/case_change.o o/srcs/ft_ctype/ft_isalnum.o \
-			o/srcs/ft_ctype/ft_isalpha.o o/srcs/ft_ctype/ft_isascii.o \
-			o/srcs/ft_ctype/ft_isblank.o o/srcs/ft_ctype/ft_iscntrl.o \
-			o/srcs/ft_ctype/ft_isdigit.o o/srcs/ft_ctype/ft_isdigit_base.o \
-			o/srcs/ft_ctype/ft_isescape.o o/srcs/ft_ctype/ft_isgraph.o \
-			o/srcs/ft_ctype/ft_islower.o o/srcs/ft_ctype/ft_isprint.o \
-			o/srcs/ft_ctype/ft_ispunct.o o/srcs/ft_ctype/ft_isspace.o \
-			o/srcs/ft_ctype/ft_isunixspace.o o/srcs/ft_ctype/ft_isupper.o \
-			o/srcs/ft_ctype/ft_isxdigit.o o/srcs/ft_debug/ft_leaks.o \
-			o/srcs/ft_debug/ft_printt.o o/srcs/ft_debug/ft_printt_utility.o \
-			o/srcs/ft_debug/ft_printvar.o o/srcs/ft_debug/lprintf.o \
-			o/srcs/ft_debug/qprintf.o o/srcs/ft_list/ftl_conversions.o \
-			o/srcs/ft_list/ftl_destruction.o o/srcs/ft_list/ftl_foreach.o \
-			o/srcs/ft_list/ftl_init.o o/srcs/ft_list/ftl_insertions.o \
-			o/srcs/ft_list/ftl_splice.o o/srcs/ft_max.o o/srcs/ft_min.o \
-			o/srcs/ft_parseuinteger.o o/srcs/ft_printf/add_color_flags.o \
+O_FILES :=	o/srcs/endianness.o o/srcs/ft_abs.o o/srcs/ft_arg.o \
+			o/srcs/ft_containers_conversions.o o/srcs/ft_ctype/case_change.o \
+			o/srcs/ft_ctype/ft_isalnum.o o/srcs/ft_ctype/ft_isalpha.o \
+			o/srcs/ft_ctype/ft_isascii.o o/srcs/ft_ctype/ft_isblank.o \
+			o/srcs/ft_ctype/ft_iscntrl.o o/srcs/ft_ctype/ft_isdigit.o \
+			o/srcs/ft_ctype/ft_isdigit_base.o o/srcs/ft_ctype/ft_isescape.o \
+			o/srcs/ft_ctype/ft_isgraph.o o/srcs/ft_ctype/ft_islower.o \
+			o/srcs/ft_ctype/ft_isprint.o o/srcs/ft_ctype/ft_ispunct.o \
+			o/srcs/ft_ctype/ft_isspace.o o/srcs/ft_ctype/ft_isunixspace.o \
+			o/srcs/ft_ctype/ft_isupper.o o/srcs/ft_ctype/ft_isxdigit.o \
+			o/srcs/ft_debug/ft_leaks.o o/srcs/ft_debug/ft_printt.o \
+			o/srcs/ft_debug/ft_printt_utility.o o/srcs/ft_debug/ft_printvar.o \
+			o/srcs/ft_debug/lprintf.o o/srcs/ft_debug/qprintf.o \
+			o/srcs/ft_list/ftl_conversions.o o/srcs/ft_list/ftl_destruction.o \
+			o/srcs/ft_list/ftl_foreach.o o/srcs/ft_list/ftl_init.o \
+			o/srcs/ft_list/ftl_insertions.o o/srcs/ft_list/ftl_splice.o \
+			o/srcs/ft_max.o o/srcs/ft_min.o o/srcs/ft_parseuinteger.o \
+			o/srcs/ft_printf/add_color_flags.o \
 			o/srcs/ft_printf/add_color_tags.o o/srcs/ft_printf/build_bonuses.o \
 			o/srcs/ft_printf/build_chars_and_strings.o \
 			o/srcs/ft_printf/build_dec_float.o \
@@ -83,7 +84,11 @@ libs:
 
 
 MAX_SOURCE_LEN := 47
+o/srcs/endianness.o: srcs/endianness.c | o/srcs/
 o/srcs/ft_abs.o: srcs/ft_abs.c | o/srcs/
+o/srcs/ft_arg.o: srcs/ft_arg.c include/ft_arg.h include/ft_ctype.h \
+	include/ft_macroes.h include/ft_stdio.h include/ft_stdlib.h \
+	include/ft_string.h include/ft_typedefs.h include/libft.h | o/srcs/
 o/srcs/ft_containers_conversions.o: srcs/ft_containers_conversions.c \
 	include/ft_containers.h include/ft_ctype.h include/ft_list.h \
 	include/ft_macroes.h include/ft_set.h include/ft_stdio.h \
