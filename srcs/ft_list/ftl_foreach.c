@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 19:02:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:24:19 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/17 13:40:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void		ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext)
 	while (node != ftl_cend(l))
 	{
 		fun(ext, node);
+		node = node->next;
+	}
+	return ;
+}
+
+void		ftl_foreach2(t_ftlist const *l, void (*fun)(), void *e1, void *e2)
+{
+	LISTNODE	*node;
+
+	node = l->next;
+	while (node != ftl_cend(l))
+	{
+		fun(e1, e2, node);
 		node = node->next;
 	}
 	return ;
