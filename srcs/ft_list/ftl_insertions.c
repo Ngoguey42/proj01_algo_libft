@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 15:58:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/17 16:08:59 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/17 16:56:08 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			ftl_insert_pos(t_ftlist *l, LISTNODE *pos, LISTNODE const *node)
 	return (0);
 }
 
-int			ftl_insert_sort(t_ftlist *l, LISTNODE const *node, int (*cmp)())
+int			ftl_insert_sort(t_ftlist *l, LISTNODE const *node, int64_t (*cmp)())
 {
 	LISTNODE		*anode;
 	LISTNODE		*nx_node;
@@ -69,11 +69,11 @@ int			ftl_insert_sort(t_ftlist *l, LISTNODE const *node, int (*cmp)())
 	if (anode == NULL)
 		return (ENOMEM);
 	nx_node = l->next;
-	while (node != ftl_cend(l))
+	while (nx_node != ftl_cend(l))
 	{
-		if (cmp(node, anode) < 0)
+		if (cmp(nx_node, anode) > 0)
 			break ;
-		node = node->next;
+		nx_node = nx_node->next;
 	}
 	add(anode, nx_node->prev, nx_node);
 	l->size++;
