@@ -6,13 +6,24 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 15:03:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/07 15:32:13 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/18 18:33:47 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include <stdbool.h>
 #include "i386/endian.h"
+
+void		ft_uint_reorder(void *ptr, size_t size, bool big_endian)
+{
+	if (size == 2)
+		*(uint16_t)ptr = ft_i16toh(*(uint16_t)ptr, big_endian);
+	else if (size == 4)
+		*(uint32_t)ptr = ft_i32toh(*(uint32_t)ptr, big_endian);
+	else if (size == 8)
+		*(uint64_t)ptr = ft_i64toh(*(uint64_t)ptr, big_endian);
+	return ;
+}
 
 uint16_t	ft_i16toh(uint16_t i, bool big_endian)
 {

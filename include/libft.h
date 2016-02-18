@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/07 19:45:05 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/18 18:34:09 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ float			ft_randf0(void);
 uint16_t		ft_i16toh(uint16_t i, bool big_endian);
 uint32_t		ft_i32toh(uint32_t i, bool big_endian);
 uint64_t		ft_i64toh(uint64_t i, bool big_endian);
+void			ft_uint_reorder(void *ptr, size_t size, bool big_endian);
 
 #endif
