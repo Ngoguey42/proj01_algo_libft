@@ -11,11 +11,11 @@ O_FILES :=	o/srcs/endianness.o o/srcs/ft_abs.o o/srcs/ft_arg.o \
 			o/srcs/ft_debug/ft_leaks.o o/srcs/ft_debug/ft_printt.o \
 			o/srcs/ft_debug/ft_printt_utility.o o/srcs/ft_debug/ft_printvar.o \
 			o/srcs/ft_debug/lprintf.o o/srcs/ft_debug/qprintf.o \
-			o/srcs/ft_list/ftl_conversions.o o/srcs/ft_list/ftl_destruction.o \
-			o/srcs/ft_list/ftl_foreach.o o/srcs/ft_list/ftl_init.o \
-			o/srcs/ft_list/ftl_insertions.o o/srcs/ft_list/ftl_splice.o \
-			o/srcs/ft_max.o o/srcs/ft_min.o o/srcs/ft_parseuinteger.o \
-			o/srcs/ft_printf/add_color_flags.o \
+			o/srcs/ft_dumpformat.o o/srcs/ft_list/ftl_conversions.o \
+			o/srcs/ft_list/ftl_destruction.o o/srcs/ft_list/ftl_foreach.o \
+			o/srcs/ft_list/ftl_init.o o/srcs/ft_list/ftl_insertions.o \
+			o/srcs/ft_list/ftl_splice.o o/srcs/ft_max.o o/srcs/ft_min.o \
+			o/srcs/ft_parseuinteger.o o/srcs/ft_printf/add_color_flags.o \
 			o/srcs/ft_printf/add_color_tags.o o/srcs/ft_printf/build_bonuses.o \
 			o/srcs/ft_printf/build_chars_and_strings.o \
 			o/srcs/ft_printf/build_dec_float.o \
@@ -167,6 +167,10 @@ o/srcs/ft_debug/lprintf.o: srcs/ft_debug/lprintf.c include/ft_ctype.h \
 o/srcs/ft_debug/qprintf.o: srcs/ft_debug/qprintf.c include/ft_ctype.h \
 	include/ft_macroes.h include/ft_stdio.h include/ft_stdlib.h \
 	include/ft_string.h include/ft_typedefs.h include/libft.h | o/srcs/ft_debug/
+o/srcs/ft_dumpformat.o: srcs/ft_dumpformat.c include/ft_ctype.h \
+	include/ft_macroes.h include/ft_stdio.h include/ft_stdlib.h \
+	include/ft_string.h include/ft_typedefs.h include/ft_vector.h \
+	include/libft.h include/ft_debug.h | o/srcs/
 o/srcs/ft_list/ftl_conversions.o: srcs/ft_list/ftl_conversions.c \
 	include/ft_ctype.h include/ft_list.h include/ft_macroes.h \
 	include/ft_stdio.h include/ft_stdlib.h include/ft_string.h \

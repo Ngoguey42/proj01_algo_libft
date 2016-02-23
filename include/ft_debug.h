@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 12:00:09 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:24:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/23 15:15:41 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ typedef struct		s_debugdatas
 	bool			print;
 }					t_debugdatas;
 
+typedef struct		s_dumpformat_internal
+{
+	char const		*fmt;
+	uint32_t		size;
+	bool			isfp;
+}					t_dumpformat_internal;
+
 /*
 ** Privates
 */
@@ -57,6 +64,8 @@ void				dbg_doprint(void);
 int					qprintf(const char *format, ...);
 int					lprintf(const char *format, ...);
 void				ft_leaks(void);
+
+void				ft_dumpformat(void const *datptr, char const *fmt);
 
 # define T dbg_printt(__FILE__, __FUNCTION__, __LINE__)
 
