@@ -1,105 +1,117 @@
 #
 
+# ============================================================================ #
+# Directories
+
 # Executable name
 NAME			:= libft.a
-
-# Project directories
-DIRS			:= srcs
-INCLUDE_DIRS	:= include
-
 # Git submodule to init
 MODULES			:=
 # Makefiles to call
 LIBS			:=
 
-# Base flags
+INCLUDE_DIRS	= include
+SRCS_DIRS		= srcs
+O_DIR			:= obj
+
+
+# ============================================================================ #
+# Default  flags / compilers
 BASE_FLAGS		= -Wall -Wextra
 HEAD_FLAGS		= $(addprefix -I,$(INCLUDE_DIRS))
+LD_FLAGS		= rcs
 
-# Compilation flags (per language)
-C_FLAGS			= $(HEAD_FLAGS) $(BASE_FLAGS)
-CPP_FLAGS		= $(HEAD_FLAGS) $(BASE_FLAGS) -std=c++14
+CC_LD			= ar
 
-LINK_FLAGS		= rc
+# MAKEFLAGS		+= -j
 
-ifeq ($(DEBUG_MODE),1)
-	# Extra flags used in debug mode
-	BASE_FLAGS	+= -g
-	C_FLAGS		+=
-	CPP_FLAGS	+=
+
+# ============================================================================ #
+# Build mode
+BUILD_MODE		= build
+ifeq ($(BUILD_MODE),test)
+	SRCS_DIRS		+= srcs_test
+	LD_FLAGS		+= -lboost_unit_test_framework
+	BASE_FLAGS		+=
+else ifeq ($(BUILD_MODE),debug)
+	SRCS_DIRS		+= srcs_build
+	BASE_FLAGS		+= -g
 else
-	# Extra flags used when not in debug mode
-	BASE_FLAGS	+= -O2
-	C_FLAGS		+=
-	CPP_FLAGS	+=
+	SRCS_DIRS		+= srcs_build
+	BASE_FLAGS		+=
 endif
 
-DEBUG_MODE		?= 0
-export DEBUG_MODE
+# legacy with makemake ===========================
+DIRS			:= srcs srcs_build
+# DEBUG_MODE		?= 0
+# export DEBUG_MODE
+# /legacy with makemake ===========================
 
-# Jobs
-JOBS			:= 4
 
-# Column output
-COLUMN_OUTPUT	:= 1
-
-ifeq ($(COLUMN_OUTPUT),0)
-	PRINT_OK	= printf '\033[32m$<\033[0m\n'
-	PRINT_LINK	= printf '\033[32m$@\033[0m\n'
-else
-	PRINT_OK	= echo $(patsubst $(firstword $(DIRS))/%,%,$<) >> $(PRINT_FILE)
-	PRINT_LINK	= printf '\n\033[32m$@\033[0m\n'
-endif
-
-# Objects directory
-O_DIR			:= o
-
-# Depend file name
+# ============================================================================ #
+# Misc
+UNAME			:= $(shell uname | cut -c1-6)
+PRINT_OK		= printf '\033[32m$<\033[0m\n'
+PRINT_LINK		= printf '\033[32m$@\033[0m\n'
 DEPEND			:= depend.mk
-
-# tmp
 MODULE_RULES	:= $(addsuffix /.git,$(MODULES))
-PRINT_FILE		:= .tmp_print
 SHELL			:= /bin/bash
 
-# Default rule (need to be before any include)
-all: $(MODULE_RULES) libs
-ifeq ($(COLUMN_OUTPUT),0)
-	make -j$(JOBS) $(NAME)
+
+# ============================================================================ #
+# C
+C_FLAGS			= $(HEAD_FLAGS) $(BASE_FLAGS)
+ifeq ($(UNAME),Cygwin)
+	CC_C		= x86_64-w64-mingw32-gcc
 else
-	PER_LINE=$$((`tput cols` / $$(($(MAX_SOURCE_LEN) + 2))));			\
-	CURR=0;																\
-	rm -f $(PRINT_FILE);												\
-	touch $(PRINT_FILE);												\
-	tail -n0 -f $(PRINT_FILE) | while read l;							\
-	do																	\
-		if [[ $$CURR -ge $$PER_LINE ]];									\
-		then															\
-			CURR=0;														\
-			echo;														\
-		fi;																\
-		CURR=$$(($$CURR + 1));											\
-		printf '\033[32m%-*s\033[0m  ' "$(MAX_SOURCE_LEN)" "$$l";		\
-	done &																\
-	make -j$(JOBS) $(NAME);												\
-	STATUS=$$?;															\
-	kill -9 `jobs -p`;													\
-	rm -f $(PRINT_FILE);												\
-	exit $$STATUS
+	CC_C		= clang
 endif
+
+
+# ============================================================================ #
+# C++
+CPP_FLAGS		= $(HEAD_FLAGS) $(BASE_FLAGS) -std=c++14
+ifeq ($(UNAME),Cygwin)
+	CC_CPP		= x86_64-w64-mingw32-g++
+	LD_FLAGS	+= -static
+else
+	CC_CPP		= clang++
+endif
+
+
+# ============================================================================ #
+HEAD_FLAGS := $(HEAD_FLAGS)
+C_FLAGS := $(C_FLAGS)
+CPP_FLAGS := $(CPP_FLAGS)
+
+CC_C := $(CC_C)
+CC_CPP := $(CC_CPP)
+
+# ============================================================================ #
+# Rules
+# Default rule (need to be before any include)
+all: _all1
 
 # Include $(O_FILES) and dependencies
 -include $(DEPEND)
 
+_all1: $(MODULE_RULES)
+	$(MAKE) _all2
+
+_all2: libs $(O_FILES)
+	$(MAKE) _all3
+
+_all3: $(NAME)
+
 # Linking
 $(NAME): $(LIBS_DEPEND) $(O_FILES)
-	ar rcs $@ $(O_FILES) && $(PRINT_LINK)
+	$(CC_LD) $(LD_FLAGS) $@ $(O_FILES) && $(PRINT_LINK)
 
 # Compiling
 $(O_DIR)/%.o: %.c
-	clang $(C_FLAGS) -c $< -o $@ && $(PRINT_OK)
+	$(CC_C) $(C_FLAGS) -c $< -o $@ && $(PRINT_OK)
 $(O_DIR)/%.o: %.cpp
-	clang++ $(CPP_FLAGS) -c $< -o $@ && $(PRINT_OK)
+	$(CC_CPP) $(CPP_FLAGS) -c $< -o $@ && $(PRINT_OK)
 
 # Init submodules
 $(MODULE_RULES):
@@ -110,15 +122,8 @@ $(MODULE_RULES):
 $(O_DIR)/%/:
 	mkdir -p $@
 
-# Set debug mode and make
-debug: _debug all
-
-# Clean, set debug mode and make
-rebug: fclean debug
-
 # Clean obj files
 clean:
-	rm -f $(PRINT_FILE)
 	rm -f $(O_FILES)
 
 # Clean everything
@@ -126,11 +131,11 @@ fclean: clean
 	rm -f $(NAME)
 
 # Clean and make
-re: fclean all
+re: fclean
+	$(MAKE) all
 
-# Set debug flags
-_debug:
-	$(eval DEBUG_MODE = 1)
 
+# ============================================================================ #
+# Special targets
 .SILENT:
-.PHONY: all clean fclean re debug rebug _debug
+.PHONY: all clean fclean re _all1 _all2 _all3
