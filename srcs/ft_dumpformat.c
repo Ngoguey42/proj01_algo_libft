@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 13:54:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/23 14:39:27 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/23 15:22:03 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@
 **					d(double)	D(skip double)
 **					t(short)	T(skip short)
 */
-
-typedef struct	s_dumpformat_internal
-{
-	char const	*fmt;
-	uint32_t	size;
-	bool		isfp;
-}				t_dumpformat_internal;
 
 #define ENTRY(FMT, T, FP) (t_dumpformat_internal){FMT, sizeof(T), FP}
 
