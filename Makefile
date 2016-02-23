@@ -19,7 +19,7 @@ O_DIR			:= obj
 # Default  flags / compilers
 BASE_FLAGS		= -Wall -Wextra
 HEAD_FLAGS		= $(addprefix -I,$(INCLUDE_DIRS))
-LD_FLAGS		= rcs
+LD_FLAGS		= rcs $@
 
 CC_LD			= ar
 
@@ -105,7 +105,7 @@ _all3: $(NAME)
 
 # Linking
 $(NAME): $(LIBS_DEPEND) $(O_FILES)
-	$(CC_LD) $(LD_FLAGS) $@ $(O_FILES) && $(PRINT_LINK)
+	$(CC_LD) $(LD_FLAGS) $(O_FILES) && $(PRINT_LINK)
 
 # Compiling
 $(O_DIR)/%.o: %.c
