@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/18 18:34:09 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/26 17:41:23 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # include "ft_stdlib.h"
 # include "ft_ctype.h"
 # include "ft_string.h"
+# include "ft_arithmetic.h"
 
 void			ft_skiptype(char **pptr, int (*typefun)(int c));
 void			ft_skipntype(char **pptr, int (*typefun)(int c));
