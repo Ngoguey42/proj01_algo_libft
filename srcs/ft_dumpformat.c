@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 13:54:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/23 15:22:03 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/26 14:47:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 #define ENTRY(FMT, T, FP) (t_dumpformat_internal){FMT, sizeof(T), FP}
 
-static t_dumpformat_internal const	tokens[] = {
+static t_dumpformat_internal const	g_tokens[] = {
 	['i'] = ENTRY("(%i)", int, false),
 	['f'] = ENTRY("%5.2f", float, true),
 	['z'] = ENTRY("#%zu", size_t, false),
@@ -68,8 +68,8 @@ static int		exec_format(void const *p, size_t *of, char tk)
 	char const					low = ft_tolower(tk);
 	t_dumpformat_internal const	*info;
 
-	info = tokens + (size_t)low;
-	if ((void*)info >= END_ARRAY(tokens) || info->fmt == NULL)
+	info = g_tokens + (size_t)low;
+	if ((void*)info >= END_ARRAY(g_tokens) || info->fmt == NULL)
 		return (ERRORF("Unknown token '%c'", tk));
 	*of += (info->size - *of % info->size) % info->size;
 	if (low == tk)

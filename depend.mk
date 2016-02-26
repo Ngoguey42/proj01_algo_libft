@@ -81,7 +81,8 @@ O_FILES :=	obj/srcs/endianness.o obj/srcs/ft_abs.o obj/srcs/ft_arg.o \
 			obj/srcs/ft_vector/ftv_destruction.o obj/srcs/ft_vector/ftv_find.o \
 			obj/srcs/ft_vector/ftv_foreach.o obj/srcs/ft_vector/ftv_init.o \
 			obj/srcs/ft_vector/ftv_iteration.o obj/srcs/fterror.o \
-			obj/srcs/ftstrerror.o obj/srcs/get_next_line.o
+			obj/srcs/ftstrerror.o obj/srcs/ftwarning.o \
+			obj/srcs/get_next_line.o
 
 LIBS_DEPEND := 
 
@@ -655,6 +656,9 @@ obj/srcs/fterror.o: srcs/fterror.c include/ft_ctype.h include/ft_macroes.h \
 obj/srcs/ftstrerror.o: srcs/ftstrerror.c include/ft_ctype.h \
 	include/ft_macroes.h include/ft_stdio.h include/ft_stdlib.h \
 	include/ft_string.h include/ft_typedefs.h include/libft.h | obj/srcs/
+obj/srcs/ftwarning.o: srcs/ftwarning.c include/ft_ctype.h include/ft_macroes.h \
+	include/ft_stdio.h include/ft_stdlib.h include/ft_string.h \
+	include/ft_typedefs.h include/libft.h include/fterror.h | obj/srcs/
 obj/srcs/get_next_line.o: srcs/get_next_line.c include/get_next_line.h \
 	include/ft_ctype.h include/ft_macroes.h include/ft_stdio.h \
 	include/ft_stdlib.h include/ft_string.h include/ft_typedefs.h \
