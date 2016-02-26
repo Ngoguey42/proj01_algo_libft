@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/20 12:04:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/26 14:41:44 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/02/26 14:51:06 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void		ft_enomem(void);
 
 int			fte_error(char const *strings[3], int line, ...);
 int			fte_errorno(char const *strings[3], int line, ...);
+int			fte_warn(char const *strings[3], int line, ...);
+int			fte_warnno(char const *strings[3], int line, ...);
+
 # define ERR_STR(FORMAT) (char const*[3]){__FILE__, __FUNCTION__, FORMAT}
 
 # define ERRORF(FMT, ...) fte_error(ERR_STR(FMT), __LINE__, ##__VA_ARGS__)
