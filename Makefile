@@ -1,116 +1,119 @@
-#
+
+UNAME			:= $(shell uname | cut -c1-6)
 
 # ============================================================================ #
-# Directories
+# Modules
 
-# Executable name
-NAME			:= libft.a
 # Git submodule to init
-MODULES			:=
-# Makefiles to call
-LIBS			:=
+MODULES					:=
 
-INCLUDE_DIRS	= include
-SRCS_DIRS		= srcs
-O_DIR			:= obj
+# ============================================================================ #
+# Sources Directories
+
+# include search path for .o dependencies
+MKGEN_INCLUDESDIRS		:= include
+# Obj files directory
+MKGEN_OBJDIR			:= build
+# Source files directories
+MKGEN_SRCSDIRS_LFT		:= src
+
+# mkgen -> MKGEN_SRCSBIN_* variables
+# mkgen -> $(MKGEN_OBJDIR)/**/*.o rules
 
 
 # ============================================================================ #
-# Default  flags / compilers
+# Default  flags
 BASE_FLAGS		= -Wall -Wextra
-HEAD_FLAGS		= $(addprefix -I,$(INCLUDE_DIRS))
-LD_FLAGS		= rcs $@
-
-CC_LD			= ar
+HEAD_FLAGS		= $(addprefix -I,$(INCLUDEDIRS))
+LD_FLAGS		=
 
 MAKEFLAGS		+= -j
 
-
 # ============================================================================ #
 # Build mode
-BUILD_MODE		= build
-ifeq ($(BUILD_MODE),test)
-	SRCS_DIRS		+= srcs_test
-	LD_FLAGS		+= -lboost_unit_test_framework
-	BASE_FLAGS		+= -O2
-else ifeq ($(BUILD_MODE),debug)
-	SRCS_DIRS		+= srcs_build
-	BASE_FLAGS		+= -g
-else
-	SRCS_DIRS		+= srcs_build
-	BASE_FLAGS		+=
+#	NAME		link; target
+#	CC_LD		link; ld
+#	SRCSBIN		separate compilation; sources
+#	INCLUDEDIRS	separate compilation; sources includes path
+#	LIBSBIN		link; dependancies
+#	LIBSMAKE	separate compilation; makefiles to call
+
+BUILD_MODE = lft
+
+ifeq ($(BUILD_MODE),lft)
+  NAME			:= libft.a
+  CC_LD			= $(CC_AR)
+  BASE_FLAGS	+= -O2
+
+  SRCSBIN		= $(MKGEN_SRCSBIN_LFT) #gen by mkgen
+  INCLUDEDIRS	= $(MKGEN_INCLUDESDIRS)
+
 endif
 
-# legacy with makemake ===========================
-DIRS			:= srcs srcs_build
-# DEBUG_MODE		?= 0
-# export DEBUG_MODE
-# /legacy with makemake ===========================
+
+# ============================================================================ #
+# Compilers
+C_FLAGS			= $(HEAD_FLAGS) $(BASE_FLAGS)
+CPP_FLAGS		= $(HEAD_FLAGS) $(BASE_FLAGS) -std=c++14
+
+ifeq ($(UNAME),CYGWIN)
+  CC_C			= x86_64-w64-mingw32-gcc
+  CC_CPP		= x86_64-w64-mingw32-g++
+  CC_AR			= x86_64-w64-mingw32-ar
+  ifeq ($(CC_LD),$(CC_CPP))
+    LD_FLAGS	+= -static
+  endif
+else
+  CC_C			= clang
+  CC_CPP		= clang++
+  CC_AR			= ar
+endif
+
+ifeq ($(CC_LD),$(CC_AR))
+  LD_FLAGS_		= rcs $@ $(LD_FLAGS)
+else
+  LD_FLAGS_		= -o $@ $(LD_FLAGS) $(BASE_FLAGS)
+endif
 
 
 # ============================================================================ #
 # Misc
-UNAME			:= $(shell uname | cut -c1-6)
-PRINT_OK		= printf '\033[32m$<\033[0m\n'
-PRINT_LINK		= printf '\033[32m$@\033[0m\n'
-DEPEND			:= depend.mk
 MODULE_RULES	:= $(addsuffix /.git,$(MODULES))
+PRINT_OK		= printf '  \033[32m$<\033[0m\n'
+PRINT_LINK		= printf '\033[32m$@\033[0m\n'
+PRINT_MAKE		= printf '\033[32mmake $@\033[0m\n'
+DEPEND			:= depend.mk
 SHELL			:= /bin/bash
-
-
-# ============================================================================ #
-# C
-C_FLAGS			= $(HEAD_FLAGS) $(BASE_FLAGS)
-ifeq ($(UNAME),Cygwin)
-	CC_C		= x86_64-w64-mingw32-gcc
-else
-	CC_C		= clang
-endif
-
-
-# ============================================================================ #
-# C++
-CPP_FLAGS		= $(HEAD_FLAGS) $(BASE_FLAGS) -std=c++14
-ifeq ($(UNAME),Cygwin)
-	CC_CPP		= x86_64-w64-mingw32-g++
-	LD_FLAGS	+= -static
-else
-	CC_CPP		= clang++
-endif
-
-
-# ============================================================================ #
-HEAD_FLAGS := $(HEAD_FLAGS)
-C_FLAGS := $(C_FLAGS)
-CPP_FLAGS := $(CPP_FLAGS)
-
-CC_C := $(CC_C)
-CC_CPP := $(CC_CPP)
 
 # ============================================================================ #
 # Rules
-# Default rule (need to be before any include)
-all: _all1
 
-# Include $(O_FILES) and dependencies
+# Default rule (needed to be before any include)
+all: _all_git
+
 -include $(DEPEND)
 
-_all1: $(MODULE_RULES)
-	$(MAKE) _all2
+_all_git: $(MODULE_RULES)
+	$(MAKE) _all_libs
 
-_all2: libs $(O_FILES)
-	$(MAKE) _all3
+_all_libs: $(LIBSMAKE)
+	$(MAKE) _all_separate_compilation
 
-_all3: $(NAME)
+_all_separate_compilation: $(SRCSBIN)
+	$(MAKE) _all_linkage
+
+_all_linkage: $(NAME)
 
 # Linking
-$(NAME): $(LIBS_DEPEND) $(O_FILES)
-	$(CC_LD) $(LD_FLAGS) $(O_FILES) && $(PRINT_LINK)
+$(NAME): $(LIBSBIN) $(SRCSBIN)
+	$(CC_LD) $(LD_FLAGS_) $(SRCSBIN) && $(PRINT_LINK)
 
 # Compiling
-$(O_DIR)/%.o: %.c
+$(MKGEN_OBJDIR)/%.o: %.c
 	$(CC_C) $(C_FLAGS) -c $< -o $@ && $(PRINT_OK)
-$(O_DIR)/%.o: %.cpp
+$(MKGEN_OBJDIR)/%.o: %.cpp
+	$(CC_CPP) $(CPP_FLAGS) -c $< -o $@ && $(PRINT_OK)
+$(MKGEN_OBJDIR)/%.o: %.cc
 	$(CC_CPP) $(CPP_FLAGS) -c $< -o $@ && $(PRINT_OK)
 
 # Init submodules
@@ -118,13 +121,17 @@ $(MODULE_RULES):
 	git submodule init $(@:.git=)
 	git submodule update $(@:.git=)
 
+# Compile libs
+$(LIBSMAKE):
+	$(MAKE) $@ && $(PRINT_MAKE)
+
 # Create obj directories
-$(O_DIR)/%/:
+$(MKGEN_OBJDIR)/%/:
 	mkdir -p $@
 
 # Clean obj files
 clean:
-	rm -f $(O_FILES)
+	rm -f $(SRCSBIN)
 
 # Clean everything
 fclean: clean
@@ -138,4 +145,4 @@ re: fclean
 # ============================================================================ #
 # Special targets
 .SILENT:
-.PHONY: all clean fclean re _all1 _all2 _all3
+.PHONY: all clean fclean re _all_git _all_libs _all_separate_compilation _all_linkage $(LIBSMAKE)
