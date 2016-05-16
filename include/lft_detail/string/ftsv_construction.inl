@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:20:32 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 11:19:18 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 14:30:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@
 # include "lft_detail/libft_configuration.h"
 # include "lft_detail/ftlibc_string.h"
 
-static inline t_ftstrv		ftsv_empty(void)
+static inline t_ftstrv	ftsv_empty(void)
 {
 	return ((t_ftstrv){.data = NULL, .size = 0});
 }
 
-static inline t_ftstrv		ftsv_of_cstr(char const *str)
+static inline t_ftstrv	ftsv_of_cstr(char const *str)
 {
 	return ((t_ftstrv){.data = str, .size = LFT_STRLEN(str)});
 }
 
-static inline t_ftstrv		ftsv_of_mem(char const *ptr, size_t size)
+static inline t_ftstrv	ftsv_of_mem(char const *ptr, size_t size)
 {
 	return ((t_ftstrv){.data = ptr, .size = size});
 }
 
-//TODO: of ftsv_of_str
+static inline t_ftstrv	ftsv_substr(t_ftstrv v, size_t pos, size_t count)
+{
+	return ((t_ftstrv){.data = v.data + pos, .size = v.size + count});
+}
 
 #endif

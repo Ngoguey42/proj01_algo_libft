@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 10:55:03 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 12:27:27 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 14:30:56 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ typedef struct			s_ftstrv
 	size_t				size;
 }						t_ftstrv;
 
-typedef struct			s_ftstr
-{
-	char				*data;
-	size_t				size;
-	size_t				capacity;
-}						t_ftstr;
-
 /*
 ** ************************************************************************** **
 ** --== ftsv_ aka ft-string-view ==--
@@ -44,6 +37,8 @@ typedef struct			s_ftstr
 **   - Implement everything as inline functions
 **   - Keep fields public, no trivial accessors/setters
 **   - All .inl files remain standalone includ-ables
+**   - t_ftstrv function ignores all about t_ftstr,
+**       cast t_ftstr to t_ftstrv asap
 ** Invariants:
 **   - data = NULL and size = 0 when empty
 **   - If empty, functions behavior undefined
@@ -56,11 +51,13 @@ typedef struct			s_ftstr
 **   - No specific destruction required
 **   - Copy with operator equal
 **   - Construction from t_ftstr range as ftstr_substr
+**   - substr() 'count' FTSTR_NPOS value for end
 */
 
 static t_ftstrv			ftsv_empty(void);
 static t_ftstrv			ftsv_of_cstr(char const *str);
 static t_ftstrv			ftsv_of_mem(char const *ptr, size_t size);
+static t_ftstrv			ftsv_substr(t_ftstrv v, size_t pos, size_t count);
 # define FTSV_OF_LITERAL(S) (t_ftstrv){.data = (S), .size = sizeof((S)) - 1}
 
 /*
@@ -68,9 +65,9 @@ static t_ftstrv			ftsv_of_mem(char const *ptr, size_t size);
 **   - begin() with field access
 */
 
-static char const		*ftsv_rbegin(t_ftstrv sv);
-static char const		*ftsv_end(t_ftstrv sv);
-static char const		*ftsv_rend(t_ftstrv sv);
+static char const		*ftsv_rbegin(t_ftstrv v);
+static char const		*ftsv_end(t_ftstrv v);
+static char const		*ftsv_rend(t_ftstrv v);
 
 /*
 ** -= Element access =-
@@ -80,7 +77,7 @@ static char const		*ftsv_rend(t_ftstrv sv);
 **   - data() with field access
 */
 
-static char				ftsv_back(t_ftstrv sv);
+static char				ftsv_back(t_ftstrv v);
 
 /*
 ** -= Capacity =-
@@ -99,15 +96,19 @@ static char				ftsv_back(t_ftstrv sv);
 
 /*
 ** -= Operations =-
-**   - to_string() from ftstr_from_substr
+**   - to_string() from fts_of_strv
 **   - copy() (to char array) not defined
 **   - compare() not defined
+**   - find[...]() 'return' value is >=0 or FTSTR_NPOS
+**       'count' value if >=0 or FTSTR_NPOS
 */
 
-/*
-** ftsv_find_chr
-** ftsv_findpos_chr
-*/
+static size_t			ftsv_find(t_ftstrv v, size_t pos, t_ftstrv v2);
+static size_t			ftsv_find_chr(t_ftstrv v, size_t pos, char c);
+static size_t			ftsv_find_cstr(t_ftstrv v, size_t pos, char const *s);
+static size_t			ftsv_find_mem(
+	t_ftstrv v, size_t pos, char const *s, size_t count);
+
 
 # define FTSTR_NPOS (-1)
 
@@ -117,5 +118,12 @@ static char				ftsv_back(t_ftstrv sv);
 ** ************************************************************************** **
 ** --== ftstr_ aka ft-string ==--
 */
+
+typedef struct			s_ftstr
+{
+	char				*data;
+	size_t				size;
+	size_t				capacity;
+}						t_ftstr;
 
 #endif
