@@ -5,89 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/03 15:36:45 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:22:51 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/16 09:35:58 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 10:38:01 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-# include <stddef.h>
-# include <stdarg.h>
-# include "ft_typedefs.h"
+/*
+** Invariants:
+**   - t_ftstr must have the same field as t_ftstrv, same names, same offsets
+*/
+
+# include "lft_detail/string/fts_structs.h"
 
 /*
-** -
-** Strings.h
-** -
+** ************************************************************************** **
+** --== ftsv_ aka ft-string-view ==--
+** Ideas:
+**   - match c++17's standard lib as close as possible
+**   - add some clever utility functions from OCaml's standard lib
+**   - implement everything as inline functions, prototypes in comment
+**   - keep fields public, no trivial accessors/setters
+**   - all comments in this file (ft_string_oop)
+**   - all .inl files remain standalone includables
+** Invariants:
+**   - data = NULL and size = 0 when empty
+**   - if empty, functions behavior undefined
+**   - interval might contain '\0's
+**   - there is no guarantee that (.data + .size) points to a (valid) '\0'
 */
-/*
-** Copying:
-*/
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strncpy(char *s1, const char *s2, size_t num);
-size_t	ft_strlcpy(char *s1, const char *s2, size_t num);
 
-char	*ft_strccpy(char *dst, const char *src);
 /*
-** Concatenation:
+** -= Construction =-
+**   - t_ftstrv ftsv_empty()
+**   - t_ftstrv ftsv_from_cstr(char const *)
+**   - t_ftstrv ftsv_from_mem(char const*, size_t)
+**   - no specific destruction required
+**   - copies with operator equal
+**   - construction from t_ftstr range as ftstr_substr
 */
-char	*ft_strcat(char *s1, const char *s2);
-char	*ft_strncat(char *s1, const char *s2, size_t n);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strcatfree(char *s1, char *s2);
-/*
-** Comparison:
-*/
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-int		ft_strequ(char const *s1, char const *s2);
-int		ft_strnequ(const char *s1, const char *s2, size_t n);
-int		ft_match(char *s1, char *s2);
-int		ft_voidstrcmp(const void *s1, const void *s2);
-int		ft_voiduintcmp(const void *s1, const void *s2);
-int		ft_voidintcmp(const void *s1, const void *s2);
-int		ft_cmpi_e(const void *a, const void *b);
-int		ft_cmpi_l(const void *a, const void *b);
-int		ft_cmpi_le(const void *a, const void *b);
-int		ft_cmpi_g(const void *a, const void *b);
-int		ft_cmpi_ge(const void *a, const void *b);
+# include "lft_detail/string/ftsv_construction.inl"
+# define FTSV_FROM_LITERAL(S) (t_ftstrv){data = (S), size = sizeof((S)) - 1}
 
-int		ft_cmpui_e(const void *a, const void *b);
-int		ft_cmpui_l(const void *a, const void *b);
-int		ft_cmpui_le(const void *a, const void *b);
-int		ft_cmpui_g(const void *a, const void *b);
-int		ft_cmpui_ge(const void *a, const void *b);
 /*
-** Searching:
+** -= Iteration =- TODO: look ocaml and <algorithm>
+**   - char *ftsv_rbegin(t_ftstrv const*);
+**   - char *ftsv_end(t_ftstrv const*);
+**   - char *ftsv_rend(t_ftstrv const*);
+**   - begin() with field access
 */
-void	*ft_memchr(const void *s, int c, size_t n);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strrchr(const char *str, int c);
-size_t	ft_strspn(const char *str1, const char *str2);
-size_t	ft_strcspn(const char *s1r, const char *s2r);
-char	*ft_strstr(const char *s1, const char *s2);
-char	*ft_strnstr(const char *s1, const char *s2, size_t n);
-/*
-** Other:
-*/
-void	*ft_memset(void *b, int c, size_t len);
-size_t	ft_strlen(const char *s);
 
-void	ft_bzero(void *s, size_t n);
-void	ft_strclr(char *s);
-size_t	ft_strcharlen(const char *str, const char delim);
-void	ft_striter(char *s, void (*f)(char*));
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-char	*ft_strmap(char const *s, char (*f)(char));
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	*ft_memcset(void *b, int c, size_t len);
-int		get_next_line(int const fd, char **line);
+# include "lft_detail/string/ftsv_iteration.inl"
+
+/*
+** -= Element access =-
+**   - char ftsv_access(t_ftstrv const*)
+**   - at() with field access
+**   - front() with field access
+**   - data() with field access
+*/
+
+# include "lft_detail/string/ftsv_access.inl"
+
+/*
+** -= Capacity =-
+**   - size() with field access
+**   - length() with field access
+**   - empty() with field access
+**   - max_size() not defined
+*/
+
+/*
+** -= Modifers =-
+**   - remove_prefix() with field access
+**   - remove_suffix() with field access
+**   - swap() not defined
+*/
+
+/*
+** -= Operations =-
+**   - to_string() from ftstr_from_substr
+**   - copy() (to char array) not defined
+**   - compare() not defined
+*/
+
+/*
+** ftsv_find_chr
+** ftsv_findpos_chr
+*/
+
+# define FTSTR_NPOS (-1)
+
+# define FTSTR_FIND_CHR(S, C)
+
+/*
+** ************************************************************************** **
+** --== ftstr_ aka ft-string ==--
+*/
 
 #endif

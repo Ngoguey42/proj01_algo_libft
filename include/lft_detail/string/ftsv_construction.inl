@@ -6,18 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:20:32 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/15 16:00:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 10:05:46 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FTSV_CONSTRUCTION_INL
 # define FTSV_CONSTRUCTION_INL
 
-# include <stddef.h>
-
-# include "libft_configuration.h"
-# include "string.h"
-# include "ft_string_oop_structs.h"
+# include "lft_detail/string/fts_structs.h"
+# include "lft_detail/libft_configuration.h"
+# include "lft_detail/ftlibc_string.h"
 
 inline t_ftstrv		ftsv_empty(void)
 {

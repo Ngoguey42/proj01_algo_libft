@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_destruction.c                                  :+:      :+:    :+:   */
+/*   ftm_destruction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,12 +13,12 @@
 #include "ft_set.h"
 #include <stdlib.h>
 
-void				fts_release(t_ftset *s, void (*dea)())
+void				ftm_release(t_ftmap *s, void (*dea)())
 {
-	t_ftset_node			*node;
-	t_ftset_node			*next;
+	t_ftmap_node			*node;
+	t_ftmap_node			*next;
 
-	node = fts_begin(s);
+	node = ftm_begin(s);
 	while (node != NULL)
 	{
 		if (node->l != NULL)
@@ -38,6 +38,6 @@ void				fts_release(t_ftset *s, void (*dea)())
 			node = next;
 		}
 	}
-	*s = fts_uninitialized();
+	*s = ftm_uninitialized();
 	return ;
 }

@@ -14,11 +14,11 @@
 #include <stdlib.h>
 #include "ft_list.h"
 
-#define LISTNODE struct s_ftlist_node
+#define t_ftlist_node struct s_ftlist_node
 
 void		ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext)
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 
 	node = l->next;
 	while (node != ftl_cend(l))
@@ -29,9 +29,10 @@ void		ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext)
 	return ;
 }
 
-void		ftl_foreach2(t_ftlist const *l, void (*fun)(), void *e1, void *e2)
+void		ftl_foreach2(
+	t_ftlist const *l, void (*fun)(), void *e1, void *e2)
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 
 	node = l->next;
 	while (node != ftl_cend(l))
@@ -44,7 +45,7 @@ void		ftl_foreach2(t_ftlist const *l, void (*fun)(), void *e1, void *e2)
 
 void		ftl_foreachi(t_ftlist const *l, void (*fun)(), void *ext)
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 	int			i;
 
 	i = 0;
@@ -58,10 +59,10 @@ void		ftl_foreachi(t_ftlist const *l, void (*fun)(), void *ext)
 	return ;
 }
 
-void		ftl_foreach_if(t_ftlist const *l, void (*fun)(), void *ext
-							, bool (*pred)())
+void		ftl_foreach_if(
+	t_ftlist const *l, void (*fun)(), void *ext, bool (*pred)())
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 
 	node = l->next;
 	while (node != ftl_cend(l))
@@ -73,10 +74,10 @@ void		ftl_foreach_if(t_ftlist const *l, void (*fun)(), void *ext
 	return ;
 }
 
-void		ftl_foreachi_if(t_ftlist const *l, void (*fun)(), void *ext
-							, bool (*pred)())
+void		ftl_foreachi_if(
+	t_ftlist const *l, void (*fun)(), void *ext, bool (*pred)())
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 	int			i;
 
 	i = 0;

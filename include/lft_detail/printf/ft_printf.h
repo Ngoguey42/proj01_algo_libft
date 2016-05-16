@@ -6,13 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:35:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:00:50 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 10:31:46 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <stdarg.h>
 # include <stdlib.h>
 # include "libft.h"
 
@@ -22,7 +23,6 @@
 ** take care of memory leaks in add_color_flags.c
 */
 
-# include <stdarg.h>
 # define VATYPE		va_arg
 # define VASTA		va_start
 # define VACPY		va_copy
@@ -46,7 +46,8 @@
 # define COLORS_FLAGS_FIELD	0x3F80
 # define SIZE_OF_FLAGS		(sizeof(TYPE_OF_FLAGS) * 8)
 # define TYPE_OF_FLAGS		unsigned short
-# include "ft_printfdefs.h"
+
+# include "lft_detail/printf/ft_printfdefs.h"
 
 /*
 ** INFO

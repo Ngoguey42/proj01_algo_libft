@@ -6,14 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 12:05:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:06:15 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 10:31:45 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DBLTYPE_H
 # define FT_DBLTYPE_H
 
-# include "ft_typedefs.h"
+# include "lft_detail/ft_typedefs.h"
 
 # ifndef IEEE_DOUBLE_BIG_ENDIAN
 #  define IEEE_DOUBLE_BIG_ENDIAN 0

@@ -6,14 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 03:53:42 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 18:04:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 09:12:50 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ARG_H
 # define FT_ARG_H
 
-# include "libft.h"
+# include <stddef.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 /*
 ** 0      1  2    3   4     5  6

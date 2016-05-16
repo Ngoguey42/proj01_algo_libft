@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_foreach.c                                      :+:      :+:    :+:   */
+/*   ftm_foreach.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,30 +12,30 @@
 
 #include "ft_set.h"
 
-void				fts_foreach(t_ftset *s, void (*fun)(), void *ext)
+void				ftm_foreach(t_ftmap *s, void (*fun)(), void *ext)
 {
-	t_ftset_node		*node;
+	t_ftmap_node		*node;
 
-	node = fts_begin(s);
+	node = ftm_begin(s);
 	while (node != NULL)
 	{
 		fun(ext, node);
-		node = fts_next(node);
+		node = ftm_next(node);
 	}
 	return ;
 }
 
-void				fts_foreachi(t_ftset *s, void (*fun)(), void *ext)
+void				ftm_foreachi(t_ftmap *s, void (*fun)(), void *ext)
 {
-	t_ftset_node		*node;
+	t_ftmap_node		*node;
 	int					i;
 
 	i = 0;
-	node = fts_begin(s);
+	node = ftm_begin(s);
 	while (node != NULL)
 	{
 		fun(ext, node, i++);
-		node = fts_next(node);
+		node = ftm_next(node);
 	}
 	return ;
 }

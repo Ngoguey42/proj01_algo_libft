@@ -14,9 +14,7 @@
 #include <stdlib.h>
 #include "ft_list.h"
 
-#define LISTNODE struct s_ftlist_node
-
-static void	del(LISTNODE *prev, LISTNODE *next)
+static void	del(t_ftlist_node *prev, t_ftlist_node *next)
 {
 	next->prev = prev;
 	prev->next = next;
@@ -25,8 +23,8 @@ static void	del(LISTNODE *prev, LISTNODE *next)
 
 void		ftl_release(t_ftlist *l, void (*deallocator)())
 {
-	LISTNODE	*node;
-	LISTNODE	*next;
+	t_ftlist_node	*node;
+	t_ftlist_node	*next;
 
 	node = l->next;
 	while (node != FTL_CEND(l))
@@ -44,7 +42,7 @@ void		ftl_release(t_ftlist *l, void (*deallocator)())
 
 void		ftl_pop_back(t_ftlist *l, void (*deallocator)())
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 
 	node = l->prev;
 	del(node->prev, FTL_END(l));
@@ -57,7 +55,7 @@ void		ftl_pop_back(t_ftlist *l, void (*deallocator)())
 
 void		ftl_pop_front(t_ftlist *l, void (*deallocator)())
 {
-	LISTNODE	*node;
+	t_ftlist_node	*node;
 
 	node = l->next;
 	del(FTL_END(l), node->next);
@@ -68,7 +66,8 @@ void		ftl_pop_front(t_ftlist *l, void (*deallocator)())
 	return ;
 }
 
-void		ftl_erase_pos(t_ftlist *l, LISTNODE *pos, void (*deallocator)())
+void		ftl_erase_pos(
+	t_ftlist *l, t_ftlist_node *pos, void (*deallocator)())
 {
 	del(pos->prev, pos->next);
 	if (deallocator != NULL)

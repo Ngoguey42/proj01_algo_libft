@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 14:14:29 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/15 14:16:10 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 10:38:42 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /*
 ** Internal policy regarding standard library
-**  any debug function may std libs (including qprintf)
-**  any other generic function must use (libft) || (LFT_*PTF macroes)
+**  any debug function may use std libs (including qprintf)
+**  any other generic function must use (libft) or (LFT_* macroes)
 */
 
 /*
@@ -24,6 +24,10 @@
 */
 
 # ifdef LIBFT_INTERNAL_USE_STD
+
+#  include <string.h>
+#  include <stdio.h>
+#  include <stdlib.h>
 
 #  define LIBFT_REALLOC(ptr, olds, news)    realloc((ptr), (news))
 #  define LIBFT_MEMCPY                      memcpy

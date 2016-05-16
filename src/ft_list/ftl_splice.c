@@ -14,16 +14,16 @@
 #include "fterror.h"
 #include <stdlib.h>
 
-#define LISTNODE struct s_ftlist_node
+#define t_ftlist_node struct s_ftlist_node
 
-static void	del(LISTNODE *prev, LISTNODE *next)
+static void	del(t_ftlist_node *prev, t_ftlist_node *next)
 {
 	next->prev = prev;
 	prev->next = next;
 	return ;
 }
 
-static void	add(LISTNODE *new, LISTNODE *prev, LISTNODE *next)
+static void	add(t_ftlist_node *new, t_ftlist_node *prev, t_ftlist_node *next)
 {
 	next->prev = new;
 	new->next = next;
@@ -32,7 +32,8 @@ static void	add(LISTNODE *new, LISTNODE *prev, LISTNODE *next)
 	return ;
 }
 
-void		ftl_splice_one_back(t_ftlist *dst, t_ftlist *src, LISTNODE *node)
+void		ftl_splice_one_back(
+	t_ftlist *dst, t_ftlist *src, t_ftlist_node *node)
 {
 	t_ftlist_node	*next;
 

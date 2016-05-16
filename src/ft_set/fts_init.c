@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_init.c                                         :+:      :+:    :+:   */
+/*   ftm_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,14 @@
 
 #include "ft_set.h"
 
-void				fts_init_instance(t_ftset *s, size_t chunk_size
+void				ftm_init_instance(t_ftmap *s, size_t chunk_size
 										, int (*cmp)())
 {
-	*s = (t_ftset){NULL, 0, 0, chunk_size, cmp};
+	*s = (t_ftmap){NULL, 0, 0, chunk_size, cmp};
 	return ;
 }
 
-t_ftset				fts_uninitialized(void)
+t_ftmap				ftm_uninitialized(void)
 {
-	return ((t_ftset){NULL, 0, 0, 0, NULL});
+	return ((t_ftmap){NULL, 0, 0, 0, NULL});
 }

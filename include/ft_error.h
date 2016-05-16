@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fterror.h                                          :+:      :+:    :+:   */
+/*   ft_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/20 12:04:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/26 14:51:06 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/16 09:17:25 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 09:17:29 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTERROR_H
-# define FTERROR_H
+#ifndef FT_ERROR_H
+# define FT_ERROR_H
 
-# include "libft.h"
+# include <stddef.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 void		ft_enomem(void);
 

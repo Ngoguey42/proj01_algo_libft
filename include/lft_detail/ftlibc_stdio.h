@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdio.h                                         :+:      :+:    :+:   */
+/*   ftlibc_stdio.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/03 15:33:25 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 15:33:48 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/16 10:11:06 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 10:32:46 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDIO_H
-# define FT_STDIO_H
+#ifndef FTLIBC_STDIO_H
+# define FTLIBC_STDIO_H
 
 # include <stddef.h>
+# include <stdint.h>
+# include <stdbool.h>
+
 # include <stdarg.h>
-# include "ft_typedefs.h"
 
 /*
 ** -

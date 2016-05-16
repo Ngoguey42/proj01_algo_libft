@@ -1,21 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ctype.h                                         :+:      :+:    :+:   */
+/*   ftlibc_ctype.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/03 15:36:03 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:19:28 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/16 10:10:02 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 10:10:16 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CTYPE_H
-# define FT_CTYPE_H
-
-# include <stddef.h>
-# include <stdarg.h>
-# include "ft_typedefs.h"
+#ifndef FTLIBC_CTYPE_H
+# define FTLIBC_CTYPE_H
 
 /*
 ** -

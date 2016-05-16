@@ -6,26 +6,25 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 20:28:26 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/15 14:15:29 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 10:20:10 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
-# include <stdbool.h>
-# include <stdint.h>
+# include "lft_detail/libft_configuration.h"
 
-# include "libft_configuration.h"
+# include "lft_detail/ft_typedefs.h"
 
-# include "ft_typedefs.h"
-# include "ft_macroes.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_ctype.h"
-# include "ft_string.h"
-# include "ft_arithmetic.h"
+# include "lft_detail/ftlibc_string.h"
+# include "lft_detail/ftlibc_ctype.h"
+# include "lft_detail/ftlibc_stdio.h"
+# include "lft_detail/ftlibc_stdlib.h"
+
+# include "lft_detail/ft_macroes.h"
+# include "lft_detail/ft_arithmetic.h"
+# include "lft_detail/ft_timeval.h"
 
 void			ft_skiptype(char **pptr, int (*typefun)(int c));
 void			ft_skipntype(char **pptr, int (*typefun)(int c));

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_citerations.c                                  :+:      :+:    :+:   */
+/*   ftm_citerations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,21 +12,21 @@
 
 #include "ft_set.h"
 
-static t_ftset_node const	*leftmost(t_ftset_node const *node)
+static t_ftmap_node const	*leftmost(t_ftmap_node const *node)
 {
 	while (node->l != NULL)
 		node = node->l;
 	return (node);
 }
 
-t_ftset_node const			*fts_cbegin(t_ftset const *set)
+t_ftmap_node const			*ftm_cbegin(t_ftmap const *set)
 {
 	if (set->head != NULL)
 		return (leftmost(set->head));
 	return (NULL);
 }
 
-static t_ftset_node const	*first_topright_parent(t_ftset_node const *node)
+static t_ftmap_node const	*first_topright_parent(t_ftmap_node const *node)
 {
 	while (1)
 	{
@@ -39,7 +39,7 @@ static t_ftset_node const	*first_topright_parent(t_ftset_node const *node)
 	return ((void*)42);
 }
 
-t_ftset_node const			*fts_cnext(t_ftset_node const *node)
+t_ftmap_node const			*ftm_cnext(t_ftmap_node const *node)
 {
 	if (node->r != NULL)
 		return (leftmost(node->r));

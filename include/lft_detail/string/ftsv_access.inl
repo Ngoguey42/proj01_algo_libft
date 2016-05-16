@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_timeval.h                                       :+:      :+:    :+:   */
+/*   ftsv_access.inl                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/10 13:57:59 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/10 13:59:18 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/15 15:38:17 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 10:02:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_TIMEVAL_H
-# define FT_TIMEVAL_H
+#ifndef FTSV_ACCESS_INL
+# define FTSV_ACCESS_INL
 
-# include <sys/time.h>
+# include "lft_detail/string/fts_structs.h"
 
-struct timeval			ft_timeval_diff(struct timeval x, struct timeval y);
-double					ft_timeval_tosec(struct timeval t);
-double					ft_timeval_elapsed(struct timeval old);
+inline char ftsv_back(t_ftstrv const *sv)
+{
+	return (sv->data[sv->size - 1]);
+}
 
 #endif

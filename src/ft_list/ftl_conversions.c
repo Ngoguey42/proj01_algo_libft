@@ -14,15 +14,12 @@
 #include <stdlib.h>
 #include "ft_list.h"
 
-#define LISTNODE struct s_ftlist_node
-#define LISTNODEC struct s_ftlist_node const
-
-inline LISTNODE		*ftl_end(t_ftlist *l)
+inline t_ftlist_node		*ftl_end(t_ftlist *l)
 {
-	return ((LISTNODE*)l);
+	return ((t_ftlist_node*)l);
 }
 
-inline LISTNODEC	*ftl_cend(t_ftlist const *l)
+inline t_ftlist_node const	*ftl_cend(t_ftlist const *l)
 {
-	return ((LISTNODEC*)l);
+	return ((t_ftlist_node const*)l);
 }

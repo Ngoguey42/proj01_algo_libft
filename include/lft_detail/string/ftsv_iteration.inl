@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_oop_structs.h                            :+:      :+:    :+:   */
+/*   ftsv_iteration.inl                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:29:03 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/15 15:29:36 by ngoguey          ###   ########.fr       */
+/*   Created: 2016/05/15 15:31:58 by ngoguey           #+#    #+#             */
+/*   Updated: 2016/05/16 10:01:20 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_OOP_STRUCTS_H
-# define FT_STRING_OOP_STRUCTS_H
+#ifndef FTSV_ITERATION_INL
+# define FTSV_ITERATION_INL
 
-# include <stddef.h>
+# include "lft_detail/string/fts_structs.h"
 
-typedef struct	s_ftstrv
+inline char const	*ftsv_rbegin(t_ftstrv const *sv)
 {
-	char const	*data;
-	size_t		size;
-}				t_ftstrv;
+	return (sv->data + sv->size - 1);
+}
 
-typedef struct	s_ftstr
+inline char const	*ftsv_end(t_ftstrv const *sv)
 {
-	char		*data;
-	size_t		size;
-	size_t		capacity;
-}				t_ftstr;
+	return (sv->data + sv->size);
+}
+
+inline char const	*ftsv_rend(t_ftstrv const *sv)
+{
+	return (sv->data - 1);
+}
 
 #endif

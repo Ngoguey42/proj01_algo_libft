@@ -6,14 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 16:34:05 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/07 19:27:18 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 09:11:51 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
 
-# include "libft.h"
+# include <stddef.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 typedef struct	s_ftvector
 {

@@ -13,9 +13,9 @@
 #include <errno.h>
 #include "ft_list.h"
 
-#define LISTNODE struct s_ftlist_node
+#define t_ftlist_node struct s_ftlist_node
 
-static void	add(LISTNODE *new, LISTNODE *prev, LISTNODE *next)
+static void	add(t_ftlist_node *new, t_ftlist_node *prev, t_ftlist_node *next)
 {
 	next->prev = new;
 	new->next = next;
@@ -24,33 +24,34 @@ static void	add(LISTNODE *new, LISTNODE *prev, LISTNODE *next)
 	return ;
 }
 
-int			ftl_push_back(t_ftlist *l, LISTNODE const *node)
+int			ftl_push_back(t_ftlist *l, t_ftlist_node const *node)
 {
-	LISTNODE	*anode;
+	t_ftlist_node	*anode;
 
 	anode = ft_memdup(node, l->chunk_size);
 	if (anode == NULL)
 		return (ENOMEM);
-	add(anode, l->prev, (LISTNODE*)l);
+	add(anode, l->prev, (t_ftlist_node*)l);
 	l->size++;
 	return (0);
 }
 
-int			ftl_push_front(t_ftlist *l, LISTNODE const *node)
+int			ftl_push_front(t_ftlist *l, t_ftlist_node const *node)
 {
-	LISTNODE	*anode;
+	t_ftlist_node	*anode;
 
 	anode = ft_memdup(node, l->chunk_size);
 	if (anode == NULL)
 		return (ENOMEM);
-	add(anode, (LISTNODE*)l, l->next);
+	add(anode, (t_ftlist_node*)l, l->next);
 	l->size++;
 	return (0);
 }
 
-int			ftl_insert_pos(t_ftlist *l, LISTNODE *pos, LISTNODE const *node)
+int			ftl_insert_pos(
+	t_ftlist *l, t_ftlist_node *pos, t_ftlist_node const *node)
 {
-	LISTNODE	*anode;
+	t_ftlist_node	*anode;
 
 	anode = ft_memdup(node, l->chunk_size);
 	if (anode == NULL)
@@ -60,10 +61,11 @@ int			ftl_insert_pos(t_ftlist *l, LISTNODE *pos, LISTNODE const *node)
 	return (0);
 }
 
-int			ftl_insert_sort(t_ftlist *l, LISTNODE const *node, int64_t (*cmp)())
+int			ftl_insert_sort(
+	t_ftlist *l, t_ftlist_node const *node, int64_t (*cmp)())
 {
-	LISTNODE		*anode;
-	LISTNODE		*nx_node;
+	t_ftlist_node		*anode;
+	t_ftlist_node		*nx_node;
 
 	anode = ft_memdup(node, l->chunk_size);
 	if (anode == NULL)

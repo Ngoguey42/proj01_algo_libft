@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_insert.c                                       :+:      :+:    :+:   */
+/*   ftm_insert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,57 +13,57 @@
 #include "ft_set.h"
 #include <errno.h>
 
-#define SETNODE struct s_ftset_node
+#define t_ftmap_node struct s_ftmap_node
 #define NORM_AT_42_IS_WTF s->cmp
 
-static SETNODE	*build_left(t_ftset *const s
-							, t_ftset_node const *const new
-							, t_ftset_insertion *const status
-							, t_ftset_node *const cur)
+static t_ftmap_node	*build_left(t_ftmap *const s
+							, t_ftmap_node const *const new
+							, t_ftmap_insertion *const status
+							, t_ftmap_node *const cur)
 {
-	t_ftset_node	*newson;
+	t_ftmap_node	*newson;
 
 	if (cur->l == NULL)
 	{
-		newson = fts_gen_node(s, cur, new, status);
+		newson = ftm_gen_node(s, cur, new, status);
 		cur->l = newson;
-		fts_increment_parents_heights(newson, cur);
+		ftm_increment_parents_heights(newson, cur);
 	}
 	else
 	{
-		newson = fts_build_cur(s, new, status, cur->l);
+		newson = ftm_build_cur(s, new, status, cur->l);
 	}
 	if (newson == NULL)
 		return (NULL);
-	return (fts_rebalance_node(cur));
+	return (ftm_rebalance_node(cur));
 }
 
-static SETNODE	*build_right(t_ftset *const s
-							, t_ftset_node const *const new
-							, t_ftset_insertion *const status
-							, t_ftset_node *const cur)
+static t_ftmap_node	*build_right(t_ftmap *const s
+							, t_ftmap_node const *const new
+							, t_ftmap_insertion *const status
+							, t_ftmap_node *const cur)
 {
-	t_ftset_node	*newson;
+	t_ftmap_node	*newson;
 
 	if (cur->r == NULL)
 	{
-		newson = fts_gen_node(s, cur, new, status);
+		newson = ftm_gen_node(s, cur, new, status);
 		cur->r = newson;
-		fts_increment_parents_heights(newson, cur);
+		ftm_increment_parents_heights(newson, cur);
 	}
 	else
 	{
-		newson = fts_build_cur(s, new, status, cur->r);
+		newson = ftm_build_cur(s, new, status, cur->r);
 	}
 	if (newson == NULL)
 		return (NULL);
-	return (fts_rebalance_node(cur));
+	return (ftm_rebalance_node(cur));
 }
 
-SETNODE			*fts_build_cur(t_ftset *const s
-								, t_ftset_node const *const new
-								, t_ftset_insertion *const status
-								, t_ftset_node *const cur)
+t_ftmap_node			*ftm_build_cur(t_ftmap *const s
+								, t_ftmap_node const *const new
+								, t_ftmap_insertion *const status
+								, t_ftmap_node *const cur)
 {
 	int const		cmp = NORM_AT_42_IS_WTF(cur, new, s);
 
@@ -72,19 +72,19 @@ SETNODE			*fts_build_cur(t_ftset *const s
 	else if (cmp > 0)
 		return (build_right(s, new, status, cur));
 	if (status != NULL)
-		*status = (t_ftset_insertion){cur, false};
+		*status = (t_ftmap_insertion){cur, false};
 	return (cur);
 }
 
-int				fts_insert(t_ftset *s, t_ftset_node const *node
-								, t_ftset_insertion *status)
+int				ftm_insert(t_ftmap *s, t_ftmap_node const *node
+								, t_ftmap_insertion *status)
 {
-	SETNODE		*head;
+	t_ftmap_node		*head;
 
 	if (s->size == 0)
-		head = fts_gen_node(s, NULL, node, status);
+		head = ftm_gen_node(s, NULL, node, status);
 	else
-		head = fts_build_cur(s, node, status, s->head);
+		head = ftm_build_cur(s, node, status, s->head);
 	if (head == NULL)
 		return (ENOMEM);
 	s->head = head;

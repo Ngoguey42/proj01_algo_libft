@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_iterations.c                                   :+:      :+:    :+:   */
+/*   ftm_iterations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,21 +12,21 @@
 
 #include "ft_set.h"
 
-static t_ftset_node	*leftmost(t_ftset_node *node)
+static t_ftmap_node	*leftmost(t_ftmap_node *node)
 {
 	while (node->l != NULL)
 		node = node->l;
 	return (node);
 }
 
-t_ftset_node		*fts_begin(t_ftset *set)
+t_ftmap_node		*ftm_begin(t_ftmap *set)
 {
 	if (set->head != NULL)
 		return (leftmost(set->head));
 	return (NULL);
 }
 
-static t_ftset_node	*first_topright_parent(t_ftset_node *node)
+static t_ftmap_node	*first_topright_parent(t_ftmap_node *node)
 {
 	while (1)
 	{
@@ -39,7 +39,7 @@ static t_ftset_node	*first_topright_parent(t_ftset_node *node)
 	return ((void*)42);
 }
 
-t_ftset_node		*fts_next(t_ftset_node *node)
+t_ftmap_node		*ftm_next(t_ftmap_node *node)
 {
 	if (node->r != NULL)
 		return (leftmost(node->r));

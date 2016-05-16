@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_insert_tools.c                                 :+:      :+:    :+:   */
+/*   ftm_insert_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,12 +13,12 @@
 #include "ft_set.h"
 #include <errno.h>
 
-#define SETNODE struct s_ftset_node
+#define t_ftmap_node struct s_ftmap_node
 
-void			fts_increment_parents_heights(t_ftset_node const *son
-												, t_ftset_node *parent)
+void			ftm_increment_parents_heights(t_ftmap_node const *son
+												, t_ftmap_node *parent)
 {
-	t_ftset_node const	*brother;
+	t_ftmap_node const	*brother;
 
 	while (parent != NULL)
 	{
@@ -35,12 +35,12 @@ void			fts_increment_parents_heights(t_ftset_node const *son
 	return ;
 }
 
-t_ftset_node	*fts_gen_node(t_ftset *s
-								, t_ftset_node *parent
-								, t_ftset_node const *new
-								, t_ftset_insertion *status)
+t_ftmap_node	*ftm_gen_node(t_ftmap *s
+								, t_ftmap_node *parent
+								, t_ftmap_node const *new
+								, t_ftmap_insertion *status)
 {
-	SETNODE		*anode;
+	t_ftmap_node		*anode;
 
 	anode = ft_memdup(new, s->chunk_size);
 	if (anode == NULL)

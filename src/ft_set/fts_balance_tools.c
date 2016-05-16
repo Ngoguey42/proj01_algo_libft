@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_balance_tools.c                                :+:      :+:    :+:   */
+/*   ftm_balance_tools.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,19 +13,19 @@
 #include "ft_set.h"
 #include <errno.h>
 
-#define SETNODE struct s_ftset_node
+#define t_ftmap_node struct s_ftmap_node
 
-void			fts_repair_sons_link(SETNODE *son, SETNODE *parent)
+void			ftm_repair_sons_link(t_ftmap_node *son, t_ftmap_node *parent)
 {
 	if (son != NULL)
 		son->parent = parent;
 	return ;
 }
 
-void			fts_repair_node_height(SETNODE *node)
+void			ftm_repair_node_height(t_ftmap_node *node)
 {
-	SETNODE const *const	l = node->l;
-	SETNODE	const *const	r = node->r;
+	t_ftmap_node const *const	l = node->l;
+	t_ftmap_node	const *const	r = node->r;
 	int const				rh = r == NULL ? 0 : r->height;
 	int const				lh = l == NULL ? 0 : l->height;
 
@@ -33,8 +33,8 @@ void			fts_repair_node_height(SETNODE *node)
 	return ;
 }
 
-void			fts_repair_parents_link(SETNODE *son, SETNODE *parent
-										, SETNODE const *oldson)
+void			ftm_repair_parents_link(t_ftmap_node *son, t_ftmap_node *parent
+										, t_ftmap_node const *oldson)
 {
 	if (parent != NULL)
 	{
@@ -46,11 +46,11 @@ void			fts_repair_parents_link(SETNODE *son, SETNODE *parent
 	return ;
 }
 
-void			fts_repair_parents_heights(t_ftset_node *node)
+void			ftm_repair_parents_heights(t_ftmap_node *node)
 {
 	while (node != NULL)
 	{
-		fts_repair_node_height(node);
+		ftm_repair_node_height(node);
 		node = node->parent;
 	}
 	return ;
