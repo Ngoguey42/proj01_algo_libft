@@ -6,20 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 14:03:59 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 14:06:48 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:36:30 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "fterror.h"
+#include "ft_error.h"
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include <errno.h>
-
-#ifdef LIBFT_INTERNAL_USE_STD
-# include <stdio.h>
-# include <string.h>
-#endif
 
 void			ft_enomem(void)
 {

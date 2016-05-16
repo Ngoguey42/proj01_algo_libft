@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftm_init.c                                         :+:      :+:    :+:   */
+/*   ftm_foreach.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 10:34:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 12:53:44 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/08/12 15:03:38 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 17:29:22 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "ft_map.h"
 
-void				ftm_init_instance(t_ftmap *s, size_t chunk_size
-										, int (*cmp)())
+void				ftm_foreach(t_ftmap *s, void (*fun)(), void *ext)
 {
-	*s = (t_ftmap){NULL, 0, 0, chunk_size, cmp};
+	t_ftmap_node		*node;
+
+	node = ftm_begin(s);
+	while (node != NULL)
+	{
+		fun(ext, node);
+		node = ftm_next(node);
+	}
 	return ;
 }
 
-t_ftmap				ftm_uninitialized(void)
+void				ftm_foreachi(t_ftmap *s, void (*fun)(), void *ext)
 {
-	return ((t_ftmap){NULL, 0, 0, 0, NULL});
+	t_ftmap_node		*node;
+	int					i;
+
+	i = 0;
+	node = ftm_begin(s);
+	while (node != NULL)
+	{
+		fun(ext, node, i++);
+		node = ftm_next(node);
+	}
+	return ;
 }

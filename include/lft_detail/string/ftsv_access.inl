@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:38:17 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 11:29:20 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 12:23:24 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "lft_detail/string/ft_string_intf.h"
 
-static inline char ftsv_back(t_ftstrv const *sv)
+static inline char	ftsv_back(t_ftstrv sv)
 {
 	return (sv->data[sv->size - 1]);
 }

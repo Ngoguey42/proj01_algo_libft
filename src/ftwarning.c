@@ -6,20 +6,16 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 14:39:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/26 14:47:02 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:36:46 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "fterror.h"
+#include "ft_error.h"
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include <errno.h>
-
-#ifdef LIBFT_INTERNAL_USE_STD
-# include <stdio.h>
-# include <string.h>
-#endif
 
 int				fte_warn(char const *strings[3], int line, ...)
 {

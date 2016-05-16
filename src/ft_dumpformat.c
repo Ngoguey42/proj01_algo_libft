@@ -6,13 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/23 13:54:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/26 14:47:31 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:35:53 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_debug.h"
-#include "fterror.h"
+#include "lft_detail/ft_debug_detail.h"
+#include "ft_error.h"
 
 #include <unistd.h>
 

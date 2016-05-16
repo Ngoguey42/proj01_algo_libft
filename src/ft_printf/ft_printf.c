@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 #include <stdlib.h>
 
 int	ft_sprintf(char *str, const char *format, ...)

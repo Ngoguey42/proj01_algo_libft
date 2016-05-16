@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 #define TWOFORTYTWO 0x1.0p+52
 #define TWOSIXTYTWO 0x1.0p+64L

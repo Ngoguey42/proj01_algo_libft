@@ -6,14 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:30 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:24:41 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:44:29 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "ft_map.h"
+#include "lft_detail/ft_map_detail.h"
 #include <errno.h>
 
-#define t_ftmap_node struct s_ftmap_node
 #define NORM_AT_42_IS_WTF s->cmp
 
 static t_ftmap_node	*build_left(t_ftmap *const s

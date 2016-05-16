@@ -6,14 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 13:42:56 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:24:20 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:44:47 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "libft.h"
+#include "ft_map.h"
 #include <errno.h>
-
-#define t_ftmap_node struct s_ftmap_node
 
 void			ftm_increment_parents_heights(t_ftmap_node const *son
 												, t_ftmap_node *parent)

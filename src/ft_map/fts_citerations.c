@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftm_iterations.c                                   :+:      :+:    :+:   */
+/*   ftm_citerations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 10:34:41 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 12:54:03 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/08/12 17:26:52 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 17:27:47 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "ft_map.h"
 
-static t_ftmap_node	*leftmost(t_ftmap_node *node)
+static t_ftmap_node const	*leftmost(t_ftmap_node const *node)
 {
 	while (node->l != NULL)
 		node = node->l;
 	return (node);
 }
 
-t_ftmap_node		*ftm_begin(t_ftmap *set)
+t_ftmap_node const			*ftm_cbegin(t_ftmap const *set)
 {
 	if (set->head != NULL)
 		return (leftmost(set->head));
 	return (NULL);
 }
 
-static t_ftmap_node	*first_topright_parent(t_ftmap_node *node)
+static t_ftmap_node const	*first_topright_parent(t_ftmap_node const *node)
 {
 	while (1)
 	{
@@ -39,7 +39,7 @@ static t_ftmap_node	*first_topright_parent(t_ftmap_node *node)
 	return ((void*)42);
 }
 
-t_ftmap_node		*ftm_next(t_ftmap_node *node)
+t_ftmap_node const			*ftm_cnext(t_ftmap_node const *node)
 {
 	if (node->r != NULL)
 		return (leftmost(node->r));

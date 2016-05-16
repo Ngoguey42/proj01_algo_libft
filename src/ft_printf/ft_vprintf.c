@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 int	ft_vsprintf(char *str, const char *format, va_list args)
 {

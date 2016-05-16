@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 #define COLOR_TAG_S ":yel:"
 #define COLOR_TAG_E ":eoc:"

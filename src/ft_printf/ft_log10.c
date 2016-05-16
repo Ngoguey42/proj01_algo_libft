@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
-#include "ft_dbltype.h"
+#include "lft_detail/printf/ft_printf.h"
+#include "lft_detail/printf/ft_dbltype.h"
 
 /*
 **	+0		/	-inf

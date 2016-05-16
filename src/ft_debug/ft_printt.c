@@ -6,12 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/25 06:28:10 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 19:24:12 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:37:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_debug.h"
+#include "lft_detail/ft_debug_detail.h"
 
 static t_debugdatas			g_debug_datas = {
 	{NULL, 0, 0, 0}, false, true

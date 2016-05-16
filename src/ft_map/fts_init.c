@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freemem.c                                          :+:      :+:    :+:   */
+/*   ftm_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/10 11:21:43 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 10:53:17 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/08/12 10:34:36 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 12:53:44 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lft_detail/printf/ft_printf.h"
+#include "ft_map.h"
 
-void		ptf_free_list(t_printf_part **beginning)
+void				ftm_init_instance(t_ftmap *s, size_t chunk_size
+										, int (*cmp)())
 {
-	t_printf_part	*cur;
-	t_printf_part	*tmp;
+	*s = (t_ftmap){NULL, 0, 0, chunk_size, cmp};
+	return ;
+}
 
-	cur = *beginning;
-	while (cur)
-	{
-		tmp = cur->next;
-		if (cur->specifier)
-			free(cur->nbr_ptr);
-		free(cur);
-		cur = tmp;
-	}
+t_ftmap				ftm_uninitialized(void)
+{
+	return ((t_ftmap){NULL, 0, 0, 0, NULL});
 }

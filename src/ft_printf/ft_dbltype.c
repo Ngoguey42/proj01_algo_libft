@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_dbltype.h"
+#include "lft_detail/printf/ft_dbltype.h"
 
 /*
 **	+norm	1

@@ -6,11 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 15:55:51 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/04 19:23:42 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:38:00 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_debug.h"
+#include "lft_detail/ft_debug_detail.h"
 
 void			dbg_recap(void)
 {

@@ -36,5 +36,10 @@ int					main(int ac, char **av)
 	printf("'%c'\n", ftsv_back(&sv));
 	printf("'%c'\n", sv.data[0]);
 
+	ftsv_end(&sv);
+	ftsv_end((t_ftstrv[1]){FTSV_OF_LITERAL("tamere1")});
+	ftsv_end(&FTSV_OF_LITERAL("tamere1"));
+	ftsv_end(&ftsv_of_cstr("putain"));
+
 	return (sv.size + ac + 0xDEADBEEF);
 }

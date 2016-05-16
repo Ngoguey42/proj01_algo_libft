@@ -6,12 +6,11 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 13:58:49 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/10 13:59:01 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:36:13 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_timeval.h"
-#include <stddef.h>
+#include "libft.h"
 
 struct timeval			ft_timeval_diff(struct timeval x, struct timeval y)
 {

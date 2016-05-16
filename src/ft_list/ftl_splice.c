@@ -6,15 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/16 12:34:24 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 14:06:18 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:41:12 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include "fterror.h"
+#include "ft_error.h"
 #include <stdlib.h>
-
-#define t_ftlist_node struct s_ftlist_node
 
 static void	del(t_ftlist_node *prev, t_ftlist_node *next)
 {

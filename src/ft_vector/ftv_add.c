@@ -6,16 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 09:25:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/07 19:32:06 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:09:04 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
+#include "libft.h"
 
-#ifdef LIBFT_INTERNAL_USE_STD
-# include <string.h>
-# include <stdlib.h>
-#endif
 #include <errno.h>
 
 int			ftv_push_back(t_ftvector *v, void const *ptr)

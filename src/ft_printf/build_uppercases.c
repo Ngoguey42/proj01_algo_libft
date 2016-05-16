@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 /*
 ** 'build_nbr_6' %X

@@ -6,14 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 15:58:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/17 16:56:08 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:40:59 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include "ft_list.h"
-
-#define t_ftlist_node struct s_ftlist_node
+#include "libft.h"
 
 static void	add(t_ftlist_node *new, t_ftlist_node *prev, t_ftlist_node *next)
 {

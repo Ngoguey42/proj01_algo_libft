@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 /*
 ** 'subpart_len' calculates the string's length with color escape codes.

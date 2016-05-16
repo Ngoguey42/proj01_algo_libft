@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 #define TAG_ST g_color_flags[2 * i - FIRT_C_FLAG_ID * 2]
 #define TAG_EN g_color_flags[2 * i - FIRT_C_FLAG_ID * 2 + 1]

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 #define STR_EMPTY (nbr == 0 && AND_I(PNUM_MASK) && precision == 0)
 

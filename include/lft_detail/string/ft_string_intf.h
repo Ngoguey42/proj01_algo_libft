@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 10:55:03 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 11:30:23 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 12:27:27 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,23 @@ typedef struct			s_ftstr
 ** ************************************************************************** **
 ** --== ftsv_ aka ft-string-view ==--
 ** Ideas:
-**   - match c++17's standard lib as close as possible
-**   - add some clever utility functions from OCaml's standard lib
-**   - implement everything as inline functions, prototypes in comment
-**   - keep fields public, no trivial accessors/setters
-**   - all comments in this file (ft_string_oop)
-**   - all .inl files remain standalone includables
+**   - Match c++17's standard lib as close as possible
+**   - Add some clever utility functions from OCaml's standard lib
+**   - Implement everything as inline functions
+**   - Keep fields public, no trivial accessors/setters
+**   - All .inl files remain standalone includ-ables
 ** Invariants:
 **   - data = NULL and size = 0 when empty
-**   - if empty, functions behavior undefined
-**   - interval might contain '\0's
-**   - there is no guarantee that (.data + .size) points to a (valid) '\0'
+**   - If empty, functions behavior undefined
+**   - Interval might contain '\0's
+**   - No guarantee that (.data + .size) points to a (valid) '\0'
 */
 
 /*
 ** -= Construction =-
-**   - no specific destruction required
-**   - copies with operator equal
-**   - construction from t_ftstr range as ftstr_substr
+**   - No specific destruction required
+**   - Copy with operator equal
+**   - Construction from t_ftstr range as ftstr_substr
 */
 
 static t_ftstrv			ftsv_empty(void);
@@ -69,9 +68,9 @@ static t_ftstrv			ftsv_of_mem(char const *ptr, size_t size);
 **   - begin() with field access
 */
 
-static char const		*ftsv_rbegin(t_ftstrv const *sv);
-static char const		*ftsv_end(t_ftstrv const *sv);
-static char const		*ftsv_rend(t_ftstrv const *sv);
+static char const		*ftsv_rbegin(t_ftstrv sv);
+static char const		*ftsv_end(t_ftstrv sv);
+static char const		*ftsv_rend(t_ftstrv sv);
 
 /*
 ** -= Element access =-
@@ -81,7 +80,7 @@ static char const		*ftsv_rend(t_ftstrv const *sv);
 **   - data() with field access
 */
 
-static char				ftsv_back(t_ftstrv const *sv);
+static char				ftsv_back(t_ftstrv sv);
 
 /*
 ** -= Capacity =-

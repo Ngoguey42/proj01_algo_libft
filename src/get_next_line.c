@@ -6,13 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 19:52:41 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/01/13 08:24:05 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:37:09 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "get_next_line.h"
+#include "old/get_next_line.h"
 #include "libft.h"
 
 #define SEARCHLF ft_memchr(cur->s + cur->start, '\n', cur->read - cur->start)

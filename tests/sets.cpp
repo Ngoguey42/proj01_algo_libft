@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <string.h>
-#include "ft_set.h"
+#include "ft_map.h"
 
 typedef struct		s_setint
 {

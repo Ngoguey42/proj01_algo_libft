@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "lft_detail/printf/ft_printf.h"
 
 #define ONECHARPTR(PTR) char	*PTR
 #define D_CHARPTR(p1, p2, p3) ONECHARPTR(p1); ONECHARPTR(p2); ONECHARPTR(p3)

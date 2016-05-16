@@ -6,11 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 18:37:27 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/07 19:28:49 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:09:26 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
+#include "libft.h"
 
 #include <stdlib.h>
 #include <errno.h>

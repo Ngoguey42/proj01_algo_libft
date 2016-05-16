@@ -6,13 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 19:28:36 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/06/03 16:24:10 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:45:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_utoa(t_ui32 value, char *str, int base)
+char	*ft_utoa(uint32_t value, char *str, int base)
 {
 	char	*save;
 	int		i;

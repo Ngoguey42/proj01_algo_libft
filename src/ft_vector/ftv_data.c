@@ -6,15 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 11:31:39 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/07/27 09:25:47 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:10:11 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
-
-#ifdef LIBFT_INTERNAL_USE_STD
-# include <string.h>
-#endif
+#include "libft.h"
 #include <errno.h>
 
 void		ftv_assign(t_ftvector *v, void const *ref)

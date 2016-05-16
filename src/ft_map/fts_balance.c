@@ -6,11 +6,12 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 13:42:07 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:36:17 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 11:43:59 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "ft_map.h"
+#include "lft_detail/ft_map_detail.h"
 #include <errno.h>
 
 #define t_ftmap_node struct s_ftmap_node

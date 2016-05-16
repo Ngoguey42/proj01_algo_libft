@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftm_foreach.c                                      :+:      :+:    :+:   */
+/*   ftm_destruction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 15:03:38 by ngoguey           #+#    #+#             */
-/*   Updated: 2015/08/12 17:29:22 by ngoguey          ###   ########.fr       */
+/*   Created: 2015/08/12 10:34:43 by ngoguey           #+#    #+#             */
+/*   Updated: 2015/08/12 12:54:31 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_set.h"
+#include "ft_map.h"
+#include <stdlib.h>
 
-void				ftm_foreach(t_ftmap *s, void (*fun)(), void *ext)
+void				ftm_release(t_ftmap *s, void (*dea)())
 {
-	t_ftmap_node		*node;
+	t_ftmap_node			*node;
+	t_ftmap_node			*next;
 
 	node = ftm_begin(s);
 	while (node != NULL)
 	{
-		fun(ext, node);
-		node = ftm_next(node);
+		if (node->l != NULL)
+			node = node->l;
+		else if (node->r != NULL)
+			node = node->r;
+		else
+		{
+			next = node->parent;
+			if (next != NULL && next->l == node)
+				next->l = NULL;
+			else if (next != NULL)
+				next->r = NULL;
+			if (dea != NULL)
+				dea(node);
+			free(node);
+			node = next;
+		}
 	}
-	return ;
-}
-
-void				ftm_foreachi(t_ftmap *s, void (*fun)(), void *ext)
-{
-	t_ftmap_node		*node;
-	int					i;
-
-	i = 0;
-	node = ftm_begin(s);
-	while (node != NULL)
-	{
-		fun(ext, node, i++);
-		node = ftm_next(node);
-	}
+	*s = ftm_uninitialized();
 	return ;
 }

@@ -6,17 +6,14 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/23 09:59:21 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/06 12:24:04 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:09:42 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 
+#include "libft.h"
 #include "ft_vector.h"
-
-#ifdef LIBFT_INTERNAL_USE_STD
-# include <string.h>
-#endif
 
 size_t		ftv_find_index(t_ftvector const *v, void const *ref)
 {
