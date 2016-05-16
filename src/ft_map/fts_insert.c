@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:34:30 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 11:44:29 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:24:05 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_ftmap_node	*build_right(t_ftmap *const s
 	return (ftm_rebalance_node(cur));
 }
 
-t_ftmap_node			*ftm_build_cur(t_ftmap *const s
+t_ftmap_node		*ftm_build_cur(t_ftmap *const s
 								, t_ftmap_node const *const new
 								, t_ftmap_insertion *const status
 								, t_ftmap_node *const cur)
@@ -76,7 +76,7 @@ t_ftmap_node			*ftm_build_cur(t_ftmap *const s
 	return (cur);
 }
 
-int				ftm_insert(t_ftmap *s, t_ftmap_node const *node
+int					ftm_insert(t_ftmap *s, t_ftmap_node const *node
 								, t_ftmap_insertion *status)
 {
 	t_ftmap_node		*head;

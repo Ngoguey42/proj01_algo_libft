@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 13:42:07 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 11:43:59 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:26:47 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "lft_detail/ft_map_detail.h"
 #include <errno.h>
 
-#define t_ftmap_node struct s_ftmap_node
-
-static t_ftmap_node		*bal_ll(t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *r2)
+static t_ftmap_node		*bal_ll(
+	t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *r2)
 {
 	*l1 = (t_ftmap_node){cur->parent, l1->l, cur, 0};
 	*cur = (t_ftmap_node){l1, r2, cur->r, 0};
@@ -28,7 +27,8 @@ static t_ftmap_node		*bal_ll(t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *
 	return (l1);
 }
 
-static t_ftmap_node		*bal_lr(t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *r2)
+static t_ftmap_node		*bal_lr(
+	t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *r2)
 {
 	t_ftmap_node	*l3;
 	t_ftmap_node	*r3;
@@ -48,7 +48,8 @@ static t_ftmap_node		*bal_lr(t_ftmap_node *cur, t_ftmap_node *l1, t_ftmap_node *
 	return (r2);
 }
 
-static t_ftmap_node		*bal_rr(t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *l2)
+static t_ftmap_node		*bal_rr(
+	t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *l2)
 {
 	*r1 = (t_ftmap_node){cur->parent, cur, r1->r, 0};
 	*cur = (t_ftmap_node){r1, cur->l, l2, 0};
@@ -60,7 +61,8 @@ static t_ftmap_node		*bal_rr(t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *
 	return (r1);
 }
 
-static t_ftmap_node		*bal_rl(t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *l2)
+static t_ftmap_node		*bal_rl(
+	t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *l2)
 {
 	t_ftmap_node	*l3;
 	t_ftmap_node	*r3;
@@ -80,13 +82,13 @@ static t_ftmap_node		*bal_rl(t_ftmap_node *cur, t_ftmap_node *r1, t_ftmap_node *
 	return (l2);
 }
 
-t_ftmap_node				*ftm_rebalance_node(t_ftmap_node *cur)
+t_ftmap_node			*ftm_rebalance_node(t_ftmap_node *cur)
 {
 	t_ftmap_node	*l1;
 	t_ftmap_node	*r1;
 	t_ftmap_node	*l2;
 	t_ftmap_node	*r2;
-	int		diff;
+	int				diff;
 
 	l1 = cur->l;
 	r1 = cur->r;

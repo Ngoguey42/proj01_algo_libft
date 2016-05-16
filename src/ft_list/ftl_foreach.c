@@ -6,15 +6,13 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 19:02:31 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/02/17 13:40:10 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/16 13:25:00 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <stdlib.h>
 #include "ft_list.h"
-
-#define t_ftlist_node struct s_ftlist_node
 
 void		ftl_foreach(t_ftlist const *l, void (*fun)(), void *ext)
 {
@@ -46,7 +44,7 @@ void		ftl_foreach2(
 void		ftl_foreachi(t_ftlist const *l, void (*fun)(), void *ext)
 {
 	t_ftlist_node	*node;
-	int			i;
+	int				i;
 
 	i = 0;
 	node = l->next;
@@ -78,7 +76,7 @@ void		ftl_foreachi_if(
 	t_ftlist const *l, void (*fun)(), void *ext, bool (*pred)())
 {
 	t_ftlist_node	*node;
-	int			i;
+	int				i;
 
 	i = 0;
 	node = l->next;
