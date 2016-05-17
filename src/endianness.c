@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 15:03:34 by ngoguey           #+#    #+#             */
-/*   Updated: 2016/05/16 13:22:33 by ngoguey          ###   ########.fr       */
+/*   Updated: 2016/05/17 11:31:34 by Ngo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#ifndef __CYGWIN__
-# include "i386/endian.h"
+#ifdef __MINGW64__
+# include <sys/param.h>
 #else
-
+# include <i386/endian.h>
 #endif
 
 uint16_t	ft_i16toh(uint16_t i, bool big_endian)
